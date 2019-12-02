@@ -391,27 +391,18 @@ Aqui encontram-se os requisitos do projeto. Para acessar a descrição completa 
   * Inicialize o projeto:
     * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
 
-3. Crie uma branch a partir da branch `master`
-  * Verifique que você está na branch `master`
+3. Faça alterações separadas por novas branchs criadas a partir da branch do grupo, criando uma nova branch para cada demanda
+  * Foi criada uma branch base onde você vai mergear os _Pull Requests_ do projeto do seu grupo. Antes de criar a nova branch, verifique que você está na branch do grupo `master-group-x`.
     * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `master`
-    * Exemplo: `git checkout master`
-  * Agora, crie uma branch base onde você vai mergear os _Pull Requests_ do seu projeto
-    * Você deve criar uma branch no seguinte formato: `nome-do-grupo-nome-do-projeto`
-    * Exemplo: `git checkout -b grupo-x-frontend-online-store`
-  * Envie a branch criada para o repositório do _GitHub_, para que todo o grupo tenha acesso a ela
-    * Exemplo: `git push -u grupo-x-frontend-online-store`
-
-4. Faça alterações separadas por novas branchs criadas a partir da branch do grupo, criando uma nova branch para cada demanda
-  * Verifique que você está na branch do grupo `grupo-x-frontend-online-store`
-    * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `grupo-x-frontend-online-store`
-    * Exemplo: `git checkout grupo-x-frontend-online-store`
+  * Se não estiver, mude para a branch `master-group-x`
+    * Exemplo: `git checkout master-group-x`, onde `x` é o número do seu grupo
+  * Atualize, na sua máquina, a branch do seu grupo:
+    * Exemplo: `git pull`
   * Agora, crie uma branch para a demanda que vai desenvolver do seu projeto
     * Você deve criar uma branch com uma breve descrição da demanda a ser desenvolvida
     * Exemplo: `git checkout -b criar-campo-de-busca`
 
-5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
+4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
     * Exemplo: `git status` (devem aparecer listadas as novas alterações em vermelho)
   * Adicione o arquivo alterado ao _stage_ do Git
@@ -423,10 +414,10 @@ Aqui encontram-se os requisitos do projeto. Para acessar a descrição completa 
         * `git commit -m 'criando componente de busca`
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
-6. Adicione a sua branch com o novo `commit` ao repositório remoto
+5. Adicione a sua branch com o novo `commit` ao repositório remoto
   * Usando o exemplo anterior: `git push -u origin criar-campo-de-busca`
 
-7. Crie um novo `Pull Request` _(PR)_
+6. Crie um novo `Pull Request` _(PR)_
   * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-01-week13-project-frontend-online-store/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo e a sua branch **com atenção**
@@ -435,13 +426,13 @@ Aqui encontram-se os requisitos do projeto. Para acessar a descrição completa 
   * **Não se preocupe em preencher mais nada por enquanto!**
   * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-01-week13-project-frontend-online-store/pulls) e confira que o seu _Pull Request_ está criado
 
-8. Após finalizar as alterações do seu _Pull Request_:
+7. Após finalizar as alterações do seu _Pull Request_:
   * Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque as pessoas do seu grupo
   * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
   * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
   * No menu à direita, clique no _link_ **"Reviewers"** e selecione dois membros do seu grupo
 
-9. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Code Climate_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
+8. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Code Climate_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
 ---
 
@@ -469,7 +460,7 @@ Para **"entregar"** seu projeto, siga os passos a seguir:
   * Abram um novo `Pull Request` (_PR_), dessa vez para todo o projeto do grupo, comparando com a branch `master`
   * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-01-week13-project-frontend-online-store/pulls)
   * Clique no botão verde _"New pull request"_
-  * Clique na caixa de seleção _"Compare"_ e escolha **com atenção** a `master` como a branch base e a branch do seu grupo (`grupo-x-frontend-online-store`) como a branch a ser comparada
+  * Clique na caixa de seleção _"Compare"_ e escolha **com atenção** a `master` como a branch base e a branch do seu grupo (`master-group-x`) como a branch a ser comparada
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
