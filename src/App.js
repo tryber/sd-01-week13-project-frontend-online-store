@@ -1,6 +1,6 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import CartShopping from "./CartShopping";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import CartShopping from './CartShopping';
 
 class App extends React.Component {
   render() {
