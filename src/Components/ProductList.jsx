@@ -1,0 +1,2 @@
+// Componentes presentes:
+// - ProductCard.jsx
