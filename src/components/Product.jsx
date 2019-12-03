@@ -19,7 +19,7 @@ class Product extends React.Component {
           <p>{`Produto ${product.title} - R$${product.price}`}</p>
         </div>
         <div>
-          {/* <div>{img}</div> */}
+          <div>{product.thumbnail}</div>
           <div>
             <p><strong>Especificações Técnicas</strong></p>
             <ul>
