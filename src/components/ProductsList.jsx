@@ -2,19 +2,19 @@ import React from 'react';
 
 class ProductsList extends React.Component {
 
-  requestAPI(category, searchBarText) {
+  fetchURL = (url) => {
+    fetch(url)
+    .then(data => data.json())
+    .then(newData => newData.results.map(product => this.showProducts(product)));
+  }
+
+  requestAPI = (category, searchBarText) => {
     if (searchBarText !== '' && category !== "") {
-      fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`)
-        .then(data => data.json())
-        .then(newData => newData.results.map(product => this.showProducts(product)));
+      this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`)
     } else if (searchBarText !== '' && category === '') {
-      fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`)
-        .then(data => data.json())
-        .then(newData => newData.results.map(product => this.showProducts(product)));
+      this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`)        
     } else if (searchBarText === '' && category !== '') {
-      fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${category}`)
-        .then(data => data.json())
-        .then(newData => newData.results.map(product => this.showProducts(product)));
+      this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?category=${category}`)
     } else {
       return (
         <div>Componente do Coruja</div>
@@ -22,10 +22,11 @@ class ProductsList extends React.Component {
     }
   }
 
-  showProducts(product) {
+  showProducts = (product) => {
+    console.log(product.title)
     return (
-      <div className="full-info-product">
-        <div className="title">{product.title}</div>
+      <div>
+        <p>Teste</p>
       </div>
     )
   }
@@ -34,7 +35,7 @@ class ProductsList extends React.Component {
     const { category, searchBarText } = this.props
     return (
       <div>
-        {() => this.requestAPI(category, searchBarText)}
+        {this.requestAPI(category, searchBarText)}
       </div>
     )
   }

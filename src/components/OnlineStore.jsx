@@ -12,8 +12,9 @@ class OnlineStore extends React.Component {
       category: "",
       searchBarText: "",
     }
+    
   }
-  onSearchBarChange (event) {
+  onSearchBarChange = (event) => {
     this.setState({searchBarText: event.target.value})
   }
   render() {
