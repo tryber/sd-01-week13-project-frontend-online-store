@@ -29,8 +29,7 @@ export default class CategoryBar extends Component {
   renderCategory(id, value, handleChange) {
     return (
       <label key={id} className='category-options'>
-        <input name='option' type='radio' key={id} id={id} value={value} onChange={handleChange} 
-        />
+        <input name='option' type='radio' key={id} id={id} value={value} onChange={handleChange} />
         {value}
       </label>
     );
