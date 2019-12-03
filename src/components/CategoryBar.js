@@ -8,7 +8,7 @@ export default class CategoryBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],      
+      data: [],
       checked: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -18,7 +18,7 @@ export default class CategoryBar extends Component {
     workAPI.getAPI('https://api.mercadolibre.com/sites/MLB/categories')
       .then((data) => {
         this.setState({ data })
-        data.map((data) => this.setState((state) => ({ checked: state.checked.concat({[data.id] : false}) })))
+        data.map((data) => this.setState((state) => ({ checked: state.checked.concat({ [data.id]: false }) })))
       })
   }
 
