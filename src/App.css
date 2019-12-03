@@ -1,22 +1,25 @@
-.App {
-  text-align: center;
+body {
+  background-color: whitesmoke;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
+.input-div {
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  margin: 0 auto;
   justify-content: center;
-  min-height: 100vh;
 }
 
-.App-link {
-  color: #09d3ac;
+.input-search {
+  background-image: url("./image/loupe.svg");
+  background-repeat: no-repeat;
+  border-radius: 100px;
+  height: 3em;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  width: 60em;
+}
+
+.text-primary {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
 }
