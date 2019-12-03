@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './cartShopping.css';
+import BackImage from './icons/back.svg';
+import CartImage from './icons/cart.jpg';
+import EmptyBox from './icons/emptyBox.png';
 
 class CartShopping extends React.Component {
   validatingCart() {
     if (this.props.products === 0 || this.props.products === undefined) {
       return (
         <div>
-          <img
-            className="emptyBoxImage"
-            src={require("./icons/emptyBox.png")}
-            alt="empty box"
-          />
+          <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
           <p>Seu carrinho está vazio</p>
         </div>
       );
@@ -25,19 +24,13 @@ class CartShopping extends React.Component {
       <div>
         <header>
           <Link to="/">
-            <img
-              className="backPageImage space"
-              src={require("./icons/back.svg")}
-              alt="back"
-            />
+            <img className="backPageImage space" src={BackImage} alt="back" />
           </Link>
           <div className="cartProductsHeader space">
-            <img
-              className="cartImage"
-              src={require("./icons/cart.jpg")}
-              alt="cart"
-            />
-            <p><strong>Carrinho de Compras</strong></p>
+            <img className="cartImage" src={CartImage} alt="cart" />
+            <p>
+              <strong>Carrinho de Compras</strong>
+            </p>
           </div>
         </header>
         <div className="emptyBoxContainer">{this.validatingCart()}</div>
