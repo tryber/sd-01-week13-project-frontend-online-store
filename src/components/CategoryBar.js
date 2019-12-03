@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as workAPI from '../services/workAPI';
 
 export default class CategoryBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      data: [],
     };
   }
 
   async componentDidMount() {
-    const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories')
-    const myJson = await response.json();
-    console.log(myJson);
+    workAPI.getAPI('https://api.mercadolibre.com/sites/MLB/categories')
+    .then((data) => this.setState({data}))
   }
 
   render() {
