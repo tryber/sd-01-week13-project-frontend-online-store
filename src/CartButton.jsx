@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './cartShopping.css';
+import CartImage from './icons/cart.jpg';
 
 class CartButton extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class CartButton extends React.Component {
         <Link to="/carrinho-de-compras">
           <img
             className="cartImage"
-            src={require("./icons/cart.jpg")}
+            src={CartImage}
             alt="shoppinng cart"
           />
         </Link>
