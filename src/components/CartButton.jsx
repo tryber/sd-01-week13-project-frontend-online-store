@@ -10,7 +10,7 @@ class CartButton extends React.Component {
         <Link to="/carrinho-de-compras">
           <img
             className="cartImage"
-            src={require("./icons/cart.jpg")}
+            src={require("../icons/cart.jpg")}
             alt="shopping cart"
           />
         </Link>
