@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as workAPI from '../services/workAPI';
 import './CategoryBar.css';
-import { EventEmitter } from 'events';
 
 
 export default class CategoryBar extends Component {
@@ -9,27 +8,23 @@ export default class CategoryBar extends Component {
     super(props);
     this.state = {
       data: [],
-      checked: [],
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     workAPI.getAPI('https://api.mercadolibre.com/sites/MLB/categories')
-      .then((data) => {
-        this.setState({ data })
-        data.map((data) => this.setState((state) => ({ checked: state.checked.concat({ [data.id]: false }) })))
-      })
+      .then((data) => {this.setState({ data })})
   }
 
   handleChange(event) {
-    console.log(event.target.value)
+    this.props.onChange(event);
   }
 
   renderCategory(id, value, handleChange) {
     return (
       <label key={id} className='category-options'>
-        <input name='option' type='radio' key={id} id={id} value={value} onChange={handleChange} />
+        <input name='option' type='radio' key={id} value={id} onChange={handleChange} />
         {value}
       </label>
     );
