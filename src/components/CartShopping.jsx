@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import './cartShopping.css';
 import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
-// import EmptyBox from '../icons/emptyBox.png';
+import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends React.Component {
   validatingCart() {
-    // if (this.props.products === 0 || this.props.products === undefined) {
-    //   return (
-    //     <div>
-    //       <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
-    //       <p>Seu carrinho está vazio</p>
-    //     </div>
-    //   );
-    // } else {
+    if (this.props.products === 0 || this.props.products === undefined) {
+      return (
+        <div>
+          <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
+          <p>Seu carrinho está vazio</p>
+        </div>
+      );
+    } else {
     return <p>teste</p>;
-    // }
+    }
   }
 
   render() {
@@ -33,7 +33,7 @@ class CartShopping extends React.Component {
             </p>
           </div>
         </header>
-        <div className="emptyBoxContainer">{this.validatingCart}</div>
+        <div className="emptyBoxContainer">{this.validatingCart()}</div>
       </div>
     );
   }

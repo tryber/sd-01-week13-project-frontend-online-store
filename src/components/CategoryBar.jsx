@@ -9,6 +9,7 @@ class CategoryBar extends Component {
       data: [],
     };
     this.handleChange = this.handleChange.bind(this);
+    this.renderCategory = this.renderCategory.bind(this);
   }
 
   componentDidMount() {

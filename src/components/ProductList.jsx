@@ -10,7 +10,7 @@ class ProductsList extends React.Component {
       shouldUpdate: false,
     };
   }
-  
+
   requestAPI(category, searchBarText) {
     if (searchBarText !== '' && category !== '') {
       this.fetchURL(
