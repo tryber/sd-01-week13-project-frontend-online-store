@@ -3,7 +3,7 @@ import * as workAPI from '../services/workAPI';
 import './CategoryBar.css';
 import PropTypes from 'prop-types';
 
-export default class CategoryBar extends Component {
+class CategoryBar extends Component {
   constructor(props) {
     super(props);
     this.state = {

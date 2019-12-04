@@ -9,19 +9,19 @@ class OnlineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
-      searchBarText: "",
+      category: '',
+      searchBarText: '',
       searched: false,
-      cartList: ""
+      cartList: '',
     };
   }
 
   onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
-      searched: true
+      searched: true,
     });
-  };
+  }
 
   onCategoryBarChange(event) {
     this.setState({ category: event.target.value });
@@ -31,7 +31,7 @@ class OnlineStore extends Component {
     const { cartList } = this.state;
     return (
       <div>
-        <CategoryBar onChange={e => this.onCategoryBarChange(e)} />
+        <CategoryBar onChange={(e) => this.onCategoryBarChange(e)} />
         <CartButton cartState={cartList} />
         <SearchBar onChange={this.onSearchBarChange} />
         <ProductsList

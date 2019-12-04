@@ -1,7 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  handleKeyPress = event => {
+  handleKeyPress = (event) => {
     if (event.key === "Enter") {
       this.props.onChange(event);
     }

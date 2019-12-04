@@ -28,8 +28,8 @@ class Product extends React.Component {
 }
 
 Product.propTypes = {
-  results: PropTypes.object.isRequired
-}
+  results: PropTypes.shape()
+};
 
 
 export default Product;

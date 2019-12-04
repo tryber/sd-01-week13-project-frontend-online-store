@@ -1,7 +1,7 @@
-export async function getAPI(endpoint) {
+async function getAPI(endpoint) {
   const response = await fetch(endpoint);
   const myJson = await response.json();
-  return myJson
-} 
+  return myJson;
+}
 
-
+export default workAPI;
