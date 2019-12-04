@@ -6,35 +6,42 @@ import ProductsList from './ProductList';
 import './cartShopping.css';
 
 class OnlineStore extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      category: "",
-      searchBarText: "",
+      category: '',
+      searchBarText: '',
       searched: false,
       cartList: '',
-    }
+    };
+    this.onSearchBarChange = this.onSearchBarChange.bind(this);
   }
 
-  onSearchBarChange = (event) => {
+  onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
       searched: true,
-    })
+    });
   }
 
-  onCategoryBarChange (event) {
-    this.setState({category: event.target.value})
+  onCategoryBarChange(event) {
+    this.setState({ category: event.target.value });
   }
 
   render() {
-    const { cartList } = this.state;
+    const {
+      cartList, category, searchBarText, searched,
+    } = this.state;
     return (
-      <div className="container">
-        <CategoryBar onChange={(e) => this.onCategoryBarChange(e)}/>
+      <div>
+        <CategoryBar onChange={(e) => this.onCategoryBarChange(e)} />
         <CartButton cartState={cartList} />
-        <SearchBar onChange={this.onSearchBarChange}/>
-        <ProductsList category={this.state.category} searchBarText={this.state.searchBarText} searched={this.state.searched}/>
+        <SearchBar onChange={this.onSearchBarChange} />
+        <ProductsList
+          category={category}
+          searchBarText={searchBarText}
+          searched={searched}
+        />
       </div>
     );
   }

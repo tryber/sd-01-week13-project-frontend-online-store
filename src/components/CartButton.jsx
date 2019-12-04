@@ -1,23 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './cartShopping.css';
-import PropTypes from 'prop-types';
+import CartImage from '../icons/cart.jpg';
 
 class CartButton extends React.Component {
   render() {
-    const { cartState } = this.props;
     return (
       <div>
-        <Link to={{
-          pathname: '/carrinho-de-compras',
-          state: { products: cartState },
-        }}
-        >
-          <img
-            className="cartImage"
-            src={require('../icons/cart.jpg')}
-            alt="shopping cart"
-          />
+        <Link to="/carrinho-de-compras">
+          <img className="cartImage" src={CartImage} alt="shoppinng cart" />
         </Link>
       </div>
     );
@@ -25,11 +16,3 @@ class CartButton extends React.Component {
 }
 
 export default CartButton;
-
-CartButton.defaultProps = {
-  cartState: [],
-};
-
-CartButton.propTypes = {
-  cartState: PropTypes.arrayOf(PropTypes.string),
-};
