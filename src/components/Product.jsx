@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Back from '../icons/back.svg';
 
 class Product extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class Product extends React.Component {
           <Link to="/">
             <img
               className="backPageImage space"
-              src={require("../icons/back.svg")}
+              src={Back}
               alt="back"
             />
           </Link>
