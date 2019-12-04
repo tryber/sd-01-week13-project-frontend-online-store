@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './cartShopping.css';
 import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
@@ -15,7 +16,7 @@ class CartShopping extends React.Component {
         </div>
       );
     }
-    return <p>Teste</p>
+    return <p>Teste</p>;
   }
 
   render() {
@@ -39,3 +40,11 @@ class CartShopping extends React.Component {
 }
 
 export default CartShopping;
+
+CartShopping.propTypes = {
+  results: PropTypes.shape({
+    price: PropTypes.number,
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+  }).isRequired,
+};
