@@ -5,20 +5,25 @@ class Product extends Component {
   render() {
     const { results, searched, onClick } = this.props;
     if (results.length > 0) {
-      return results.map((result) => (
-        <div className="card" key={result.id}>
-          <div className="card-title">
-            <span>{result.title}</span>
+      return results.map((result) => {
+        const {
+          id, title, price, thumbnail,
+        } = result;
+        return (
+          <div className="card" key={id}>
+            <div className="card-title">
+              <span>{title}</span>
+            </div>
+            <div className="card-thumbnail">
+              <img src={thumbnail} alt={title} />
+            </div>
+            <div className="card-product-price">
+              <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
+            </div>
+            <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
           </div>
-          <div className="card-thumbnail">
-            <img src={result.thumbnail} alt={result.title} />
-          </div>
-          <div className="card-product-price">
-            <p>{`R$${parseFloat(result.price).toFixed(2)}`}</p>
-          </div>
-          <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
-        </div>
-      ));
+        );
+      });
     }
     if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
