@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import * as workAPI from '../services/workAPI';
-import './CategoryBar.css';
 import PropTypes from 'prop-types';
+import './CategoryBar.css';
 
 class CategoryBar extends Component {
   constructor(props) {
@@ -13,12 +12,11 @@ class CategoryBar extends Component {
   }
 
   componentDidMount() {
-    
-      fectch('https://api.mercadolibre.com/sites/MLB/categories')
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ data });
-      });
+    fetch('https://api.mercadolibre.com/sites/MLB/categories')
+    .then((response) => response.json())
+    .then((data) => {
+      this.setState({ data });
+    });
   }
 
   handleChange(event) {
@@ -33,7 +31,7 @@ class CategoryBar extends Component {
           type="radio"
           key={id}
           value={id}
-          onChange={this.handleChange}
+          onChange={handleChange}
         />
         {value}
       </label>
@@ -46,7 +44,7 @@ class CategoryBar extends Component {
         <h3>Categorias:</h3>
         <div className="category-options-box">
           {this.state.data.map((data) =>
-            this.renderCategory(data.id, data.name, this.handleChange,)
+            this.renderCategory(data.id, data.name, this.handleChange)
           )}
         </div>
       </div>
@@ -55,7 +53,7 @@ class CategoryBar extends Component {
 }
 
 CategoryBar.propTypes = {
-  onChange: PropTypes.func.isRequired
-}
+  onChange: PropTypes.func.isRequired,
+};
 
 export default CategoryBar;

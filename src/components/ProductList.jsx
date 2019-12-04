@@ -22,7 +22,7 @@ class ProductsList extends React.Component {
       );
   };
 
-  requestAPI = (category, searchBarText) => {
+  requestAPI(category, searchBarText) {
     if (searchBarText !== "" && category !== "") {
       this.fetchURL(
         `https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`
