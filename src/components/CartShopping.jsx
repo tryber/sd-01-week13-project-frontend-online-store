@@ -7,22 +7,19 @@ import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends React.Component {
-  constructor(props) {
-    super(props);
-    this.validatingCart = this.validatingCart.bind(this);
-  }
+//   constructor(props) {
+//     super(props);
+//     this.validatingCart = this.validatingCart.bind(this);
+//   }
 
-  validatingCart() {
-    // if (this.props.products === 0 || this.props.products === undefined) {
-    return (
-      <div>
-        <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
-        <p>Seu carrinho está vazio</p>
-      </div>
-    );
-    // }
-    // return <p>Teste</p>;
-  }
+//   validatingCart() {
+//     // if (this.props.products === 0 || this.props.products === undefined) {
+//     return (
+   
+//     );
+//     // }
+//     // return <p>Teste</p>;
+//   }
 
   render() {
     return (
@@ -38,7 +35,11 @@ class CartShopping extends React.Component {
             </p>
           </div>
         </header>
-        <div className="emptyBoxContainer">{this.validatingCart()}</div>
+        {/* <div className="emptyBoxContainer">{this.validatingCart()}</div> */}
+        <div>
+          <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
+          <p>Seu carrinho está vazio</p>
+        </div>
       </div>
     );
   }
