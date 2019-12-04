@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ProductList.css';
 import Product from './Product';
 
@@ -61,3 +62,9 @@ class ProductsList extends React.Component {
 }
 
 export default ProductsList;
+
+ProductsList.propTypes = {
+  category: PropTypes.string.isRequired,
+  searchBarText: PropTypes.string.isRequired,
+  searched: PropTypes.string.isRequired,
+};

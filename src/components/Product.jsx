@@ -34,5 +34,5 @@ Product.propTypes = {
     title: PropTypes.string,
     thumbnail: PropTypes.string,
   }).isRequired,
-  searched: PropTypes.string,
+  searched: PropTypes.string.isRequired,
 };
