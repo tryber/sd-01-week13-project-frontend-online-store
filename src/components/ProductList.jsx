@@ -9,7 +9,11 @@ class ProductsList extends React.Component {
     this.state = {
       results: '',
       shouldUpdate: false,
+      addToCart: [],
     };
+    this.fetchURL = this.fetchURL.bind(this);
+    this.requestAPI = this.requestAPI.bind(this);
+    this.updateCartState = this.updateCartState.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -44,13 +48,17 @@ class ProductsList extends React.Component {
     }
   }
 
+  updateCartState(result) {
+    this.setState((state) => ({ addToCart: [...state.addToCart, result] }));
+  }
+
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched } = this.props;
     return (
       <div className="card-container">
         {shouldUpdate ? (
-          <Product results={results} searched={searched} />
+          <Product results={results} searched={searched} onClick={this.updateCartState} />
         ) : (
           'Você ainda não realizou uma busca'
         )}
@@ -64,5 +72,5 @@ export default ProductsList;
 ProductsList.propTypes = {
   category: PropTypes.string.isRequired,
   searchBarText: PropTypes.string.isRequired,
-  searched: PropTypes.string.isRequired,
+  searched: PropTypes.bool.isRequired,
 };
