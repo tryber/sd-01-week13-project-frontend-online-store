@@ -22,14 +22,17 @@ class Product extends React.Component {
     if (results.length === 0 && this.props.searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     }
-
     return <p>Você ainda não realizou uma busca</p>;
   }
 }
 
-Product.propTypes = {
-  results: PropTypes.object.isRequired,
-};
-
-
 export default Product;
+
+Product.propTypes = {
+  results: PropTypes.shape({
+    price: PropTypes.number,
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+  }).isRequired,
+  searched: PropTypes.string,
+};
