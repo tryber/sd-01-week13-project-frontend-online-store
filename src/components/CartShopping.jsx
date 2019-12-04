@@ -14,8 +14,6 @@ class CartShopping extends React.Component {
           <p>Seu carrinho está vazio</p>
         </div>
       );
-    } else {
-    return <p>teste</p>;
     }
   }
 

@@ -11,6 +11,24 @@ class ProductsList extends React.Component {
     };
   }
 
+  fetchURL(url) {
+    fetch(url)
+      .then((data) => data.json())
+      .then((newData) =>
+        this.setState({
+          results: newData.results,
+          shouldUpdate: true,
+        }),
+      );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const { category, searchBarText } = this.props;
+      this.requestAPI(category, searchBarText);
+    }
+  }
+
   requestAPI(category, searchBarText) {
     if (searchBarText !== '' && category !== '') {
       this.fetchURL(
@@ -26,25 +44,7 @@ class ProductsList extends React.Component {
       );
     }
   }
-
-  componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
-      const { category, searchBarText } = this.props;
-      this.requestAPI(category, searchBarText);
-    }
-  }
-
-  fetchURL(url) {
-    fetch(url)
-      .then((data) => data.json())
-      .then((newData) =>
-        this.setState({
-          results: newData.results,
-          shouldUpdate: true,
-        }),
-      );
-  }
-
+  
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched } = this.props;
