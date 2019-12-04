@@ -1,0 +1,32 @@
+.backPageImage {
+  width: 5vh;
+}
+
+.cartImage {
+  height: 4vh;
+  width: 4vh;
+}
+
+.cartProductsHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 2.5vh;
+  justify-content: space-between;
+  text-decoration: solid;
+  width: 30vh;
+}
+
+.emptyBoxContainer {
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.emptyBoxImage {
+  width: 40vh;
+}
+
+.space {
+  margin-left: 3vh;
+  margin-top: 1.5vh;
+}

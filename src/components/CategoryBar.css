@@ -1,10 +1,10 @@
 .category-box {
-    border: 0.5px solid black;
+  border: 0.5px solid black;
 }
 
 .category-options-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
 }
