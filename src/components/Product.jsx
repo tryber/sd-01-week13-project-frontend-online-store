@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.validatingShippingFree = this.validatingShippingFree.bind(this);
+  }
 
   validatingShippingFree(shipping) {
-    if(shipping.free_shipping) {
-      return "Frete Grátis!"
+    let freeShipping = '';
+    if (shipping.free_shipping) {
+      freeShipping = 'Frete Grátis!';
     }
+    return freeShipping;
   }
   render() {
     const { results } = this.props;
@@ -38,6 +44,6 @@ class Product extends React.Component {
 export default Product;
 
 Product.propTypes = {
-  results: PropTypes.array.isRequired,
+  results: PropTypes.arrayOf.isRequired,
   searched: PropTypes.bool.isRequired,
 };
