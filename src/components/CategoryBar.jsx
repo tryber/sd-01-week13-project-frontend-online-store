@@ -24,7 +24,7 @@ class CategoryBar extends Component {
     this.props.onChange(event);
   }
 
-  renderCategory(id, value, handleChange) {
+  renderCategory(id, value) {
     return (
       <label htmlFor={id} key={id} className="category-options">
         <input
@@ -32,7 +32,7 @@ class CategoryBar extends Component {
           type="radio"
           key={id}
           value={id}
-          onChange={handleChange}
+          onChange={this.handleChange}
         />
         {value}
       </label>
@@ -45,7 +45,7 @@ class CategoryBar extends Component {
         <h3>Categorias:</h3>
         <div className="category-options-box">
           {this.state.data.map((data) =>
-            this.renderCategory(data.id, data.name, this.handleChange),
+            this.renderCategory(data.id, data.name),
           )}
         </div>
       </div>

@@ -8,9 +8,10 @@ import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends React.Component {
   constructor(props) {
-      super(props);
-      this.validatingCart = this.validatingCart.bind(this);
+    super(props);
+    this.validatingCart = this.validatingCart.bind(this);
   }
+  
   validatingCart() {
     // if (this.props.products === 0 || this.props.products === undefined) {
     return (
