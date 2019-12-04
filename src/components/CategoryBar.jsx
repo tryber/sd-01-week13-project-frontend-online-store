@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import * as workAPI from '../services/workAPI';
 import './CategoryBar.css';
+import PropTypes from 'prop-types';
 
 export default class CategoryBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     workAPI
-      .getAPI("https://api.mercadolibre.com/sites/MLB/categories")
-      .then(data => {
+      .getAPI('https://api.mercadolibre.com/sites/MLB/categories')
+      .then((data) => {
         this.setState({ data });
       });
   }
@@ -25,13 +26,13 @@ export default class CategoryBar extends Component {
 
   renderCategory(id, value, handleChange) {
     return (
-      <label key={id} className="category-options">
+      <label htmlFor={id} key={id} className="category-options">
         <input
           name="option"
           type="radio"
           key={id}
           value={id}
-          onChange={handleChange}
+          onChange={this.handleChange}
         />
         {value}
       </label>
@@ -43,11 +44,17 @@ export default class CategoryBar extends Component {
       <div className="category-box">
         <h3>Categorias:</h3>
         <div className="category-options-box">
-          {this.state.data.map(data =>
-            this.renderCategory(data.id, data.name, this.handleChange)
+          {this.state.data.map((data) =>
+            this.renderCategory(data.id, data.name, this.handleChange,)
           )}
         </div>
       </div>
     );
   }
 }
+
+CategoryBar.propTypes = {
+  onChange: PropTypes.func.isRequired
+}
+
+export default CategoryBar;

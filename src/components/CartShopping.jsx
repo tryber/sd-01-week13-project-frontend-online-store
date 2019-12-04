@@ -7,16 +7,16 @@ import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends React.Component {
   validatingCart() {
-    if (this.props.products === 0 || this.props.products === undefined) {
-      return (
-        <div>
-          <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
-          <p>Seu carrinho está vazio</p>
-        </div>
-      );
-    } else {
+    // if (this.props.products === 0 || this.props.products === undefined) {
+    //   return (
+    //     <div>
+    //       <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
+    //       <p>Seu carrinho está vazio</p>
+    //     </div>
+    //   );
+    // } else {
       return <p>teste</p>;
-    }
+    // }
   }
 
   render() {

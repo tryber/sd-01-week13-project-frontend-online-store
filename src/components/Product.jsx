@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Product extends React.Component {
   render() {
@@ -25,5 +26,10 @@ class Product extends React.Component {
     return <p>Você ainda não realizou uma busca</p>;
   }
 }
+
+Product.propTypes = {
+  results: PropTypes.object.isRequired
+}
+
 
 export default Product;

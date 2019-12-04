@@ -16,7 +16,7 @@ class OnlineStore extends Component {
     };
   }
 
-  onSearchBarChange = event => {
+  onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
       searched: true
