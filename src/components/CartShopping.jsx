@@ -8,15 +8,15 @@ import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends React.Component {
   validatingCart() {
-    if (this.props.products === 0 || this.props.products === undefined) {
+    // if (this.props.products === 0 || this.props.products === undefined) {
       return (
         <div>
           <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
           <p>Seu carrinho está vazio</p>
         </div>
       );
-    }
-    return <p>Teste</p>;
+    // }
+    // return <p>Teste</p>;
   }
 
   render() {
@@ -41,10 +41,10 @@ class CartShopping extends React.Component {
 
 export default CartShopping;
 
-CartShopping.propTypes = {
-  results: PropTypes.shape({
-    price: PropTypes.number,
-    title: PropTypes.string,
-    thumbnail: PropTypes.string,
-  }).isRequired,
-};
+// CartShopping.propTypes = {
+//   results: PropTypes.shape({
+//     price: PropTypes.number,
+//     title: PropTypes.string,
+//     thumbnail: PropTypes.string,
+//   }).isRequired,
+// };
