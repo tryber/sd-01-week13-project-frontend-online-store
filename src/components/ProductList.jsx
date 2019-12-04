@@ -22,12 +22,10 @@ class ProductsList extends React.Component {
   fetchURL(url) {
     fetch(url)
       .then((data) => data.json())
-      .then((newData) =>
-        this.setState({
-          results: newData.results,
-          shouldUpdate: true,
-        }),
-      );
+      .then((newData) => this.setState({
+        results: newData.results,
+        shouldUpdate: true,
+      }));
   }
 
   requestAPI(category, searchBarText) {

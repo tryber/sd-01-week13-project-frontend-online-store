@@ -29,16 +29,18 @@ class OnlineStore extends Component {
   }
 
   render() {
-    const { cartList } = this.state;
+    const {
+      cartList, category, searchBarText, searched,
+    } = this.state;
     return (
       <div>
         <CategoryBar onChange={(e) => this.onCategoryBarChange(e)} />
         <CartButton cartState={cartList} />
         <SearchBar onChange={this.onSearchBarChange} />
         <ProductsList
-          category={this.state.category}
-          searchBarText={this.state.searchBarText}
-          searched={this.state.searched}
+          category={category}
+          searchBarText={searchBarText}
+          searched={searched}
         />
       </div>
     );
