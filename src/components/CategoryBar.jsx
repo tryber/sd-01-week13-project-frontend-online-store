@@ -13,8 +13,9 @@ class CategoryBar extends Component {
   }
 
   componentDidMount() {
-    workAPI
-      .getAPI('https://api.mercadolibre.com/sites/MLB/categories')
+    
+      fectch('https://api.mercadolibre.com/sites/MLB/categories')
+      .then((response) => response.json())
       .then((data) => {
         this.setState({ data });
       });

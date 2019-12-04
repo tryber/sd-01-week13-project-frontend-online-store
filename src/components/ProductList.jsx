@@ -11,7 +11,7 @@ class ProductsList extends React.Component {
     };
   }
 
-  fetchURL = (url) => {
+  fetchURL(url) {
     fetch(url)
       .then(data => data.json())
       .then(newData =>
