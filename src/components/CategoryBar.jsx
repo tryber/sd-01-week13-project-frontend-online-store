@@ -44,7 +44,7 @@ class CategoryBar extends Component {
         <h3>Categorias:</h3>
         <div className="category-options-box">
           {this.state.data.map((data) =>
-            this.renderCategory(data.id, data.name, this.handleChange)
+            this.renderCategory(data.id, data.name, this.handleChange),
           )}
         </div>
       </div>

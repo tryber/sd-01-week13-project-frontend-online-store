@@ -28,7 +28,7 @@ class Product extends React.Component {
 }
 
 Product.propTypes = {
-  results: PropTypes.shape()
+  results: PropTypes.string,
 };
 
 
