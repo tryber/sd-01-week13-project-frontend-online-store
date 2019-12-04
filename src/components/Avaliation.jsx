@@ -34,10 +34,12 @@ class Avaliation extends Component {
           <button type="button">Avaliar</button>
         </div>
         <Box display="flex" flexDirection="column">
-          <Rating name="size-medium" 
-          onClick={this.avaliation} 
-          value={this.state.value} 
-          size="large" />
+          <Rating
+            name="size-medium"
+            onClick={this.avaliation}
+            value={this.state.value}
+            size="large" 
+          />
         </Box>
       </div>
     );
