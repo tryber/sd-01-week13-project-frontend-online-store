@@ -38,7 +38,7 @@ class Avaliation extends Component {
             name="size-medium"
             onClick={this.avaliation}
             value={this.state.value}
-            size="large" 
+            size="large"
           />
         </Box>
       </div>
