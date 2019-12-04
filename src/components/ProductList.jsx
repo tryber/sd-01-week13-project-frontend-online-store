@@ -1,19 +1,26 @@
 import React from 'react';
+import './ProductList.css';
+import Product from './Product';
+
+
 class ProductsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: [],
+      results: '',
+      shouldUpdate: false,
     }
   }
+
   fetchURL = (url) => {
     fetch(url)
       .then(data => data.json())
       .then(newData => this.setState({
-        results: newData.results
+        results: newData.results,
+        shouldUpdate: true,
       }))
-    // .then(newData => newData.results.map(product => this.showProducts(product)));
   }
+
   requestAPI = (category, searchBarText) => {
     if (searchBarText !== '' && category !== "") {
       this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`)
@@ -21,25 +28,22 @@ class ProductsList extends React.Component {
       this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`)
     } else if (searchBarText === '' && category !== '') {
       this.fetchURL(`https://api.mercadolibre.com/sites/MLB/search?category=${category}`)
-    } else {
-      return (
-        <div>Componente do Coruja</div>
-      )
-    }
-  }
-  
-  componentDidUpdate(prevProps) {
-    if(this.props !== prevProps) {
-    const { category, searchBarText } = this.props
-    this.requestAPI(category, searchBarText)
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const { category, searchBarText } = this.props
+      this.requestAPI(category, searchBarText)
+    }
+  }
 
   render() {
+    const { shouldUpdate, results } = this.state;
+    const { searched } = this.props;
     return (
-      <div>
-        {this.state.results.map((obj) => <p>{obj.title}</p>)}
+      <div className="card-container">
+        { shouldUpdate ? <Product results={results} searched={searched}/> : 'Você ainda não realizou uma busca'}
       </div>
     )
   }
