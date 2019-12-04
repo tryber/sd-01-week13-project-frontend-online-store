@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
-  
+
   static validatingShippingFree(shipping) {
     let freeShipping = '';
     if (shipping.free_shipping) {
