@@ -11,6 +11,13 @@ class ProductsList extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const { category, searchBarText } = this.props;
+      this.requestAPI(category, searchBarText);
+    }
+  }
+
   fetchURL(url) {
     fetch(url)
       .then((data) => data.json())
@@ -20,13 +27,6 @@ class ProductsList extends React.Component {
           shouldUpdate: true,
         }),
       );
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
-      const { category, searchBarText } = this.props;
-      this.requestAPI(category, searchBarText);
-    }
   }
 
   requestAPI(category, searchBarText) {
@@ -44,7 +44,7 @@ class ProductsList extends React.Component {
       );
     }
   }
-  
+
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched } = this.props;
@@ -59,4 +59,5 @@ class ProductsList extends React.Component {
     );
   }
 }
+
 export default ProductsList;

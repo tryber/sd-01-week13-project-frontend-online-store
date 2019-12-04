@@ -15,6 +15,7 @@ class CartShopping extends React.Component {
         </div>
       );
     }
+    return <p>Teste</p>
   }
 
   render() {

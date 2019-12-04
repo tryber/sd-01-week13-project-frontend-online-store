@@ -35,10 +35,10 @@ class OnlineStore extends Component {
         <CategoryBar onChange={(e) => this.onCategoryBarChange(e)} />
         <CartButton cartState={cartList} />
         <SearchBar onChange={this.onSearchBarChange} />
-        <ProductsList 
+        <ProductsList
           category={this.state.category}
           searchBarText={this.state.searchBarText}
-          searched={this.state.searched} 
+          searched={this.state.searched}
         />
       </div>
     );
