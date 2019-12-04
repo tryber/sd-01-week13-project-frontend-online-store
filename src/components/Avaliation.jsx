@@ -30,7 +30,7 @@ class Avaliation extends Component {
       <div>
         <div className="avaliation">
           <input type="text" placeholder="Email" className={this.state.valid ? 'valid' : 'invalid'} required="required" onChange={this.validateEmail} />
-          <textarea placeholder="Mensagem(opcional)"></textarea>
+          <textarea placeholder="Mensagem(opcional)" />
           <button type="button">Avaliar</button>
         </div>
         <Box display="flex" flexDirection="column">
