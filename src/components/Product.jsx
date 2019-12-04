@@ -26,7 +26,7 @@ class Product extends React.Component {
             <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
           </div>
           <div>
-            <p>{this.validatingShippingFree(shipping)}</p>
+            <p>{Product.validatingShippingFree(shipping)}</p>
           </div>
         </div>
       ));
