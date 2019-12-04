@@ -15,7 +15,6 @@ class CartShopping extends React.Component {
 //   validatingCart() {
 //     // if (this.props.products === 0 || this.props.products === undefined) {
 //     return (
-   
 //     );
 //     // }
 //     // return <p>Teste</p>;
