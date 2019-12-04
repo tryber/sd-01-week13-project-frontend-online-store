@@ -7,13 +7,14 @@ class Product extends React.Component {
     this.validatingShippingFree = this.validatingShippingFree.bind(this);
   }
 
-  validatingShippingFree(shipping) {
+  static validatingShippingFree(shipping) {
     let freeShipping = '';
     if (shipping.free_shipping) {
       freeShipping = 'Frete Grátis!';
     }
     return freeShipping;
   }
+
   render() {
     const { results } = this.props;
     if (results.length > 0) {
