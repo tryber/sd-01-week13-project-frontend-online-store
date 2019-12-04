@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-    this.validatingShippingFree = this.validatingShippingFree.bind(this);
-  }
-
+  
   static validatingShippingFree(shipping) {
     let freeShipping = '';
     if (shipping.free_shipping) {
