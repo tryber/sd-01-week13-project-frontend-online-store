@@ -64,5 +64,5 @@ export default ProductsList;
 ProductsList.propTypes = {
   category: PropTypes.string.isRequired,
   searchBarText: PropTypes.string.isRequired,
-  searched: PropTypes.string.isRequired,
+  searched: PropTypes.bool.isRequired,
 };

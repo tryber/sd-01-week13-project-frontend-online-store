@@ -2,10 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
+
+  static validatingShippingFree(shipping) {
+    let freeShipping = '';
+    if (shipping.free_shipping) {
+      freeShipping = 'Frete Grátis!';
+    }
+    return freeShipping;
+  }
+
   render() {
     const { results } = this.props;
     if (results.length > 0) {
-      return results.map(({ id, title, thumbnail, price }) => (
+      return results.map(({ id, title, thumbnail, price, shipping }) => (
         <div className="card" key={id}>
           <div className="card-title">
             <span>{title}</span>
@@ -15,6 +24,9 @@ class Product extends React.Component {
           </div>
           <div className="card-product-price">
             <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
+          </div>
+          <div>
+            <p>{Product.validatingShippingFree(shipping)}</p>
           </div>
         </div>
       ));
@@ -29,10 +41,6 @@ class Product extends React.Component {
 export default Product;
 
 Product.propTypes = {
-  results: PropTypes.shape({
-    price: PropTypes.number,
-    title: PropTypes.string,
-    thumbnail: PropTypes.string,
-  }).isRequired,
-  searched: PropTypes.string.isRequired,
+  results: PropTypes.arrayOf.isRequired,
+  searched: PropTypes.bool.isRequired,
 };
