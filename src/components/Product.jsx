@@ -39,9 +39,8 @@ class Product extends React.Component {
       });
     }
     if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
-    }
-    return <p>Você ainda não realizou uma busca</p>;
+      return <p>Não foram encontradas nenhuma ocorrência para  essa busca.</p>;
+    } return <p>Você ainda não realizou uma busca</p>;
   }
 }
 
