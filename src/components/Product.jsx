@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Product extends React.Component {
-
   static validatingShippingFree(shipping) {
     let freeShipping = '';
     if (shipping.free_shipping) {
@@ -12,26 +11,34 @@ class Product extends React.Component {
   }
 
   render() {
-    const { results } = this.props;
+    const { results, searched, onClick } = this.props;
     if (results.length > 0) {
-      return results.map(({ id, title, thumbnail, price, shipping }) => (
-        <div className="card" key={id}>
-          <div className="card-title">
-            <span>{title}</span>
+      return results.map((result) => {
+        const {
+          id, title, price, thumbnail, shipping,
+        } = result;
+        return (
+          <div className="card" key={id}>
+            <div className="card-title">
+              <span>{title}</span>
+            </div>
+            <div className="card-thumbnail">
+              <img src={thumbnail} alt={title} />
+            </div>
+            <div className="card-product-price">
+              <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
+            </div>
+            <div>
+              <p>{Product.validatingShippingFree(shipping)}</p>
+            </div>
+            <div>
+              <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
+            </div>
           </div>
-          <div className="card-thumbnail">
-            <img src={thumbnail} alt={title} />
-          </div>
-          <div className="card-product-price">
-            <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
-          </div>
-          <div>
-            <p>{Product.validatingShippingFree(shipping)}</p>
-          </div>
-        </div>
-      ));
+        );
+      });
     }
-    if (results.length === 0 && this.props.searched) {
+    if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     }
     return <p>Você ainda não realizou uma busca</p>;
@@ -41,6 +48,12 @@ class Product extends React.Component {
 export default Product;
 
 Product.propTypes = {
-  results: PropTypes.arrayOf.isRequired,
+  results: PropTypes.arrayOf(PropTypes.shape({
+    price: PropTypes.number,
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    id: PropTypes.string,
+  })).isRequired,
   searched: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

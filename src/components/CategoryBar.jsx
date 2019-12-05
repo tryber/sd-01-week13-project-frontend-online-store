@@ -14,14 +14,15 @@ class CategoryBar extends Component {
 
   componentDidMount() {
     fetch('https://api.mercadolibre.com/sites/MLB/categories')
-    .then((response) => response.json())
-    .then((data) => {
-      this.setState({ data });
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ data });
+      });
   }
 
   handleChange(event) {
-    this.props.onChange(event);
+    const { onChange } = this.props;
+    onChange(event);
   }
 
   renderCategory(id, value) {
@@ -40,13 +41,12 @@ class CategoryBar extends Component {
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div className="category-box">
         <h3>Categorias:</h3>
         <div className="category-options-box">
-          {this.state.data.map((data) =>
-            this.renderCategory(data.id, data.name),
-          )}
+          {data.map((dat) => this.renderCategory(dat.id, dat.name))}
         </div>
       </div>
     );
