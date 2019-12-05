@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ShoppingButton from './ShoppingButton';
 
 class Product extends React.Component {
   static validatingShippingFree(shipping) {
@@ -28,7 +29,7 @@ class Product extends React.Component {
             <div className="card-product-price">
               <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
             </div>
-            <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
+            <ShoppingButton result={result} />
             <div>
               <p>{Product.validatingShippingFree(shipping)}</p>
             </div>

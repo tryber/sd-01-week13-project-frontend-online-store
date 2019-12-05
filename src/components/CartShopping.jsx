@@ -7,10 +7,13 @@ import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.validatingCart = this.validatingCart.bind(this);
-//   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    }
+    // this.validatingCart = this.validatingCart.bind(this);
+  }
 
   //   validatingCart() {
   //     // if (this.props.products === 0 || this.props.products === undefined) {
