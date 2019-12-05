@@ -10,6 +10,8 @@ class ProductsList extends React.Component {
       results: '',
       shouldUpdate: false,
     };
+    this.fetchURL = this.fetchURL.bind(this);
+    this.requestAPI = this.requestAPI.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -22,12 +24,10 @@ class ProductsList extends React.Component {
   fetchURL(url) {
     fetch(url)
       .then((data) => data.json())
-      .then((newData) =>
-        this.setState({
-          results: newData.results,
-          shouldUpdate: true,
-        }),
-      );
+      .then((newData) => this.setState({
+        results: newData.results,
+        shouldUpdate: true,
+      }));
   }
 
   requestAPI(category, searchBarText) {
@@ -48,11 +48,11 @@ class ProductsList extends React.Component {
 
   render() {
     const { shouldUpdate, results } = this.state;
-    const { searched } = this.props;
+    const { searched, updateCartState } = this.props;
     return (
       <div className="card-container">
         {shouldUpdate ? (
-          <Product results={results} searched={searched} />
+          <Product results={results} searched={searched} onClick={updateCartState} />
         ) : (
           'Você ainda não realizou uma busca'
         )}
@@ -67,4 +67,5 @@ ProductsList.propTypes = {
   category: PropTypes.string.isRequired,
   searchBarText: PropTypes.string.isRequired,
   searched: PropTypes.bool.isRequired,
+  updateCartState: PropTypes.func.isRequired,
 };

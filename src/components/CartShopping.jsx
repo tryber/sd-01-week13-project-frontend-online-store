@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import './cartShopping.css';
@@ -6,19 +6,19 @@ import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
 
-class CartShopping extends React.Component {
+class CartShopping extends Component {
 //   constructor(props) {
 //     super(props);
 //     this.validatingCart = this.validatingCart.bind(this);
 //   }
 
-//   validatingCart() {
-//     // if (this.props.products === 0 || this.props.products === undefined) {
-//     return (
-//     );
-//     // }
-//     // return <p>Teste</p>;
-//   }
+  //   validatingCart() {
+  //     // if (this.props.products === 0 || this.props.products === undefined) {
+  //     return (
+  //     );
+  //     // }
+  //     // return <p>Teste</p>;
+  //   }
 
   render() {
     return (
