@@ -12,12 +12,10 @@ class OnlineStore extends Component {
       category: '',
       searchBarText: '',
       searched: false,
-      cartList: [],
       quantity: 0,
     };
     this.onSearchBarChange = this.onSearchBarChange.bind(this);
     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
-    this.updateCartState = this.updateCartState.bind(this);
   }
 
   onSearchBarChange(event) {
@@ -31,22 +29,23 @@ class OnlineStore extends Component {
     this.setState({ category: event.target.value });
   }
 
-  updateCartState(item) {
-    this.setState((state) => ({ cartList: [...state.cartList, item] }),
-      () => {
-        const { cartList } = this.state;
-        this.setState({ quantity: cartList.length });
-      });
+  componentDidMount() {
+    const leng = Object.keys(localStorage).length
+    if (leng > 0) {
+      this.setState({
+        quantity: Object.keys(localStorage).length - 1,
+      })
+    }
   }
 
   render() {
     const {
-      cartList, category, searchBarText, searched, quantity,
+      category, searchBarText, searched, quantity 
     } = this.state;
     return (
       <div>
         <CategoryBar onChange={this.onCategoryBarChange} />
-        <CartButton cartState={cartList} quantity={quantity} />
+        <CartButton quantity={quantity}/>
         <SearchBar onChange={this.onSearchBarChange} />
         <ProductsList
           updateCartState={this.updateCartState}

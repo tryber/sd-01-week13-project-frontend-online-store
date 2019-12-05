@@ -48,11 +48,11 @@ class ProductsList extends React.Component {
 
   render() {
     const { shouldUpdate, results } = this.state;
-    const { searched, updateCartState } = this.props;
+    const { searched } = this.props;
     return (
       <div className="card-container">
         {shouldUpdate ? (
-          <Product results={results} searched={searched} onClick={updateCartState} />
+          <Product results={results} searched={searched} />
         ) : (
           'Você ainda não realizou uma busca'
         )}
@@ -67,5 +67,4 @@ ProductsList.propTypes = {
   category: PropTypes.string.isRequired,
   searchBarText: PropTypes.string.isRequired,
   searched: PropTypes.bool.isRequired,
-  updateCartState: PropTypes.func.isRequired,
 };

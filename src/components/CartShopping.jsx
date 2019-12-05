@@ -11,9 +11,23 @@ class CartShopping extends Component {
     super(props);
     this.state = {
       products: [],
+      quantity: 0,
     }
     // this.validatingCart = this.validatingCart.bind(this);
   }
+
+  
+  componentWillMount() {
+    const leng = Object.keys(localStorage).length
+    if (leng > 0) {
+      this.setState({
+        products: Object.keys(localStorage).filter((key) => key !== 'ind').map((product) => JSON.parse(localStorage.getItem(product))),
+        quantity: Object.keys(localStorage).length - 1,
+      })
+    }
+  }
+
+
 
   //   validatingCart() {
   //     // if (this.props.products === 0 || this.props.products === undefined) {

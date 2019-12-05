@@ -12,7 +12,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { results, searched, onClick } = this.props;
+    const { results, searched } = this.props;
     if (results.length > 0) {
       return results.map((result) => {
         const {
@@ -29,7 +29,7 @@ class Product extends React.Component {
             <div className="card-product-price">
               <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
             </div>
-            <ShoppingButton result={result} />
+            <ShoppingButton result={result}/>
             <div>
               <p>{Product.validatingShippingFree(shipping)}</p>
             </div>
@@ -53,5 +53,4 @@ Product.propTypes = {
     id: PropTypes.string,
   })).isRequired,
   searched: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
