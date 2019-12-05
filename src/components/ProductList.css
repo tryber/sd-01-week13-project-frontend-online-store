@@ -1,0 +1,31 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 800px;
+}
+
+.card {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 220px;
+}
+
+.card-title {
+  background: rgba(224, 224, 224, 0.781);
+  border-radius: 15px 15px 0 0;
+  font-size: 12px;
+  max-width: 220px;
+  min-height: 10px;
+  padding: 10px;
+}
+
+.card-thumbnail {
+  max-height: 150px;
+}

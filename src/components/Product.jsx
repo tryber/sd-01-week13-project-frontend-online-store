@@ -3,29 +3,33 @@ import { Link } from 'react-router-dom';
 import Back from '../icons/back.svg';
 
 class Product extends React.Component {
+  static showHeader() {
+    return (
+      <header>
+        <Link to="/">
+          <img className="backPageImage space" src={Back} alt="back" />
+        </Link>
+      </header>
+    );
+  }
   render() {
-    const product = localStorage.getItem(product);
+    const newResult = JSON.parse(localStorage.result);
+    const { title, price, thumbnail, attributes } = newResult;
     return (
       <div>
-        <header>
-          <Link to="/">
-            <img
-              className="backPageImage space"
-              src={Back}
-              alt="back"
-            />
-          </Link>
-        </header>
+        {Product.showHeader()}
         <div>
-          <p>{`Produto ${product.title} - R$${product.price}`}</p>
+          <p>{`Produto ${title} - R$${price}`}</p>
         </div>
         <div>
-          <div>{product.thumbnail}</div>
+          <img src={thumbnail} alt="product" />
           <div>
-            <p><strong>Especificações Técnicas</strong></p>
+            <p>
+              <strong>Especificações Técnicas</strong>
+            </p>
             <ul>
-              {product.attributes.map(specification => (
-                <li>
+              {attributes.map((specification) => (
+                <li key={specification.name}>
                   {specification.name} : {specification.value_name}
                 </li>
               ))}
