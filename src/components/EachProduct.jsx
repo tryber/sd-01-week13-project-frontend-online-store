@@ -47,7 +47,7 @@ class EachProduct extends React.Component {
         <div>
           <button
             type="button"
-            onClick={() => this.savingProductDetails(result, id)}
+            onClick={() => this.savingProductDetails(result)}
           >
             Ver Detalhes
           </button>
