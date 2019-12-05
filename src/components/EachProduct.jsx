@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 class EachProduct extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+    }
+    this.savingProductDetails = this.savingProductDetails.bind(this);
+  }
   static validatingShippingFree(shipping) {
     let freeShipping = '';
     if (shipping.free_shipping) {
@@ -11,10 +18,10 @@ class EachProduct extends React.Component {
     return freeShipping;
   }
 
-  static savingProductDetails(result, id) {
+  savingProductDetails(result, id) {
     const newResult = JSON.stringify(result);
     localStorage.setItem('result', newResult);
-    <Redirect to={`/products/${id}`} />
+    this.setState({ redirect: true });
   }
 
   render() {
@@ -24,6 +31,7 @@ class EachProduct extends React.Component {
         const {
           id, title, price, thumbnail, shipping,
         } = result;
+        if(this.state.redirect) return <Redirect to={`/products/${id}`} />
         return (
           <div className="card" key={id}>
             <div className="card-title">
@@ -40,7 +48,7 @@ class EachProduct extends React.Component {
               <p>{EachProduct.validatingShippingFree(shipping)}</p>
             </div>
             <div>
-              <button type="button" onClick={() => EachProduct.savingProductDetails(result, id)}>Ver Detalhes</button>
+              <button type="button" onClick={() => this.savingProductDetails(result, id)}>Ver Detalhes</button>
             </div>
           </div>
         );

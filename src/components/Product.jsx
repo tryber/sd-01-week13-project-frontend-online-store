@@ -4,7 +4,8 @@ import Back from '../icons/back.svg';
 
 class Product extends React.Component {
   render() {
-    const {attributes, title, price, thumbnail} = localStorage.result;
+    const newResult = JSON.parse(localStorage.result);
+    const { title, price, thumbnail, attributes} = newResult;
     return (
       <div>
         <header>
@@ -25,7 +26,7 @@ class Product extends React.Component {
             <p><strong>Especificações Técnicas</strong></p>
             <ul>
               {attributes.map(specification => (
-                <li>
+                <li key={specification.name}>
                   {specification.name} : {specification.value_name}
                 </li>
               ))}
