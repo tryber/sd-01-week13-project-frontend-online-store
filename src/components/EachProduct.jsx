@@ -3,24 +3,25 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 class EachProduct extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false
-    };
-    this.savingProductDetails = this.savingProductDetails.bind(this);
-  }
   static validatingShippingFree(shipping) {
-    let freeShipping = "";
+    let freeShipping = '';
     if (shipping.free_shipping) {
-      freeShipping = "Frete Grátis!";
+      freeShipping = 'Frete Grátis!';
     }
     return freeShipping;
   }
 
-  savingProductDetails(result, id) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+    };
+    this.savingProductDetails = this.savingProductDetails.bind(this);
+  }
+
+  savingProductDetails(result) {
     const newResult = JSON.stringify(result);
-    localStorage.setItem("result", newResult);
+    localStorage.setItem('result', newResult);
     this.setState({ redirect: true });
   }
 
@@ -58,7 +59,7 @@ class EachProduct extends React.Component {
   render() {
     const { results, searched } = this.props;
     if (results.length > 0) {
-      return results.map(result => {
+      return results.map((result) => {
         const { id } = result;
         if (this.state.redirect) return <Redirect to={`/products/${id}`} />;
         return this.showProduct(result);
@@ -79,9 +80,9 @@ EachProduct.propTypes = {
       price: PropTypes.number,
       title: PropTypes.string,
       thumbnail: PropTypes.string,
-      id: PropTypes.string
-    })
+      id: PropTypes.string,
+    }),
   ).isRequired,
   searched: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
