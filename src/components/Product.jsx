@@ -28,18 +28,16 @@ class Product extends React.Component {
             <div className="card-product-price">
               <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
             </div>
+            <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
             <div>
               <p>{Product.validatingShippingFree(shipping)}</p>
-            </div>
-            <div>
-              <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
             </div>
           </div>
         );
       });
     }
     if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para  essa busca.</p>;
+      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     } return <p>Você ainda não realizou uma busca</p>;
   }
 }
