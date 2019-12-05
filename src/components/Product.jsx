@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Back from '../icons/back.svg';
+import CreateAvaliation from './CreateAvaliation';
+import Avaliation from './Avaliation';
 
 class Product extends React.Component {
   static showHeader() {
@@ -14,7 +16,7 @@ class Product extends React.Component {
   }
   render() {
     const newResult = JSON.parse(localStorage.result);
-    const { title, price, thumbnail, attributes } = newResult;
+    const { title, price, thumbnail, attributes, id } = newResult;
     return (
       <div>
         {Product.showHeader()}
@@ -36,6 +38,8 @@ class Product extends React.Component {
             </ul>
           </div>
         </div>
+        <CreateAvaliation id={id} />
+        <Avaliation id={id} />
       </div>
     );
   }
