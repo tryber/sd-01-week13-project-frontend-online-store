@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Product extends Component {
+class Product extends React.Component {
+  static validatingShippingFree(shipping) {
+    let freeShipping = '';
+    if (shipping.free_shipping) {
+      freeShipping = 'Frete Grátis!';
+    }
+    return freeShipping;
+  }
+
   render() {
     const { results, searched, onClick } = this.props;
     if (results.length > 0) {
       return results.map((result) => {
         const {
-          id, title, price, thumbnail,
+          id, title, price, thumbnail, shipping,
         } = result;
         return (
           <div className="card" key={id}>
@@ -20,7 +28,12 @@ class Product extends Component {
             <div className="card-product-price">
               <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
             </div>
-            <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
+            <div>
+              <p>{Product.validatingShippingFree(shipping)}</p>
+            </div>
+            <div>
+              <button type="button" onClick={() => onClick(result)}>Adicionar ao carrinho</button>
+            </div>
           </div>
         );
       });
