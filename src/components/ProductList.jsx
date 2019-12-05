@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ProductList.css';
-import Product from './Product';
+import EachProduct from './EachProduct';
 
 class ProductsList extends React.Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class ProductsList extends React.Component {
     return (
       <div className="card-container">
         {shouldUpdate ? (
-          <Product results={results} searched={searched} onClick={updateCartState} />
+          <EachProduct results={results} searched={searched} onClick={updateCartState} />
         ) : (
           'Você ainda não realizou uma busca'
         )}
