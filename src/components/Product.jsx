@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import Back from '../icons/back.svg';
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-    this.showHeader = this.showHeader.bind(this);
-  }
-  showHeader() {
+  static showHeader() {
     return (
       <header>
         <Link to="/">
@@ -21,7 +17,7 @@ class Product extends React.Component {
     const { title, price, thumbnail, attributes } = newResult;
     return (
       <div>
-        {this.showHeader()}
+        {Product.showHeader()}
         <div>
           <p>{`Produto ${title} - R$${price}`}</p>
         </div>
