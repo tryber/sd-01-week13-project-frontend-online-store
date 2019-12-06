@@ -46,14 +46,13 @@ class ProductsList extends React.Component {
     }
   }
   
-  orderedBy(results) {
-
-  }
+  // orderedBy(results) {
+  //   const { price } = 
+  // }
 
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched, updateCartState } = this.props;
-    const { }
     return (
       <div className="card-container">
         <button type='button'>Ordenar por Maior</button>
