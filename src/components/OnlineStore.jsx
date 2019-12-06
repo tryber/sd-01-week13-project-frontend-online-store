@@ -13,7 +13,8 @@ class OnlineStore extends Component {
       searchBarText: '',
       searched: false,
       cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
-      quantity: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))).length,
+      quantity: Object.keys(localStorage)
+        .map((key) => JSON.parse(localStorage.getItem(key))).length,
     };
     this.onSearchBarChange = this.onSearchBarChange.bind(this);
     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
