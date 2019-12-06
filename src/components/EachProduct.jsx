@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import ShoppingButton from './ShoppingButton';
 
 class EachProduct extends React.Component {
   static validatingShippingFree(shipping) {
@@ -38,9 +39,7 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <button type="button" onClick={() => this.props.onClick(result)}>
-          Adicionar ao carrinho
-        </button>
+        <ShoppingButton handleClick={this.props.onClick} result={result}/> 
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
