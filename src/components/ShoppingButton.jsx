@@ -5,6 +5,7 @@ export default class ShoppingButton extends Component {
   render() {
     return (
       <button type="button" onClick={() => {
+        callback()
         localStorage.setItem('ind', Number(localStorage.getItem('ind')) + 1)
         localStorage.setItem(localStorage.getItem('ind'), JSON.stringify(this.props.result))
       }

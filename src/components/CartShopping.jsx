@@ -17,7 +17,7 @@ class CartShopping extends Component {
   }
 
   
-  componentWillMount() {
+  componentDidMount() {
     const leng = Object.keys(localStorage).length
     if (leng > 0) {
       this.setState({
