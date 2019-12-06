@@ -25,7 +25,7 @@ class OnlineStore extends Component {
     () => {
       const { cartList } = this.state;
         this.setState({ quantity: cartList.length });
-    })
+    });
   }
 
   onSearchBarChange(event) {
@@ -44,8 +44,8 @@ class OnlineStore extends Component {
       () => {
         const { cartList } = this.state;
         this.setState({ quantity: cartList.length });
-      }
-    )
+      },
+    );
   }
 
 
