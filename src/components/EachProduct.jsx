@@ -16,8 +16,10 @@ class EachProduct extends React.Component {
     super(props);
     this.state = {
       redirect: false,
+      style: '1px solid black',
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
+    this.selectStyle = this.selectStyle.bind(this);
   }
 
   savingProductDetails(result) {
@@ -26,10 +28,18 @@ class EachProduct extends React.Component {
     this.setState({ redirect: true });
   }
 
+  selectStyle(style) {
+    this.setState({style: style})
+    console.log('hey')
+  }
+
   showProduct(result) {
     const { id, title, price, thumbnail, shipping } = result;
+    const style = {
+      border: this.state.style,
+    }
     return (
-      <div className="card" key={id} >
+      <div className="card" key={id} style={style} >
         <div className="card-title">
           <span>{title}</span>
         </div>
@@ -39,7 +49,7 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <ShoppingButton handleClick={this.props.onClick} result={result} /> 
+        <ShoppingButton handleClick={this.props.onClick} result={result} selectStyle={this.selectStyle} /> 
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
