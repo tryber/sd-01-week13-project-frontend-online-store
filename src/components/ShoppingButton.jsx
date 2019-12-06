@@ -3,10 +3,14 @@ import React from 'react';
 export default class ShoppingButton extends React.Component {
   render() {
     return (
-      <button type="button" onClick={() => this.props.handleClick(this.props.result)}>
+      <button type="button" onClick={() => {
+        if (!Object.keys(localStorage).includes(this.props.result.id)){
+          localStorage.setItem(this.props.result.id, JSON.stringify(this.props.result))
+          this.props.handleClick(JSON.parse(localStorage.getItem(this.props.result.id)))
+        }
+      }}>
         Adicionar ao carrinho
         </button>
     )
   }
-
 }

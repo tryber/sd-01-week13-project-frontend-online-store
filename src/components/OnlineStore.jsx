@@ -32,11 +32,20 @@ class OnlineStore extends Component {
   }
 
   updateCartState(item) {
-    this.setState((state) => ({ cartList: [...state.cartList, item] }),
+    this.setState((state) => ({ cartList: state.cartList.concat(item) }),
       () => {
         const { cartList } = this.state;
         this.setState({ quantity: cartList.length });
-      });
+      }
+    )
+  }
+
+  componentDidMount() {
+    this.setState({ cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))) },
+    () => {
+      const { cartList } = this.state;
+        this.setState({ quantity: cartList.length });
+    })
   }
 
   render() {

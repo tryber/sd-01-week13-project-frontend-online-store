@@ -29,7 +29,7 @@ class EachProduct extends React.Component {
   showProduct(result) {
     const { id, title, price, thumbnail, shipping } = result;
     return (
-      <div className="card" key={id}>
+      <div className="card" key={id} >
         <div className="card-title">
           <span>{title}</span>
         </div>
