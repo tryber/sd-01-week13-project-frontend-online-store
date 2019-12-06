@@ -39,7 +39,7 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <ShoppingButton handleClick={this.props.onClick} result={result}/> 
+        <ShoppingButton handleClick={this.props.onClick} result={result} /> 
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
