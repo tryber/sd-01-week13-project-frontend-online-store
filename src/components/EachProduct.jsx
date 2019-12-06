@@ -16,7 +16,7 @@ class EachProduct extends React.Component {
     super(props);
     this.state = {
       redirect: false,
-      style: '1px solid black',
+      style: false,
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
@@ -28,15 +28,25 @@ class EachProduct extends React.Component {
     this.setState({ redirect: true });
   }
 
-  selectStyle(style) {
-    this.setState({ style });
+  selectStyle() {
+    this.setState({ style: true });
+  }
+
+  componentDidUpdate() {
+
+  }
+  style(style) {
+    if(style) {
+      const border = { border : '2px solid red'}
+      return border
+    } else {
+      const border = { border : '1px solid black'}
+      return border
+    }
   }
 
   showProduct(result) {
     const { id, title, price, thumbnail, shipping } = result;
-    const style = {
-      border: this.state.style,
-    };
     return (
       <div className="card" key={id} style={style} >
         <div className="card-title">
@@ -69,6 +79,7 @@ class EachProduct extends React.Component {
   render() {
     const { results, searched } = this.props;
     if (results.length > 0) {
+      const style = this.style(this.state.style);
       return results.map((result) => {
         const { id } = result;
         if (this.state.redirect) return <Redirect to={`/products/${id}`} />;
