@@ -22,24 +22,24 @@ class ProductsList extends React.Component {
 
   fetchURL(url) {
     fetch(url)
-      .then(data => data.json())
-      .then(newData =>
+      .then((data) => data.json())
+      .then((newData) =>
         this.setState({
           results: newData.results,
-        })
+        }),
       );
   }
 
   requestAPI(category, searchBarText) {
-    if (searchBarText !== "" && category !== "") {
+    if (searchBarText !== '' && category !== '') {
       this.fetchURL(
         `https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`
       );
-    } else if (searchBarText !== "" && category === "") {
+    } else if (searchBarText !== '' && category === '') {
       this.fetchURL(
         `https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`
       );
-    } else if (searchBarText === "" && category !== "") {
+    } else if (searchBarText === '' && category !== '') {
       this.fetchURL(
         `https://api.mercadolibre.com/sites/MLB/search?category=${category}`
       );
@@ -52,7 +52,7 @@ class ProductsList extends React.Component {
     if (results.length > 0) {
       return (
         <div className="card-container">
-          {results.map((result) => {
+          {results.map(result => {
             return <EachProduct result={result} onClick={updateCartState} />;
           })}
         </div>
@@ -60,7 +60,7 @@ class ProductsList extends React.Component {
     } else if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     } else {
-      return "Você ainda não buscou nada!";
+      return 'Você ainda não buscou nada!';
     }
   }
 }

@@ -59,7 +59,7 @@ class EachProduct extends React.Component {
 
   render() {
     const { result } = this.props;
-    if(this.state.redirect) return <Redirect to={`/products/${this.state.id}`}/>
+    if (this.state.redirect) return <Redirect to={`/products/${this.state.id}`} />;
     return <div>{this.showProduct(result)}</div>;
   }
 }
@@ -67,7 +67,7 @@ class EachProduct extends React.Component {
 export default EachProduct;
 
 EachProduct.propTypes = {
-  results: PropTypes.arrayOf(
+  result: PropTypes.arrayOf(
     PropTypes.shape({
       price: PropTypes.number,
       title: PropTypes.string,
@@ -75,6 +75,5 @@ EachProduct.propTypes = {
       id: PropTypes.string,
     }),
   ).isRequired,
-  searched: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };

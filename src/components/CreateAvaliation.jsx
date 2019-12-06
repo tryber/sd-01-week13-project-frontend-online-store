@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating';
 
@@ -15,7 +16,6 @@ class CreateAvaliation extends Component {
     this.avaliation = this.avaliation.bind(this);
     this.addAvaliation = this.addAvaliation.bind(this);
     this.comment = this.comment.bind(this);
-    this.avaliationStar = this.avaliationStar.bind(this);
   }
 
   validateEmail(event) {
@@ -26,32 +26,24 @@ class CreateAvaliation extends Component {
 
   avaliation(event) {
     this.setState({
-      valueStar: Number(event.target.value)
+      valueStar: Number(event.target.value),
     });
   }
 
   comment(event) {
     this.setState({
-      textArea: event.target.value
+      textArea: event.target.value,
     });
   }
 
-  avaliationStar(register) {
-    return (
-      <Box display="flex" flexDirection="column">
-        <Rating name="size-medium" value={register} size="large" />
-      </Box>
-    );
-  }
-
   addAvaliation() {
-    let email = this.state.email;
-    let textArea = this.state.textArea;
-    let valueStar = this.state.valueStar;
+    const email = this.state.email;
+    const textArea = this.state.textArea;
+    const valueStar = this.state.valueStar;
     this.setState({
       registerEmail: email,
       registerTextArea: textArea,
-      registerValueStar: valueStar
+      registerValueStar: valueStar,
     });
     this.saveComments(email, textArea, valueStar);
   }
@@ -77,7 +69,7 @@ class CreateAvaliation extends Component {
           <input
             type="text"
             placeholder="Email"
-            className={this.state.valid ? "valid" : "invalid"}
+            className={this.state.valid ? 'valid' : 'invalid'}
             onChange={this.validateEmail}
           />
           <textarea placeholder="Mensagem(opcional)" onChange={this.comment} />
@@ -101,5 +93,10 @@ class CreateAvaliation extends Component {
     );
   }
 }
+
+CreateAvaliation.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
 
 export default CreateAvaliation;
