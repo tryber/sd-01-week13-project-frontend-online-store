@@ -12,20 +12,12 @@ class OnlineStore extends Component {
       category: '',
       searchBarText: '',
       searched: false,
-      cartList: [],
-      quantity: 0,
+      cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
+      quantity: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))).length,
     };
     this.onSearchBarChange = this.onSearchBarChange.bind(this);
     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
     this.updateCartState = this.updateCartState.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({ cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))) },
-    () => {
-      const { cartList } = this.state;
-        this.setState({ quantity: cartList.length });
-    });
   }
 
   onSearchBarChange(event) {

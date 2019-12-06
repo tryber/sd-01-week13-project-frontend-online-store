@@ -19,12 +19,7 @@ export default class ShoppingButton extends React.Component {
 }
 
 ShoppingButton.propTypes = {
-  result: PropTypes.shape({
-    price: PropTypes.number,
-    title: PropTypes.string,
-    thumbnail: PropTypes.string,
-    id: PropTypes.string,
-  }).isRequired,
+  result: PropTypes.object.isRequired,
   handleClick: PropTypes.func.isRequired,
   selectStyle: PropTypes.func.isRequired,
 };
