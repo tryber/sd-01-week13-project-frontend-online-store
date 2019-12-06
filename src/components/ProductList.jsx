@@ -57,7 +57,7 @@ class ProductsList extends React.Component {
       );
     } else if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
-    } 
+    }
     return 'Você ainda não buscou nada!';
   }
 }
