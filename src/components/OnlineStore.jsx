@@ -20,6 +20,14 @@ class OnlineStore extends Component {
     this.updateCartState = this.updateCartState.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({ cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))) },
+    () => {
+      const { cartList } = this.state;
+        this.setState({ quantity: cartList.length });
+    })
+  }
+
   onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
@@ -40,13 +48,6 @@ class OnlineStore extends Component {
     )
   }
 
-  componentDidMount() {
-    this.setState({ cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))) },
-    () => {
-      const { cartList } = this.state;
-        this.setState({ quantity: cartList.length });
-    })
-  }
 
   render() {
     const {

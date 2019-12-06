@@ -37,7 +37,7 @@ class EachProduct extends React.Component {
     const { id, title, price, thumbnail, shipping } = result;
     const style = {
       border: this.state.style,
-    }
+    };
     return (
       <div className="card" key={id} style={style} >
         <div className="card-title">
@@ -49,7 +49,11 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <ShoppingButton handleClick={this.props.onClick} result={result} selectStyle={this.selectStyle} /> 
+        <ShoppingButton
+        handleClick={this.props.onClick} 
+        result={result} 
+        selectStyle={this.selectStyle}
+        /> 
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
