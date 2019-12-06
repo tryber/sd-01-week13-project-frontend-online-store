@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 class EachProduct extends React.Component {
   static validatingShippingFree(shipping) {
-    let freeShipping = '';
+    let freeShipping = "";
     if (shipping.free_shipping) {
-      freeShipping = 'Frete Grátis!';
+      freeShipping = "Frete Grátis!";
     }
     return freeShipping;
   }
@@ -15,14 +15,15 @@ class EachProduct extends React.Component {
     super(props);
     this.state = {
       redirect: false,
+      id: ""
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
   }
 
   savingProductDetails(result) {
     const newResult = JSON.stringify(result);
-    localStorage.setItem('result', newResult);
-    this.setState({ redirect: true });
+    localStorage.setItem("result", newResult);
+    this.setState({ redirect: true, id: result.id });
   }
 
   showProduct(result) {
@@ -57,18 +58,9 @@ class EachProduct extends React.Component {
   }
 
   render() {
-    const { results, searched } = this.props;
-    if (results.length > 0) {
-      return results.map((result) => {
-        const { id } = result;
-        if (this.state.redirect) return <Redirect to={`/products/${id}`} />;
-        return this.showProduct(result);
-      });
-    }
-    if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
-    }
-    return <p>Você ainda não realizou uma busca</p>;
+    const { result } = this.props;
+    if(this.state.redirect) return <Redirect to={`/products/${this.state.id}`}/>
+    return <div>{this.showProduct(result)}</div>;
   }
 }
 
@@ -80,9 +72,9 @@ EachProduct.propTypes = {
       price: PropTypes.number,
       title: PropTypes.string,
       thumbnail: PropTypes.string,
-      id: PropTypes.string,
-    }),
+      id: PropTypes.string
+    })
   ).isRequired,
   searched: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
