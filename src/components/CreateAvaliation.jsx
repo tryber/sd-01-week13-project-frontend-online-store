@@ -9,7 +9,7 @@ class CreateAvaliation extends Component {
       valid: false,
       valueStar: 2,
       email: '',
-      textArea: ''
+      textArea: '',
     };
     this.validateEmail = this.validateEmail.bind(this);
     this.avaliation = this.avaliation.bind(this);
@@ -60,12 +60,12 @@ class CreateAvaliation extends Component {
     const { id } = this.props;
     const object = { id, email, textArea, valueStar };
     if (!localStorage.comments) {
-      const newComment =  JSON.stringify([object]);
-      localStorage.setItem("comments", newComment);
+      const newComment = JSON.stringify([object]);
+      localStorage.setItem('comments', newComment);
     } else {
       const actualComments = localStorage.comments;
       const formatedActualComments = JSON.parse(actualComments);
-      const finalComments =  [ ...formatedActualComments, object ];
+      const finalComments = [...formatedActualComments, object];
       localStorage.comments = JSON.stringify(finalComments);
     }
   }

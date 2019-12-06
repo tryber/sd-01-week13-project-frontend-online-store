@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./ProductList.css";
-import EachProduct from "./EachProduct";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './ProductList.css';
+import EachProduct from './EachProduct';
 
 class ProductsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: ""
+      results: '',
     };
     this.fetchURL = this.fetchURL.bind(this);
     this.requestAPI = this.requestAPI.bind(this);
@@ -25,7 +25,7 @@ class ProductsList extends React.Component {
       .then(data => data.json())
       .then(newData =>
         this.setState({
-          results: newData.results
+          results: newData.results,
         })
       );
   }
@@ -52,7 +52,7 @@ class ProductsList extends React.Component {
     if (results.length > 0) {
       return (
         <div className="card-container">
-          {results.map(result => {
+          {results.map((result) => {
             return <EachProduct result={result} onClick={updateCartState} />;
           })}
         </div>
@@ -60,7 +60,7 @@ class ProductsList extends React.Component {
     } else if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     } else {
-      return "voce ainda não busocu nada";
+      return "Você ainda não buscou nada!";
     }
   }
 }
@@ -71,5 +71,5 @@ ProductsList.propTypes = {
   category: PropTypes.string.isRequired,
   searchBarText: PropTypes.string.isRequired,
   searched: PropTypes.bool.isRequired,
-  updateCartState: PropTypes.func.isRequired
+  updateCartState: PropTypes.func.isRequired,
 };

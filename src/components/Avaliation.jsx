@@ -1,13 +1,11 @@
-import React from "react";
-import Box from "@material-ui/core/Box";
-import Rating from "@material-ui/lab/Rating";
+import React from 'react';
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
 
 class Avaliation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        
-    };
+    this.state = {};
   }
   findComments() {
     const { id } = this.props;
