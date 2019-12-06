@@ -33,15 +33,15 @@ class ProductsList extends React.Component {
   requestAPI(category, searchBarText) {
     if (searchBarText !== '' && category !== '') {
       this.fetchURL(
-        `https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`
+        `https://api.mercadolibre.com/sites/MLB/search?category=${category}&q=${searchBarText}`,
       );
     } else if (searchBarText !== '' && category === '') {
       this.fetchURL(
-        `https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`
+        `https://api.mercadolibre.com/sites/MLB/search?q=${searchBarText}`,
       );
     } else if (searchBarText === '' && category !== '') {
       this.fetchURL(
-        `https://api.mercadolibre.com/sites/MLB/search?category=${category}`
+        `https://api.mercadolibre.com/sites/MLB/search?category=${category}`,
       );
     }
   }
@@ -52,16 +52,13 @@ class ProductsList extends React.Component {
     if (results.length > 0) {
       return (
         <div className="card-container">
-          {results.map(result => {
-            return <EachProduct result={result} onClick={updateCartState} />;
-          })}
+          {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
         </div>
       );
     } else if (results.length === 0 && searched) {
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
-    } else {
-      return 'Você ainda não buscou nada!';
-    }
+    } 
+    return 'Você ainda não buscou nada!';
   }
 }
 

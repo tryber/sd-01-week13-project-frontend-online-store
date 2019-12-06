@@ -34,10 +34,10 @@ class Avaliation extends React.Component {
       const comments = formatedComment.filter((key) => key.id === id);
       return (
         <div>
-          {comments.map(comment => Avaliation.showComments(comment))}
+          {comments.map((comment) => Avaliation.showComments(comment))}
         </div>
       );
-    }
+    } return '';
   }
 
   render() {
