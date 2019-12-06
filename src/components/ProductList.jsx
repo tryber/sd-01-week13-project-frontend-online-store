@@ -49,9 +49,10 @@ class ProductsList extends React.Component {
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched, updateCartState } = this.props;
-    console.log(results)
     return (
       <div className="card-container">
+        <button>Ordenar por Maior</button>
+        <button>Ordenar por Menor</button>
         {shouldUpdate ? (
           <EachProduct results={results} searched={searched} onClick={updateCartState} />
         ) : (
