@@ -82,7 +82,7 @@ export default class EachProduct extends Component {
 
 
 EachProduct.propTypes = {
-  result: PropTypes.arrayOf(
+  data: PropTypes.arrayOf(
     PropTypes.shape({
       price: PropTypes.number,
       title: PropTypes.string,
@@ -90,5 +90,5 @@ EachProduct.propTypes = {
       id: PropTypes.string,
     }),
   ).isRequired,
-  onClick: PropTypes.func.isRequired,
+  updateCartState: PropTypes.func.isRequired,
 };
