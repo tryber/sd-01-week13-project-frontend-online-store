@@ -30,7 +30,6 @@ class QuantityChanger extends Component {
     }
     if (operator === 'plus') {
       const newQuantity = actualQuantity + 1;
-      console.log(product.available_quantity)
       if (newQuantity >= product.available_quantity) {
         return console.log('Quantidade máxima do produto em estoque atingida.');
       }

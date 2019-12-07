@@ -4,6 +4,18 @@ import QuantityChanger from './QuantityChanger';
 import './ShoppingProduct.css';
 
 export default class ShoppingProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.removeItem = this.removeItem.bind(this);
+  }
+
+  removeItem() {
+    const { data: { id }, refreshHandle } = this.props;
+    localStorage.removeItem(id);
+    localStorage.removeItem(`${id}_quantity`);
+    refreshHandle();
+  }
+
   render() {
     const {
       data, data: {
@@ -13,7 +25,7 @@ export default class ShoppingProduct extends Component {
     return (
       <div className="product-list">
         <div className="product-item" key={id}>
-          <button type="button">X</button>
+          <button type="button" onClick={this.removeItem}>X</button>
           <img src={thumbnail} alt={title} />
           <span>{title}</span>
           <div><QuantityChanger productId={id} product={data} /></div>

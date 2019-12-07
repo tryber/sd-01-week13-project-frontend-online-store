@@ -7,18 +7,38 @@ import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends Component {
-  static showProducts() {
-    if (Object.keys(localStorage).length > 0) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartList: '',
+    };
+    this.showProducts = this.showProducts.bind(this);
+    this.refreshProducts = this.refreshProducts.bind(this);
+  }
+
+  componentDidMount() {
+    this.refreshProducts();
+  }
+
+  refreshProducts() {
+    this.setState({ cartList: '' }, () => Object.keys(localStorage)
+      .filter((key) => (key.includes('MLB') && !key.includes('quantity')))
+      .map((product) => this.setState((state) => ({ cartList: [...state.cartList, product] }))));
+  }
+
+  showProducts() {
+    const { cartList } = this.state;
+    if (cartList.length > 0) {
       return (
         <div>
-          { Object.keys(localStorage).filter((key) => (key.includes('MLB') && !key.includes('quantity')))
-            .map((product) => (
-              <div key={product}>
-                <ShoppingProduct
-                  data={JSON.parse(localStorage.getItem(product))}
-                />
-              </div>
-            )) }
+          { cartList.map((product) => (
+            <div key={product}>
+              <ShoppingProduct
+                refreshHandle={this.refreshProducts}
+                data={JSON.parse(localStorage.getItem(product))}
+              />
+            </div>
+          )) }
         </div>
       );
     }
@@ -28,19 +48,6 @@ class CartShopping extends Component {
         <p>Seu carrinho está vazio</p>
       </div>
     );
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartList: '',
-      cartQuantity: 0,
-    };
-  }
-
-  componentDidMount() {
-    Object.keys(localStorage).filter((key) => key.includes('MLB'))
-      .map((product) => this.setState((state) => ({ cartList: [...state.cartList, product] })));
   }
 
   render() {
@@ -57,7 +64,7 @@ class CartShopping extends Component {
             </p>
           </div>
         </header>
-        <div className="emptyBoxContainer">{CartShopping.showProducts()}</div>
+        <div className="emptyBoxContainer">{this.showProducts()}</div>
         <p className="total-value space"> Valor total da compra: </p>
       </div>
     );
