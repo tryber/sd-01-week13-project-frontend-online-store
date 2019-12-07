@@ -1,97 +1,48 @@
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
-// import ShoppingButton from './ShoppingButton';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Back from '../icons/back.svg';
+import CreateAvaliation from './CreateAvaliation';
+import Avaliation from './Avaliation';
 
-export default class Product extends Component {
-  static validatingShippingFree(shipping) {
-    let freeShipping = '';
-    if (shipping.free_shipping) {
-      freeShipping = 'Frete Grátis!';
-    }
-    return freeShipping;
-  }
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     redirect: false,
-  //     id: '',
-  //   };
-  //   this.savingProductDetails = this.savingProductDetails.bind(this);
-  //   this.selectStyle = this.selectStyle.bind(this);
-  // }
-
-  // savingProductDetails(result) {
-  //   const newResult = JSON.stringify(result);
-  //   localStorage.setItem('result', newResult);
-  //   this.setState({ redirect: true, id: result.id });
-  // }
-
-  // selectStyle() {
-  //   this.setState({ style: true });
-  // }
-
-  // componentDidUpdate() {
-
-  // }
-  // style(style) {
-  //   if(style) {
-  //     const border = { border : '2px solid red'}
-  //     return border
-  //   } else {
-  //     const border = { border : '1px solid black'}
-  //     return border
-  //   }
-  // }
-
-  showProduct(result) {
-    const { id, title, price, thumbnail, shipping } = result;
+class Product extends React.Component {
+  static showHeader() {
     return (
-      <div className="card" key={id} >
-        <div className="card-title">
-          <span>{title}</span>
-        </div>
-        <div className="card-thumbnail">
-          <img src={thumbnail} alt={title} />
-        </div>
-        <div className="card-product-price">
-          <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
-        </div>
-        {/* <ShoppingButton
-        handleClick={this.props.onClick} result={result} selectStyle={this.selectStyle}
-        /> */}
+      <header>
+        <Link to="/">
+          <img className="backPageImage space" src={Back} alt="back" />
+        </Link>
+      </header>
+    );
+  }
+  render() {
+    const newResult = JSON.parse(localStorage.result);
+    const { title, price, thumbnail, attributes, id } = newResult;
+    return (
+      <div>
+        {Product.showHeader()}
         <div>
-          <p>{Product.validatingShippingFree(shipping)}</p>
+          <p>{`Produto ${title} - R$${price}`}</p>
         </div>
         <div>
-          {/* <button
-            type="button"
-            onClick={() => this.savingProductDetails(result)}
-          >
-            Ver Detalhes
-          </button> */}
+          <img src={thumbnail} alt="product" />
+          <div>
+            <p>
+              <strong>Especificações Técnicas</strong>
+            </p>
+            <ul>
+              {attributes.map((specification) => (
+                <li key={specification.name}>
+                  {specification.name} : {specification.value_name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <CreateAvaliation id={id} />
+          <Avaliation id={id} />
         </div>
       </div>
     );
   }
-
-  render() {
-    const { data } = this.props;
-    // if (this.state.redirect) return <Redirect to={`/products/${this.state.id}`} />;
-    return <div>{this.showProduct(data)}</div>;
-  }
 }
 
-
-// EachProduct.propTypes = {
-//   result: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       price: PropTypes.number,
-//       title: PropTypes.string,
-//       thumbnail: PropTypes.string,
-//       id: PropTypes.string,
-//     }),
-//   ).isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
+export default Product;

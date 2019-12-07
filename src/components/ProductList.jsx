@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EmptyMessage from '../components/EmptyMessage';
 import './ProductList.css';
-import Product from '../components/Product';
+import EachProduct from './EachProduct';
 // import PropTypes from 'prop-types';
 
 // import EachProduct from './EachProduct';
@@ -56,12 +56,12 @@ export default class ProductsList extends Component {
     if (currentData.length > 0) {
       return (
         <div className="card-container">
-          {currentData.map((data) => <Product data={data} />)};
+          {currentData.map((data) => <EachProduct data={data} />)};
             </div>
       );
     } else if (currentData.length === 0 && searched) {
       return (
-        <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>
+        <p>Nenhum produto foi encontrado.</p>
       );
     } else {
       return (
