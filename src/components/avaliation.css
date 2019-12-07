@@ -1,0 +1,15 @@
+.email-comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 30em;
+}
+
+.container-comment {
+    border-bottom: 1px solid grey;
+}
+
+.elements-comment {
+    margin: 1em;
+}
