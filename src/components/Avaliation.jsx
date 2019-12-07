@@ -21,38 +21,38 @@ class Avaliation extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-   this.findComments();
-  }
-
   shouldComponentUpdate(prevProps) {
-    if(prevProps !== this.props.update){
+    if (prevProps !== this.props.update) {
       return true;
     }
+    return false;
+  }
+
+  componentDidUpdate() {
+    this.findComments();
   }
 
   findComments() {
     const { id } = this.props;
-    if(localStorage.comments) {
+    if (localStorage.comments) {
       const commentsFromLocalStorage = localStorage.comments;
       const formatedComment = JSON.parse(commentsFromLocalStorage);
-      const comments = formatedComment.filter((key) => key.id === id);
+      const comments = formatedComment.filter(key => key.id === id);
       return (
-        <div>
-          {comments.map((comment) => Avaliation.showComments(comment))}
-        </div>
+        <div>{comments.map((comment) => Avaliation.showComments(comment))}</div>
       );
-    } 
-    return <div>Nenhum comentário feito!</div>
+    }
+    return <div>Nenhum comentário feito!</div>;
   }
 
   render() {
-    return <div>{this.findComments()}</div>
+    return <div>{this.findComments()}</div>;
   }
 }
 
 Avaliation.propTypes = {
   id: PropTypes.string.isRequired,
+  update: PropTypes.string.isRequired,
 };
 
 export default Avaliation;

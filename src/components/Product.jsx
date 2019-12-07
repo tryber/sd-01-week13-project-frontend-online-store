@@ -23,7 +23,7 @@ class Product extends React.Component {
   }
 
   updateComments(event) {
-    this.setState({ shouldUpdate: event.target.value});
+    this.setState({ shouldUpdate: event.target.value });
   }
 
   render() {
