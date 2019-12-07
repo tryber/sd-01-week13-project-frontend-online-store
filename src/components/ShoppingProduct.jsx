@@ -6,7 +6,7 @@ import './ShoppingProduct.css';
 export default class ShoppingProduct extends Component {
   render() {
     const {
-      data: {
+      data, data: {
         id, title, price, thumbnail,
       },
     } = this.props;
@@ -16,8 +16,8 @@ export default class ShoppingProduct extends Component {
           <button type="button">X</button>
           <img src={thumbnail} alt={title} />
           <span>{title}</span>
-          <span><QuantityChanger productId={id} /></span>
-          <span>{`R$${price}`}</span>
+          <div><QuantityChanger productId={id} product={data} /></div>
+          <span>{`R$ ${price}`}</span>
         </div>
       </div>
     );

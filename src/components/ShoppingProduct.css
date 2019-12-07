@@ -1,9 +1,10 @@
 .product-item {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: nowrap;
   margin-left: 10px;
   align-items: center;
+  width: 75%;
 }
 
 .product-item span {
