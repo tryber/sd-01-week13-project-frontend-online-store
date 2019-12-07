@@ -1,4 +1,43 @@
-.online-store-page {
+.cart-shopping-backimg {
+  width: 4%;
+  margin: 2%;
+}
+
+.cart-shopping-box-1 {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  align-items: center;
+}
+
+.cart-shopping-box-1>p {
+  width: 20%;
+}
+
+.cart-shopping-box-1>p>span {
+  background-color: #FFC48C;
+  padding: 1%;
+  border-radius: 10px;
+  font-size: 100%;
+  font-weight: 700;
+}
+
+.cart-shopping-emptyimg {
+  width: 25%;
+}
+
+.cart-shopping-header {
+  height: 10%;
+  width: 100%;
+}
+
+.cart-shopping-img {
+  width: 5%;
+  height: 100%;
+  margin: 2%;
+}
+
+.cart-shopping-page {
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,45 +47,40 @@
   box-sizing: border-box;
 }
 
-.online-store-header {
-  width: 80%;
-  height: 100%;
+.cart-shopping-products {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.cart-shopping-products>p {
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.online-store-header-img {
-  width: 10%;
-  height: 100%;
-}
-
-.search-box  {
-  height: 20%;
-  width: 80%;
-  text-align: center;
-  margin: 1% 3%;
-  padding: 0;
-}
-
-.input-style {
-  background-color: #EFFAB4;
-  height: 30px;
-  width: 100%;
-  border-radius:10px;
+.cart-shopping-products>p>span {
+  background-color: #FFC48C;
+  padding: 1%;
+  border-radius: 10px;
   font-size: 100%;
-  box-shadow: 1px 1px 2px;
-  font-family: 'Kreon', serif;
-  margin: 2%;
-  padding: 0.5%;
-  letter-spacing: 2px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.shopping-car-img {
-  height: 100%;
-  width: 50%;
-  margin: 10%;
+.category-box {
+  width: 40%;
+  margin: 1%
+}
+
+.category-options-box {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .empty-message {
@@ -68,77 +102,18 @@
   font-weight: 700;
 }
 
-.cart-shopping-page {
+.input-style {
+  background-color: #EFFAB4;
+  height: 30px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.cart-shopping-header {
-  height: 10%;
-  width: 100%;
-}
-
-.cart-shopping-backimg {
-  width: 4%;
-  margin: 2%;
-}
-
-.cart-shopping-box-1 {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  align-items: center;
-}
-
-.cart-shopping-img {
-  width: 5%;
-  height: 100%;
-  margin: 2%;
-}
-
-.cart-shopping-box-1>p {
-  width: 20%;
-}
-
-.cart-shopping-box-1>p>span {
-  background-color: #FFC48C;
-  padding: 1%;
-  border-radius: 10px;
+  border-radius:10px;
   font-size: 100%;
-  font-weight: 700;
-}
-
-.cart-shopping-products {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.cart-shopping-emptyimg {
-  width: 25%;
-}
-
-.cart-shopping-products>p {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cart-shopping-products>p>span {
-  background-color: #FFC48C;
-  padding: 1%;
-  border-radius: 10px;
-  font-size: 100%;
-  font-weight: 700;
+  box-shadow: 1px 1px 2px;
+  font-family: 'Kreon', serif;
+  margin: 2%;
+  padding: 0.5%;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .online-store-box {
@@ -147,17 +122,44 @@
   justify-content: center;
 }
 
-.category-box {
-  width: 40%;
-  margin: 1%
+.online-store-header {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.category-options-box {
-  align-items: flex-start;
+.online-store-header-img {
+  width: 10%;
+  height: 100%;
+}
+
+.online-store-page {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
+
+.search-box  {
+  height: 20%;
+  width: 80%;
+  text-align: center;
+  margin: 1% 3%;
+  padding: 0;
+}
+
+.shopping-car-img {
+  height: 100%;
+  width: 50%;
+  margin: 10%;
+}
+
+
 /*
 .App-logo {
   height: 40vmin;
