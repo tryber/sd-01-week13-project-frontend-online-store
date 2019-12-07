@@ -36,7 +36,7 @@ class CreateAvaliation extends Component {
     });
   }
 
-  addAvaliation() {
+  addAvaliation(event) {
     const email = this.state.email;
     const textArea = this.state.textArea;
     const valueStar = this.state.valueStar;
@@ -46,6 +46,7 @@ class CreateAvaliation extends Component {
       registerValueStar: valueStar,
     });
     this.saveComments(email, textArea, valueStar);
+    this.props.onChange(event);
   }
 
   saveComments(email, textArea, valueStar) {
@@ -62,13 +63,14 @@ class CreateAvaliation extends Component {
     }
   }
 
-  render() {
+  createFormForComments() {
     return (
-      <form>
+      <form onSubmit={(e) => this.addAvaliation(e)}>
         <div className="avaliation">
           <input
             type="text"
             placeholder="Email"
+            required
             className={this.state.valid ? 'valid' : 'invalid'}
             onChange={this.validateEmail}
           />
@@ -82,21 +84,21 @@ class CreateAvaliation extends Component {
             size="large"
           />
         </Box>
-        <button
-          type="button"
-          value={this.state.email}
-          onClick={this.addAvaliation}
-        >
+        <button type="submit" value={this.state.email}>
           Avaliar
         </button>
       </form>
     );
   }
+
+  render() {
+    return <div>{this.createFormForComments()}</div>;
+  }
 }
 
 CreateAvaliation.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
-
 
 export default CreateAvaliation;

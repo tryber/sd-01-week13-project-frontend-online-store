@@ -21,9 +21,15 @@ class Avaliation extends React.Component {
     );
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {};
+  shouldComponentUpdate(prevProps) {
+    if (prevProps !== this.props.update) {
+      return true;
+    }
+    return false;
+  }
+
+  componentDidUpdate() {
+    this.findComments();
   }
 
   findComments() {
@@ -33,11 +39,10 @@ class Avaliation extends React.Component {
       const formatedComment = JSON.parse(commentsFromLocalStorage);
       const comments = formatedComment.filter((key) => key.id === id);
       return (
-        <div>
-          {comments.map((comment) => Avaliation.showComments(comment))}
-        </div>
+        <div>{comments.map((comment) => Avaliation.showComments(comment))}</div>
       );
-    } return '';
+    }
+    return <div>Nenhum comentário feito!</div>;
   }
 
   render() {
@@ -46,7 +51,8 @@ class Avaliation extends React.Component {
 }
 
 Avaliation.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  update: PropTypes.string.isRequired,
 };
 
 export default Avaliation;
