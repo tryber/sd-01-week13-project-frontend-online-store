@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 export default class EmptyMessage extends Component {
-
   render() {
     return (
       <div className={'empty-message'}>
@@ -9,5 +8,4 @@ export default class EmptyMessage extends Component {
       </div>
     );
   }
-
 }
