@@ -37,7 +37,7 @@ class Avaliation extends React.Component {
     if (localStorage.comments) {
       const commentsFromLocalStorage = localStorage.comments;
       const formatedComment = JSON.parse(commentsFromLocalStorage);
-      const comments = formatedComment.filter(key => key.id === id);
+      const comments = formatedComment.filter((key) => key.id === id);
       return (
         <div>{comments.map((comment) => Avaliation.showComments(comment))}</div>
       );
