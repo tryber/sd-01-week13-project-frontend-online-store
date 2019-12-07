@@ -8,7 +8,6 @@ class ProductsList extends React.Component {
     super(props);
     this.state = {
       results: '',
-      shouldUpdate: false,
     };
     this.fetchURL = this.fetchURL.bind(this);
     this.requestAPI = this.requestAPI.bind(this);
@@ -24,10 +23,11 @@ class ProductsList extends React.Component {
   fetchURL(url) {
     fetch(url)
       .then((data) => data.json())
-      .then((newData) => this.setState({
-        results: newData.results,
-        shouldUpdate: true,
-      }));
+      .then((newData) =>
+        this.setState({
+          results: newData.results,
+        }),
+      );
   }
 
   requestAPI(category, searchBarText) {
@@ -47,17 +47,18 @@ class ProductsList extends React.Component {
   }
 
   render() {
-    const { shouldUpdate, results } = this.state;
+    const { results } = this.state;
     const { searched, updateCartState } = this.props;
-    return (
-      <div className="card-container">
-        {shouldUpdate ? (
-          <EachProduct results={results} searched={searched} onClick={updateCartState} />
-        ) : (
-          'Você ainda não realizou uma busca'
-        )}
-      </div>
-    );
+    if (results.length > 0) {
+      return (
+        <div className="card-container">
+          {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
+        </div>
+      );
+    } else if (results.length === 0 && searched) {
+      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
+    }
+    return 'Você ainda não buscou nada!';
   }
 }
 

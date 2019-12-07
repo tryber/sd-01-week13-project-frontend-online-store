@@ -16,7 +16,7 @@ class EachProduct extends React.Component {
     super(props);
     this.state = {
       redirect: false,
-      style: false,
+      id: '',
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
@@ -25,7 +25,7 @@ class EachProduct extends React.Component {
   savingProductDetails(result) {
     const newResult = JSON.stringify(result);
     localStorage.setItem('result', newResult);
-    this.setState({ redirect: true });
+    this.setState({ redirect: true, id: result.id });
   }
 
   selectStyle() {
@@ -77,26 +77,16 @@ class EachProduct extends React.Component {
   }
 
   render() {
-    const { results, searched } = this.props;
-    if (results.length > 0) {
-      const style = this.style(this.state.style);
-      return results.map((result) => {
-        const { id } = result;
-        if (this.state.redirect) return <Redirect to={`/products/${id}`} />;
-        return this.showProduct(result);
-      });
-    }
-    if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
-    }
-    return <p>Você ainda não realizou uma busca</p>;
+    const { result } = this.props;
+    if (this.state.redirect) return <Redirect to={`/products/${this.state.id}`} />;
+    return <div>{this.showProduct(result)}</div>;
   }
 }
 
 export default EachProduct;
 
 EachProduct.propTypes = {
-  results: PropTypes.arrayOf(
+  result: PropTypes.arrayOf(
     PropTypes.shape({
       price: PropTypes.number,
       title: PropTypes.string,
@@ -104,6 +94,5 @@ EachProduct.propTypes = {
       id: PropTypes.string,
     }),
   ).isRequired,
-  searched: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
