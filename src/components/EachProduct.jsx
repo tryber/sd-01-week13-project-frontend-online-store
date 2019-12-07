@@ -81,14 +81,14 @@ export default class EachProduct extends Component {
 }
 
 
-// EachProduct.propTypes = {
-//   result: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       price: PropTypes.number,
-//       title: PropTypes.string,
-//       thumbnail: PropTypes.string,
-//       id: PropTypes.string,
-//     }),
-//   ).isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
+EachProduct.propTypes = {
+  result: PropTypes.arrayOf(
+    PropTypes.shape({
+      price: PropTypes.number,
+      title: PropTypes.string,
+      thumbnail: PropTypes.string,
+      id: PropTypes.string,
+    }),
+  ).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
