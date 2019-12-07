@@ -49,8 +49,8 @@ class ProductsList extends React.Component {
   
   ordenedResult(newResult) {
     this.setState({
-      results: newResult,      
-    }) 
+      results: newResult,
+    });
   }
 
   render() {
