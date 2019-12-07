@@ -14,6 +14,18 @@ class Product extends React.Component {
       </header>
     );
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldUpdate: '',
+    };
+  }
+
+  updateComments(event) {
+    this.setState({ shouldUpdate: event.target.value});
+  }
+
   render() {
     const newResult = JSON.parse(localStorage.result);
     const { title, price, thumbnail, attributes, id } = newResult;
@@ -37,8 +49,8 @@ class Product extends React.Component {
               ))}
             </ul>
           </div>
-          <CreateAvaliation id={id} />
-          <Avaliation id={id} />
+          <CreateAvaliation onChange={(event) => this.updateComments(event)} id={id} />
+          <Avaliation id={id} update={this.state.shouldUpdate} />
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import Rating from '@material-ui/lab/Rating';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
+import Rating from "@material-ui/lab/Rating";
 
 class CreateAvaliation extends Component {
   constructor(props) {
@@ -9,8 +9,8 @@ class CreateAvaliation extends Component {
     this.state = {
       valid: false,
       valueStar: 2,
-      email: '',
-      textArea: '',
+      email: "",
+      textArea: ""
     };
     this.validateEmail = this.validateEmail.bind(this);
     this.avaliation = this.avaliation.bind(this);
@@ -26,26 +26,27 @@ class CreateAvaliation extends Component {
 
   avaliation(event) {
     this.setState({
-      valueStar: Number(event.target.value),
+      valueStar: Number(event.target.value)
     });
   }
 
   comment(event) {
     this.setState({
-      textArea: event.target.value,
+      textArea: event.target.value
     });
   }
 
-  addAvaliation() {
+  addAvaliation(event) {
     const email = this.state.email;
     const textArea = this.state.textArea;
     const valueStar = this.state.valueStar;
     this.setState({
       registerEmail: email,
       registerTextArea: textArea,
-      registerValueStar: valueStar,
+      registerValueStar: valueStar
     });
     this.saveComments(email, textArea, valueStar);
+    this.props.onChange(event);
   }
 
   saveComments(email, textArea, valueStar) {
@@ -53,7 +54,7 @@ class CreateAvaliation extends Component {
     const object = { id, email, textArea, valueStar };
     if (!localStorage.comments) {
       const newComment = JSON.stringify([object]);
-      localStorage.setItem('comments', newComment);
+      localStorage.setItem("comments", newComment);
     } else {
       const actualComments = localStorage.comments;
       const formatedActualComments = JSON.parse(actualComments);
@@ -62,14 +63,15 @@ class CreateAvaliation extends Component {
     }
   }
 
-  render() {
+  createFormForComments() {
     return (
-      <form>
+    <form onSubmit={(e) => this.addAvaliation(e)}>
         <div className="avaliation">
           <input
             type="text"
             placeholder="Email"
-            className={this.state.valid ? 'valid' : 'invalid'}
+            required
+            className={this.state.valid ? "valid" : "invalid"}
             onChange={this.validateEmail}
           />
           <textarea placeholder="Mensagem(opcional)" onChange={this.comment} />
@@ -83,20 +85,24 @@ class CreateAvaliation extends Component {
           />
         </Box>
         <button
-          type="button"
+          type="submit"
           value={this.state.email}
-          onClick={this.addAvaliation}
         >
           Avaliar
         </button>
       </form>
     );
   }
+
+  render() {
+    return (
+     <div>{this.createFormForComments()}</div>
+    );
+  }
 }
 
 CreateAvaliation.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
-
 
 export default CreateAvaliation;
