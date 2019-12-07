@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar';
 import { Link } from 'react-router-dom';
-import EmptyMessage from '../components/EmptyMessage';
 import ShoppingCarImg from '../icons/ShoppingCarImg.jpg';
+import CategoryBar from '../components/CategoryBar';
+import EmptyMessage from '../components/EmptyMessage';
 
 // import './cartShopping.css';
-// import CategoryBar from '../components/CategoryBar';
+
 // import CartButton from '../components/CartButton';
 
 // import ProductsList from '../components/ProductList';
@@ -17,7 +18,7 @@ export default class OnlineStore extends Component {
     super(props);
     this.state = {
       searchBarText: '',
-      // category: '',
+      category: '',
 
       // searched: false,
       // cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
@@ -25,20 +26,19 @@ export default class OnlineStore extends Component {
       //   .map((key) => JSON.parse(localStorage.getItem(key))).length,
     };
     this.onSearchBarChange = this.onSearchBarChange.bind(this);
-    //     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
+    this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
     //     this.updateCartState = this.updateCartState.bind(this);
   }
 
   onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
-      // searched: true,
     });
   }
 
-  //   onCategoryBarChange(event) {
-  //     this.setState({ category: event.target.value });
-  //   }
+  onCategoryBarChange(event) {
+    this.setState({ category: event.target.value });
+  }
 
   //   updateCartState(item) {
   //     this.setState((state) => ({ cartList: state.cartList.concat(item) }),
@@ -59,14 +59,17 @@ export default class OnlineStore extends Component {
         <header className="online-store-header">
           <SearchBar onChange={this.onSearchBarChange} />
           <Link to="/carrinho-de-compras" className="online-store-header-img">
-            <img  className="shopping-car-img" src={ShoppingCarImg} alt="Shopping Car Icon"/>
+            <img className="shopping-car-img" src={ShoppingCarImg} alt="Shopping Car Icon" />
           </Link>
         </header>
-        <EmptyMessage />
+        <div className={"online-store-box"}>
+          <CategoryBar onChange={this.onCategoryBarChange} />
+          <EmptyMessage />
+        </div>
       </div>
 
       //       <div>
-      //         <CategoryBar onChange={this.onCategoryBarChange} />
+      //         
       //         <CartButton cartState={cartList} quantity={quantity} />
       //         
 

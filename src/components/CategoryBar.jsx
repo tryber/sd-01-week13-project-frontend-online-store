@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './CategoryBar.css';
 
-class CategoryBar extends Component {
+export default class CategoryBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +43,7 @@ class CategoryBar extends Component {
     const { data } = this.state;
     return (
       <div className="category-box">
-        <h3>Categorias:</h3>
+        <h3>Categorias</h3>
         <div className="category-options-box">
           {data.map((dat) => this.renderCategory(dat.id, dat.name))}
         </div>
@@ -57,4 +56,4 @@ CategoryBar.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default CategoryBar;
+

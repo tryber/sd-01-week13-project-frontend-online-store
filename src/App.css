@@ -51,7 +51,7 @@
 
 .empty-message {
   height: 40%;
-  width: 65%;
+  width: 50%;
   text-align: center;
   box-sizing: border-box;
   margin: 0;
@@ -141,6 +141,23 @@
   font-weight: 700;
 }
 
+.online-store-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.category-box {
+  width: 40%;
+  margin: 1%
+}
+
+.category-options-box {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 /*
 .App-logo {
   height: 40vmin;
