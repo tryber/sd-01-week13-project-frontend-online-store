@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class OnlineStore extends Component {
+export default class EmptyMessage extends Component {
 
     render() {
         return (
