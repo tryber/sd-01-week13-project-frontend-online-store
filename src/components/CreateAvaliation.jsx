@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import Rating from '@material-ui/lab/Rating';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
+import Rating from "@material-ui/lab/Rating";
+import "./createAvaliation.css";
 
 class CreateAvaliation extends Component {
   constructor(props) {
@@ -9,8 +10,8 @@ class CreateAvaliation extends Component {
     this.state = {
       valid: false,
       valueStar: 2,
-      email: '',
-      textArea: '',
+      email: "",
+      textArea: ""
     };
     this.validateEmail = this.validateEmail.bind(this);
     this.avaliation = this.avaliation.bind(this);
@@ -26,13 +27,13 @@ class CreateAvaliation extends Component {
 
   avaliation(event) {
     this.setState({
-      valueStar: Number(event.target.value),
+      valueStar: Number(event.target.value)
     });
   }
 
   comment(event) {
     this.setState({
-      textArea: event.target.value,
+      textArea: event.target.value
     });
   }
 
@@ -43,7 +44,7 @@ class CreateAvaliation extends Component {
     this.setState({
       registerEmail: email,
       registerTextArea: textArea,
-      registerValueStar: valueStar,
+      registerValueStar: valueStar
     });
     this.saveComments(email, textArea, valueStar);
     this.props.onChange(event);
@@ -54,7 +55,7 @@ class CreateAvaliation extends Component {
     const object = { id, email, textArea, valueStar };
     if (!localStorage.comments) {
       const newComment = JSON.stringify([object]);
-      localStorage.setItem('comments', newComment);
+      localStorage.setItem("comments", newComment);
     } else {
       const actualComments = localStorage.comments;
       const formatedActualComments = JSON.parse(actualComments);
@@ -65,29 +66,47 @@ class CreateAvaliation extends Component {
 
   createFormForComments() {
     return (
-      <form onSubmit={(e) => this.addAvaliation(e)}>
-        <div className="avaliation">
-          <input
-            type="text"
-            placeholder="Email"
-            required
-            className={this.state.valid ? 'valid' : 'invalid'}
-            onChange={this.validateEmail}
-          />
-          <textarea placeholder="Mensagem(opcional)" onChange={this.comment} />
-        </div>
-        <Box display="flex" flexDirection="column">
-          <Rating
-            name="size-medium"
-            onClick={this.avaliation}
-            value={this.state.valueStar}
-            size="large"
-          />
-        </Box>
-        <button type="submit" value={this.state.email}>
-          Avaliar
-        </button>
-      </form>
+      <div>
+        <fieldset>
+          <legend className="avaliations-text">Deixe seu comentário!</legend>
+          <form
+            className="avaliations-container"
+            onSubmit={e => this.addAvaliation(e)}
+          >
+            <div className="inputs-avaliation">
+              <input
+                type="text"
+                placeholder="Email"
+                required
+                className={this.state.valid ? "valid" : "invalid"}
+                onChange={this.validateEmail}
+              />
+              <Box display="flex" flexDirection="column">
+                <Rating
+                  name="size-medium"
+                  onClick={this.avaliation}
+                  value={this.state.valueStar}
+                  size="large"
+                />
+              </Box>
+            </div>
+            <textarea
+              placeholder="Mensagem(opcional)"
+              className="avaliation-text-area"
+              onChange={this.comment}
+            />
+            <div className="button-container">
+              <button
+                className="avaliation-button"
+                type="submit"
+                value={this.state.email}
+              >
+                Avaliar
+              </button>
+            </div>
+          </form>
+        </fieldset>
+      </div>
     );
   }
 
@@ -98,7 +117,7 @@ class CreateAvaliation extends Component {
 
 CreateAvaliation.propTypes = {
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default CreateAvaliation;

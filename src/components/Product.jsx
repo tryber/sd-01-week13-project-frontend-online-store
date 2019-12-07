@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Back from '../icons/back.svg';
 import CreateAvaliation from './CreateAvaliation';
 import Avaliation from './Avaliation';
+import './product.css';
 
 class Product extends React.Component {
   static showHeader() {

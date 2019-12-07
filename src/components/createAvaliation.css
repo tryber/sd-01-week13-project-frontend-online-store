@@ -1,0 +1,47 @@
+.avaliation-button {
+  background: #fff159;
+  border: grey 1px double;
+  border-radius: 3px;
+  color: #333333;
+  height: 2.5em;
+  width: 10em;
+}
+
+.avaliation-button:hover {
+  cursor: pointer;
+  filter: saturate(150%);
+}
+
+.avaliations-container {
+  display: flex;
+  flex-direction: column;
+  height: 10em;
+  justify-content: space-between;
+  width: 30em;
+}
+.avaliations-text {
+  font-size: 1.4em;
+}
+.avaliation-text-area {
+  height: 5em;
+}
+
+fieldset {
+  margin: 2em;
+}
+
+.inputs-avaliation {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.invalid {
+  color: red;
+  width: 22em;
+}
+.valid {
+  color: blue;
+  width: 22em;
+}
