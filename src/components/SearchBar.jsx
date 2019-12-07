@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends React.Component {
+export default class SearchBar extends Component {
+
   handleKeyPress(event) {
     if (event.key === 'Enter') {
       this.props.onChange(event);
@@ -9,15 +10,15 @@ class SearchBar extends React.Component {
   }
 
   render() {
+  
     return (
       <div className="search-box">
-        <input type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
+        <input className="input-style" type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
       </div>
     );
   }
-}
 
-export default SearchBar;
+}
 
 SearchBar.propTypes = {
   onChange: PropTypes.func.isRequired,

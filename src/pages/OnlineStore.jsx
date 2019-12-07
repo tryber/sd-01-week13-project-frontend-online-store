@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import SearchBar from '../components/SearchBar';
 import EmptyMessage from '../components/EmptyMessage';
 
 // import './cartShopping.css';
 // import CategoryBar from '../components/CategoryBar';
 // import CartButton from '../components/CartButton';
-// import SearchBar from '../components/SearchBar';
+
 // import ProductsList from '../components/ProductList';
 
 
@@ -13,24 +14,25 @@ export default class OnlineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchBarText: '',
       // category: '',
-      // searchBarText: '',
+      
       // searched: false,
       // cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
       // quantity: Object.keys(localStorage)
       //   .map((key) => JSON.parse(localStorage.getItem(key))).length,
     };
-    //     this.onSearchBarChange = this.onSearchBarChange.bind(this);
+        this.onSearchBarChange = this.onSearchBarChange.bind(this);
     //     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
     //     this.updateCartState = this.updateCartState.bind(this);
   }
 
-  //   onSearchBarChange(event) {
-  //     this.setState({
-  //       searchBarText: event.target.value,
-  //       searched: true,
-  //     });
-  //   }
+    onSearchBarChange(event) {
+      this.setState({
+        searchBarText: event.target.value,
+        // searched: true,
+      });
+    }
 
   //   onCategoryBarChange(event) {
   //     this.setState({ category: event.target.value });
@@ -51,13 +53,16 @@ export default class OnlineStore extends Component {
     //       cartList, category, searchBarText, searched, quantity,
     //     } = this.state;
     return (
-      <div>
+      <div className={'online-store-page'}>
+        <SearchBar onChange={this.onSearchBarChange} />
+
         <EmptyMessage />
       </div>
+
 //       <div>
 //         <CategoryBar onChange={this.onCategoryBarChange} />
 //         <CartButton cartState={cartList} quantity={quantity} />
-//         <SearchBar onChange={this.onSearchBarChange} />
+//         
       // <ErrorComponent />
 //         <ProductsList
 //           updateCartState={this.updateCartState}
