@@ -6,14 +6,14 @@ class ButtonOrderedBy extends React.Component {
   sortResultLessValue() {
     const { result, onChange } = this.props;
     const ordenedResult = result.slice(0);
-    ordenedResult.sort((a, b) => a.price - b.price );
+    ordenedResult.sort((a, b) => a.price - b.price);
     onChange(ordenedResult);
   }
 
   sortResultBiggerValue() {
     const { result, onChange } = this.props;
     const ordenedResult = result.slice(0);
-    ordenedResult.sort((a, b) =>  b.price - a.price );
+    ordenedResult.sort((a, b) => b.price - a.price);
     onChange(ordenedResult);
   }
 
