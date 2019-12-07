@@ -47,6 +47,12 @@ class ProductsList extends React.Component {
     }
   }
   
+  ordenedResult(newResult) {
+    this.setState({
+      results: newResult,      
+    }) 
+  }
+
   render() {
     const { results } = this.state;
     const { searched, updateCartState } = this.props;
@@ -54,7 +60,7 @@ class ProductsList extends React.Component {
       return (
         <div className="show-all-info">
           <div className="button-ordered-by">
-            <ButtonOrderedBy result={results} />
+            <ButtonOrderedBy result={results} onChange={(e) => this.ordenedResult(e)} />
           </div>
           <div className="card-container">
             {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
