@@ -6,18 +6,14 @@ class ButtonOrderedBy extends React.Component {
   sortResultLessValue() {
     const { result, onChange } = this.props;
     const ordenedResult = result.slice(0);
-    ordenedResult.sort((a, b) => {
-      return a.price - b.price;
-    });
+    ordenedResult.sort((a, b) => { return a.price - b.price });
     onChange(ordenedResult);
   }
 
   sortResultBiggerValue() {
     const { result, onChange } = this.props;
     const ordenedResult = result.slice(0);
-    ordenedResult.sort((a, b) => {
-      return b.price - a.price;
-    });
+    ordenedResult.sort((a, b) => { return b.price - a.price });
     onChange(ordenedResult);
   }
 
@@ -26,9 +22,8 @@ class ButtonOrderedBy extends React.Component {
       this.sortResultLessValue();
     } else if (event.target.value === 'bigger') {
       this.sortResultBiggerValue();
-    } else {
-      return '';
     }
+    return '';
   }
 
   render() {
@@ -49,4 +44,4 @@ export default ButtonOrderedBy;
 ButtonOrderedBy.propTypes = {
   result: PropTypes.arrayOf.isRequired,
   onChange: PropTypes.func.isRequired,
-}
+};
