@@ -15,8 +15,7 @@ class Product extends React.Component {
     );
   }
   render() {
-    const newResult = JSON.parse(localStorage.result);
-    const { title, price, thumbnail, attributes, id } = newResult;
+    const { title, price, thumbnail, attributes, id } = this.props.location.state.data;
     return (
       <div>
         {Product.showHeader()}

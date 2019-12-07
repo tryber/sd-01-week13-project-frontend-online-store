@@ -19,14 +19,13 @@ export default class OnlineStore extends Component {
       searchBarText: '',
       category: '',
       searched: false,
-
-      // cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
-      // quantity: Object.keys(localStorage)
-      //   .map((key) => JSON.parse(localStorage.getItem(key))).length,
+      cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
+      quantity: Object.keys(localStorage)
+        .map((key) => JSON.parse(localStorage.getItem(key))).length,
     };
     this.onSearchBarChange = this.onSearchBarChange.bind(this);
     this.onCategoryBarChange = this.onCategoryBarChange.bind(this);
-    //     this.updateCartState = this.updateCartState.bind(this);
+        this.updateCartState = this.updateCartState.bind(this);
   }
 
   onSearchBarChange(event) {
@@ -40,18 +39,18 @@ export default class OnlineStore extends Component {
     this.setState({ category: event.target.value });
   }
 
-  //   updateCartState(item) {
-  //     this.setState((state) => ({ cartList: state.cartList.concat(item) }),
-  //       () => {
-  //         const { cartList } = this.state;
-  //         this.setState({ quantity: cartList.length });
-  //       },
-  //     );
-  //   }
+    updateCartState(item) {
+      this.setState((state) => ({ cartList: state.cartList.concat(item) }),
+        () => {
+          const { cartList } = this.state;
+          this.setState({ quantity: cartList.length });
+        },
+      );
+    }
 
 
   render() {
-    const { category, searchBarText, searched } = this.state;
+    const { category, searchBarText, searched, quantity } = this.state;
     //     const {
     //       cartList, category, searchBarText, searched, quantity,
     //     } = this.state;
@@ -59,26 +58,18 @@ export default class OnlineStore extends Component {
       <div className="online-store-page">
         <header className="online-store-header">
           <SearchBar onChange={this.onSearchBarChange} />
-          <CartButton />
+          <CartButton quantity={quantity}/>
         </header>
         <div className={"online-store-box"}>
           <CategoryBar onChange={this.onCategoryBarChange} />
           <ProductsList
-            // updateCartState={this.updateCartState}
+            updateCartState={this.updateCartState}
             category={category}
             searchBarText={searchBarText}
             searched={searched}
           />
         </div>
       </div>
-
-      //       <div>
-      //         
-      //         
-      //         
-
-      //         
-      //       </div>
     );
   }
 }

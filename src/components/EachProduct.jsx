@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-// import ShoppingButton from './ShoppingButton';
+import ShoppingButton from './ShoppingButton';
 
 export default class EachProduct extends Component {
   static validatingShippingFree(shipping) {
@@ -17,38 +17,36 @@ export default class EachProduct extends Component {
     this.state = {
       redirect: false,
       id: '',
-    };
+      style: false,
+    }
     this.savingProductDetails = this.savingProductDetails.bind(this);
-  //   this.selectStyle = this.selectStyle.bind(this);
+    this.selectStyle = this.selectStyle.bind(this);
   }
 
   savingProductDetails(result) {
-    const newResult = JSON.stringify(result);
-    localStorage.setItem('result', newResult);
     this.setState({ redirect: true, id: result.id });
   }
 
-  // selectStyle() {
-  //   this.setState({ style: true });
-  // }
+  selectStyle() {
+    this.setState((state) => ({ style: !state.style }));
+  }
 
-  // componentDidUpdate() {
 
-  // }
-  // style(style) {
-  //   if(style) {
-  //     const border = { border : '2px solid red'}
-  //     return border
-  //   } else {
-  //     const border = { border : '1px solid black'}
-  //     return border
-  //   }
-  // }
+  style() {
+    if(this.state.style) {
+      const border = { border : '2px solid red'}
+      return border
+    } else {
+      const border = { border : '1px solid black'}
+      return border
+    }
+  }
 
   showProduct(result) {
     const { id, title, price, thumbnail, shipping } = result;
+    const border = this.style();
     return (
-      <div className="card" key={id} >
+      <div className="card" key={id} style={border}>
         <div className="card-title">
           <span>{title}</span>
         </div>
@@ -58,9 +56,9 @@ export default class EachProduct extends Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        {/* <ShoppingButton
-        handleClick={this.props.onClick} result={result} selectStyle={this.selectStyle}
-        /> */}
+        <ShoppingButton
+        handleClick={this.props.updateCartState} result={result} selectStyle={this.selectStyle}
+        />
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
@@ -78,7 +76,7 @@ export default class EachProduct extends Component {
 
   render() {
     const { data } = this.props;
-    if (this.state.redirect) return <Redirect to={`/products/${this.state.id}`} />;
+    if (this.state.redirect) return <Redirect to={ { pathname: `/products/${this.state.id}`, state: { data } } } />;
     return <div>{this.showProduct(data)}</div>;
   }
 }

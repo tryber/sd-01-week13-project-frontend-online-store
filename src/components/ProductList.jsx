@@ -51,12 +51,11 @@ export default class ProductsList extends Component {
 
   render() {
     const { currentData } = this.state;
-    const { searched } = this.props;
-    //     const { searched, updateCartState } = this.props;
+    const { searched, updateCartState } = this.props;
     if (currentData.length > 0) {
       return (
         <div className="card-container">
-          {currentData.map((data) => <EachProduct data={data} />)};
+          {currentData.map((data) => <EachProduct data={data} updateCartState={updateCartState}/>)};
             </div>
       );
     } else if (currentData.length === 0 && searched) {

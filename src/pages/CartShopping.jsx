@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import BackImage from '../icons/back.svg';
 import ShoppingCarImg from '../icons/ShoppingCarImg.jpg';
 import EmptyShoppingCar from '../components/EmptyShoppingCar';
+import ShoppingProduct from '../components/ShoppingProduct';
 
 // // import PropTypes from 'prop-types';
 // import './cartShopping.css';
@@ -11,18 +12,23 @@ import EmptyShoppingCar from '../components/EmptyShoppingCar';
 
 
 export default class CartShopping extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.validatingCart = this.validatingCart.bind(this);
-  //   }
+  constructor(props) {
+    super(props);
+    this.showProducts = this.showProducts.bind(this);
+  }
 
-  //   validatingCart() {
-  //     // if (this.props.products === 0 || this.props.products === undefined) {
-  //     return (
-  //     );
-  //     // }
-  //     // return <p>Teste</p>;
-  //   }
+  showProducts() {
+    if (Object.keys(localStorage).length > 0) {
+      return (
+        <div>
+          {Object.keys(localStorage)
+            .map((key) => <ShoppingProduct data={JSON.parse(localStorage.getItem(key))} />)}
+          <p> Valor total da compra: </p>
+        </div>
+      );
+    }
+    return  <EmptyShoppingCar />
+  }
 
   render() {
     return (
@@ -35,9 +41,9 @@ export default class CartShopping extends Component {
             <img className="cart-shopping-img" src={ShoppingCarImg} alt="Shopping Car Icon" />
             <p> <span> Carrinho de Compras </span> </p>
           </div>
-          <EmptyShoppingCar />
+          {this.showProducts()}
         </header>
-        
+
       </div>
     );
   }
