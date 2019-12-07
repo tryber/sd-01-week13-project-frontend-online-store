@@ -18,7 +18,7 @@ export default class EachProduct extends Component {
       redirect: false,
       id: '',
       style: false,
-    }
+    };
     this.savingProductDetails = this.savingProductDetails.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
   }
@@ -33,13 +33,12 @@ export default class EachProduct extends Component {
 
 
   style() {
-    if(this.state.style) {
-      const border = { border : '2px solid red'}
-      return border
-    } else {
-      const border = { border : '1px solid black'}
-      return border
+    if (this.state.style) {
+      const border = { border: '2px solid red' };
+      return border;
     }
+    const border = { border: '1px solid black' };
+    return border;
   }
 
   showProduct(result) {
@@ -57,7 +56,7 @@ export default class EachProduct extends Component {
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
         <ShoppingButton
-        handleClick={this.props.updateCartState} result={result} selectStyle={this.selectStyle}
+          handleClick={this.props.updateCartState} result={result} selectStyle={this.selectStyle}
         />
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
@@ -76,7 +75,7 @@ export default class EachProduct extends Component {
 
   render() {
     const { data } = this.props;
-    if (this.state.redirect) return <Redirect to={ { pathname: `/products/${this.state.id}`, state: { data } } } />;
+    if (this.state.redirect) return <Redirect to={{ pathname: `/products/${this.state.id}`, state: { data } }} />;
     return <div>{this.showProduct(data)}</div>;
   }
 }

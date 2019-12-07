@@ -136,8 +136,8 @@
 }
 
 .online-store-page {
-  box-sizing: border-box;
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;

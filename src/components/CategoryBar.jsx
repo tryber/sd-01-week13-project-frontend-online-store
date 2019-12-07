@@ -55,5 +55,3 @@ export default class CategoryBar extends Component {
 CategoryBar.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
-
-
