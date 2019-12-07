@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Back from '../icons/back.svg';
 import CreateAvaliation from './CreateAvaliation';
 import Avaliation from './Avaliation';
+import PropTypes from 'prop-types';
 
 class Product extends React.Component {
   static showHeader() {
@@ -45,3 +46,14 @@ class Product extends React.Component {
 }
 
 export default Product;
+
+Product.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      price: PropTypes.number,
+      title: PropTypes.string,
+      thumbnail: PropTypes.string,
+      id: PropTypes.string,
+    }),
+  ).isRequired,
+};
