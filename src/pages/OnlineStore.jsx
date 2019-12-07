@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar';
-import { Link } from 'react-router-dom';
-import ShoppingCarImg from '../icons/ShoppingCarImg.jpg';
 import CategoryBar from '../components/CategoryBar';
-import EmptyMessage from '../components/EmptyMessage';
+import CartButton from '../components/CartButton';
+import ProductsList from '../components/ProductList';
 
 // import './cartShopping.css';
 
-// import CartButton from '../components/CartButton';
 
-// import ProductsList from '../components/ProductList';
+
+
 
 
 export default class OnlineStore extends Component {
@@ -19,8 +18,8 @@ export default class OnlineStore extends Component {
     this.state = {
       searchBarText: '',
       category: '',
+      searched: false,
 
-      // searched: false,
       // cartList: Object.keys(localStorage).map((key) => JSON.parse(localStorage.getItem(key))),
       // quantity: Object.keys(localStorage)
       //   .map((key) => JSON.parse(localStorage.getItem(key))).length,
@@ -33,6 +32,7 @@ export default class OnlineStore extends Component {
   onSearchBarChange(event) {
     this.setState({
       searchBarText: event.target.value,
+      searched: true,
     });
   }
 
@@ -51,6 +51,7 @@ export default class OnlineStore extends Component {
 
 
   render() {
+    const { category, searchBarText, searched } = this.state;
     //     const {
     //       cartList, category, searchBarText, searched, quantity,
     //     } = this.state;
@@ -58,27 +59,25 @@ export default class OnlineStore extends Component {
       <div className="online-store-page">
         <header className="online-store-header">
           <SearchBar onChange={this.onSearchBarChange} />
-          <Link to="/carrinho-de-compras" className="online-store-header-img">
-            <img className="shopping-car-img" src={ShoppingCarImg} alt="Shopping Car Icon" />
-          </Link>
+          <CartButton />
         </header>
         <div className={"online-store-box"}>
           <CategoryBar onChange={this.onCategoryBarChange} />
-          <EmptyMessage />
+          <ProductsList
+            // updateCartState={this.updateCartState}
+            category={category}
+            searchBarText={searchBarText}
+            searched={searched}
+          />
         </div>
       </div>
 
       //       <div>
       //         
-      //         <CartButton cartState={cartList} quantity={quantity} />
+      //         
       //         
 
-      //         <ProductsList
-      //           updateCartState={this.updateCartState}
-      //           category={category}
-      //           searchBarText={searchBarText}
-      //           searched={searched}
-      //         />
+      //         
       //       </div>
     );
   }

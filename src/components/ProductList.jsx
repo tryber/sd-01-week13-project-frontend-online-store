@@ -1,13 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import EmptyMessage from '../components/EmptyMessage';
 import './ProductList.css';
-import EachProduct from './EachProduct';
+import Product from '../components/Product';
+// import PropTypes from 'prop-types';
 
-class ProductsList extends React.Component {
+// import EachProduct from './EachProduct';
+
+export default class ProductsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: '',
+      currentData: [],
     };
     this.fetchURL = this.fetchURL.bind(this);
     this.requestAPI = this.requestAPI.bind(this);
@@ -25,7 +28,7 @@ class ProductsList extends React.Component {
       .then((data) => data.json())
       .then((newData) =>
         this.setState({
-          results: newData.results,
+          currentData: newData.results,
         }),
       );
   }
@@ -47,26 +50,32 @@ class ProductsList extends React.Component {
   }
 
   render() {
-    const { results } = this.state;
-    const { searched, updateCartState } = this.props;
-    if (results.length > 0) {
+    const { currentData } = this.state;
+    const { searched } = this.props;
+    //     const { searched, updateCartState } = this.props;
+    if (currentData.length > 0) {
       return (
         <div className="card-container">
-          {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
-        </div>
+          {currentData.map((data) => <Product data={data} />)};
+            </div>
       );
-    } else if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
+    } else if (currentData.length === 0 && searched) {
+      return (
+        <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>
+      );
+    } else {
+      return (
+        <EmptyMessage />
+      );
     }
-    return 'Você ainda não buscou nada!';
   }
 }
 
-export default ProductsList;
+// ProductsList.propTypes = {
+//   category: PropTypes.string.isRequired,
+//   searchBarText: PropTypes.string.isRequired,
+//   searched: PropTypes.bool.isRequired,
+//   updateCartState: PropTypes.func.isRequired,
+// };
 
-ProductsList.propTypes = {
-  category: PropTypes.string.isRequired,
-  searchBarText: PropTypes.string.isRequired,
-  searched: PropTypes.bool.isRequired,
-  updateCartState: PropTypes.func.isRequired,
-};
+

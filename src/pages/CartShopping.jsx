@@ -43,6 +43,8 @@ export default class CartShopping extends Component {
   }
 }
 
+
+
 {/* 
 // CartShopping.propTypes = {
 //   results: PropTypes.shape({

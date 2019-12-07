@@ -1,25 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './cartShopping.css';
-import CartImage from '../icons/cart.jpg';
+import ShoppingCarImg from '../icons/ShoppingCarImg.jpg';
 
-class CartButton extends React.Component {
+export default class CartButton extends Component {
   render() {
-    const { quantity } = this.props;
     return (
-      <div>
-        <Link to="/carrinho-de-compras">
-          <img className="cartImage" src={CartImage} alt="shoppinng cart" />
-          <span className="quantity">{quantity}</span>
+        <Link to="/carrinho-de-compras" className="online-store-header-img">
+          <img className="shopping-car-img" src={ShoppingCarImg} alt="Shopping Car Icon" />
         </Link>
-      </div>
     );
   }
 }
 
-export default CartButton;
 
-CartButton.propTypes = {
-  quantity: PropTypes.number.isRequired,
-};
+// CartButton.propTypes = {
+//   quantity: PropTypes.number.isRequired,
+// };
