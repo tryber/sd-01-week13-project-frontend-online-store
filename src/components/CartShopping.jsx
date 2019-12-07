@@ -1,24 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import ShoppingProduct from './ShoppingProduct';
 import './cartShopping.css';
 import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
 
 class CartShopping extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.validatingCart = this.validatingCart.bind(this);
-//   }
+  static showProducts() {
+    if (Object.keys(localStorage).length > 0) {
+      return (
+        <div>
+          { Object.keys(localStorage).filter((key) => (key.includes('MLB') && !key.includes('quantity')))
+            .map((product) => (
+              <div key={product}>
+                <ShoppingProduct
+                  data={JSON.parse(localStorage.getItem(product))}
+                />
+              </div>
+            )) }
+        </div>
+      );
+    }
+    return (
+      <div>
+        <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
+        <p>Seu carrinho está vazio</p>
+      </div>
+    );
+  }
 
-  //   validatingCart() {
-  //     // if (this.props.products === 0 || this.props.products === undefined) {
-  //     return (
-  //     );
-  //     // }
-  //     // return <p>Teste</p>;
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartList: '',
+      cartQuantity: 0,
+    };
+  }
+
+  componentDidMount() {
+    Object.keys(localStorage).filter((key) => key.includes('MLB'))
+      .map((product) => this.setState((state) => ({ cartList: [...state.cartList, product] })));
+  }
 
   render() {
     return (
@@ -34,22 +57,11 @@ class CartShopping extends Component {
             </p>
           </div>
         </header>
-        {/* <div className="emptyBoxContainer">{this.validatingCart()}</div> */}
-        <div>
-          <img className="emptyBoxImage" src={EmptyBox} alt="empty box" />
-          <p>Seu carrinho está vazio</p>
-        </div>
+        <div className="emptyBoxContainer">{CartShopping.showProducts()}</div>
+        <p className="total-value space"> Valor total da compra: </p>
       </div>
     );
   }
 }
 
 export default CartShopping;
-
-// CartShopping.propTypes = {
-//   results: PropTypes.shape({
-//     price: PropTypes.number,
-//     title: PropTypes.string,
-//     thumbnail: PropTypes.string,
-//   }).isRequired,
-// };

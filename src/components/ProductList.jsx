@@ -22,7 +22,14 @@ class ProductsList extends React.Component {
   }
 
   fetchURL(url) {
-    fetch(url)
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const myInit = {
+      headers: myHeaders,
+    };
+
+    fetch(url, myInit)
       .then((data) => data.json())
       .then((newData) => this.setState({
         results: newData.results,
@@ -49,15 +56,24 @@ class ProductsList extends React.Component {
   render() {
     const { shouldUpdate, results } = this.state;
     const { searched, updateCartState } = this.props;
-    return (
-      <div className="card-container">
-        {shouldUpdate ? (
-          <Product results={results} searched={searched} onClick={updateCartState} />
-        ) : (
-          'Você ainda não realizou uma busca'
-        )}
-      </div>
-    );
+    if (results.length > 0) {
+      return (
+        <div className="card-container">
+          {results
+            .map((result) => (
+              <EachProduct
+                key={result.id}
+                result={result}
+                updateCartState={updateCartState}
+              />
+            ))}
+        </div>
+      );
+    }
+    if (results.length === 0 && searched) {
+      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
+    }
+    return 'Você ainda não buscou nada!';
   }
 }
 
