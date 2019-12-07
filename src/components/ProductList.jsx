@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ProductList.css';
 import EachProduct from './EachProduct';
+import ButtonOrderedBy from './ButtonOrderedBy';
 
 class ProductsList extends React.Component {
   constructor(props) {
@@ -51,8 +52,13 @@ class ProductsList extends React.Component {
     const { searched, updateCartState } = this.props;
     if (results.length > 0) {
       return (
-        <div className="card-container">
-          {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
+        <div className="show-all-info">
+          <div className="button-ordered-by">
+            <ButtonOrderedBy result={results} />
+          </div>
+          <div className="card-container">
+            {results.map((result) => <EachProduct result={result} onClick={updateCartState} />)};
+          </div>
         </div>
       );
     } else if (results.length === 0 && searched) {
@@ -61,7 +67,6 @@ class ProductsList extends React.Component {
     return 'Você ainda não buscou nada!';
   }
 }
-
 export default ProductsList;
 
 ProductsList.propTypes = {

@@ -1,11 +1,13 @@
 import React from 'react';
-import ProductList from './ProductList';
-import { results } from '/ProductList';
-import EachProduct from './EachProduct';
 
 class ButtonOrderedBy extends React.Component {
-  constructor(props){
-    super(props);
+
+  test(){
+    console.log(this.props.result)
+  }
+
+  render() {
+    return <button onClick={() => this.test()}>Ordenar por Maior Valor</button>
   }
 }
 
