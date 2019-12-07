@@ -48,12 +48,5 @@ class Product extends React.Component {
 export default Product;
 
 Product.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      price: PropTypes.number,
-      title: PropTypes.string,
-      thumbnail: PropTypes.string,
-      id: PropTypes.string,
-    }),
-  ).isRequired,
+  data: PropTypes.array.isRequired,
 };
