@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
 
+
 class EachProduct extends React.Component {
   static validatingShippingFree(shipping) {
     let freeShipping = '';
@@ -19,6 +20,7 @@ class EachProduct extends React.Component {
       id: '',
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
+
     this.selectStyle = this.selectStyle.bind(this);
     this.style = this.style.bind(this);
   }
@@ -44,10 +46,12 @@ class EachProduct extends React.Component {
   }
 
   showProduct(result) {
+
     const {
       id, title, price, thumbnail, shipping,
     } = result;
     const { updateCartState } = this.props;
+    
     return (
       <div className="card" key={id}>
         <div className="card-title">
@@ -59,6 +63,7 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
+
         <AddToCartButton
           handleClick={updateCartState}
           result={result}
@@ -81,6 +86,7 @@ class EachProduct extends React.Component {
 
   render() {
     const { result } = this.props;
+
     const { redirect, id } = this.state;
     if (redirect) return <Redirect to={`/products/${id}`} />;
     return <div>{this.showProduct(result)}</div>;
@@ -90,6 +96,7 @@ class EachProduct extends React.Component {
 export default EachProduct;
 
 EachProduct.propTypes = {
+
   result: PropTypes.shape({
     price: PropTypes.number,
     title: PropTypes.string,

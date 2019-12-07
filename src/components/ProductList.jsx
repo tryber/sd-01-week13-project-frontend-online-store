@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ProductList.css';
-import Product from './Product';
+import EachProduct from './EachProduct';
+import ButtonOrderedBy from './ButtonOrderedBy';
 
 class ProductsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       results: '',
-      shouldUpdate: false,
     };
     this.fetchURL = this.fetchURL.bind(this);
     this.requestAPI = this.requestAPI.bind(this);
@@ -31,10 +31,11 @@ class ProductsList extends React.Component {
 
     fetch(url, myInit)
       .then((data) => data.json())
-      .then((newData) => this.setState({
-        results: newData.results,
-        shouldUpdate: true,
-      }));
+      .then((newData) =>
+        this.setState({
+          results: newData.results,
+        }),
+      );
   }
 
   requestAPI(category, searchBarText) {
@@ -53,11 +54,18 @@ class ProductsList extends React.Component {
     }
   }
 
+  ordenedResult(newResult) {
+    this.setState({
+      results: newResult,
+    });
+  }
+
   render() {
-    const { shouldUpdate, results } = this.state;
+    const { results } = this.state;
     const { searched, updateCartState } = this.props;
     if (results.length > 0) {
       return (
+
         <div className="card-container">
           {results
             .map((result) => (
@@ -71,12 +79,12 @@ class ProductsList extends React.Component {
       );
     }
     if (results.length === 0 && searched) {
+
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     }
     return 'Você ainda não buscou nada!';
   }
 }
-
 export default ProductsList;
 
 ProductsList.propTypes = {
