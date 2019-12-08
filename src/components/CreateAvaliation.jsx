@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating';
+import './createAvaliation.css';
 
 class CreateAvaliation extends Component {
   constructor(props) {
@@ -63,10 +64,10 @@ class CreateAvaliation extends Component {
     }
   }
 
-  createFormForComments() {
+  createInputAvaliation() {
     return (
-      <form onSubmit={(e) => this.addAvaliation(e)}>
-        <div className="avaliation">
+      <div>
+        <div className="inputs-avaliation">
           <input
             type="text"
             placeholder="Email"
@@ -74,20 +75,46 @@ class CreateAvaliation extends Component {
             className={this.state.valid ? 'valid' : 'invalid'}
             onChange={this.validateEmail}
           />
-          <textarea placeholder="Mensagem(opcional)" onChange={this.comment} />
+          <Box display="flex" flexDirection="column">
+            <Rating
+              name="size-medium"
+              onClick={this.avaliation}
+              value={this.state.valueStar}
+              size="large"
+            />
+          </Box>
         </div>
-        <Box display="flex" flexDirection="column">
-          <Rating
-            name="size-medium"
-            onClick={this.avaliation}
-            value={this.state.valueStar}
-            size="large"
-          />
-        </Box>
-        <button type="submit" value={this.state.email}>
-          Avaliar
-        </button>
-      </form>
+        <textarea
+          placeholder="Mensagem(opcional)"
+          className="avaliation-text-area"
+          onChange={this.comment}
+        />
+      </div>
+    );
+  }
+
+  createFormForComments() {
+    return (
+      <div>
+        <fieldset>
+          <legend className="avaliations-text">Deixe seu comentário!</legend>
+          <form
+            className="avaliations-container"
+            onSubmit={(e) => this.addAvaliation(e)}
+          >
+            {this.createInputAvaliation()}
+            <div className="button-container">
+              <button
+                className="avaliation-button"
+                type="submit"
+                value={this.state.email}
+              >
+                Avaliar
+              </button>
+            </div>
+          </form>
+        </fieldset>
+      </div>
     );
   }
 
