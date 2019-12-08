@@ -31,13 +31,17 @@ class QuantityChanger extends Component {
       10,
     );
     const newQuantity = actualQuantity - 1;
-    if (newQuantity <= 0) {
+    if (!localStorage.getItem(`${productId}_quantity`)) {
+      console.log('Não há items para serem removidos.')
+      
+    } else if (newQuantity <= 0 ){
       console.log(
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
+    } else {
+      localStorage.removeItem(`${productId}_quantity`);
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
     }
-    localStorage.removeItem(`${productId}_quantity`);
-    localStorage.setItem(`${productId}_quantity`, newQuantity);
     return updatePrices(event);
   }
 
