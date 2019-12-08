@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import './productPageButton.css';
 
 class ProductPageButton extends React.Component {
-  static customAlert(text) {
-    alert(text);
-  }
-
   addProduct(event) {
     const { product, updatePrices } = this.props;
     if (localStorage.getItem(`${product.id}_quantity`)) {
-      customAlert('Produto já adicionado! Selecione a quantidade ao lado.');
+      alert('Produto já adicionado! Selecione a quantidade ao lado.');
     }
     localStorage.setItem(`${product.id}_quantity`, 1);
     return updatePrices(event);
