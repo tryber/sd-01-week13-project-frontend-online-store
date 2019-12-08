@@ -6,7 +6,7 @@ import CartImage from '../icons/cart.jpg';
 
 class CartButton extends React.Component {
   componentDidMount() {
-    this.getCurrentQuantity();
+    CartButton.getCurrentQuantity();
   }
 
   componentDidUpdate(prevProps) {
