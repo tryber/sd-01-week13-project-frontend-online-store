@@ -25,6 +25,7 @@ class QuantityChanger extends Component {
     if (newQuantity <= 0) {
       return console.log('Para remover o produto, clique no "X"');
     }
+    localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
     return updatePrices();
   }
@@ -36,6 +37,7 @@ class QuantityChanger extends Component {
     if (newQuantity >= product.available_quantity) {
       return console.log('Quantidade máxima do produto em estoque atingida.');
     }
+    localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
     return updatePrices();
   }
