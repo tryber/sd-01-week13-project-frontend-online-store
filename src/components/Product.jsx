@@ -31,7 +31,7 @@ class Product extends React.Component {
     this.setState({ shouldUpdate: event.target.value });
   }
 
-  showProductDetails(newResult) {
+  static showProductDetails(newResult) {
     const { title, price, thumbnail, attributes } = newResult;
     return (
       <div>
@@ -63,9 +63,9 @@ class Product extends React.Component {
     const { id } = newResult;
     return (
       <div>
-        {this.showProductDetails(newResult)}
+        {Product.showProductDetails(newResult)}
         <CreateAvaliation
-          onChange={event => this.updateComments(event)}
+          onChange={(event) => this.updateComments(event)}
           id={id}
         />
         <Avaliation id={id} update={this.state.shouldUpdate} />

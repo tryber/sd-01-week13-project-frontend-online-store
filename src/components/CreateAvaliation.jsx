@@ -72,7 +72,7 @@ class CreateAvaliation extends Component {
             type="text"
             placeholder="Email"
             required
-            className={this.state.valid ? "valid" : "invalid"}
+            className={this.state.valid ? 'valid' : 'invalid'}
             onChange={this.validateEmail}
           />
           <Box display="flex" flexDirection="column">

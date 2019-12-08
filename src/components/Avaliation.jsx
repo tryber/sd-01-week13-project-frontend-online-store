@@ -7,8 +7,8 @@ import './avaliation.css';
 class Avaliation extends React.Component {
   static showComments(comment) {
     return (
-      <div class="container-comment">
-        <div class="elements-comment">
+      <div className="container-comment">
+        <div className="elements-comment">
           <div className="email-comment">
             <p>{comment.email}</p>
             <Box display="flex" flexDirection="column">
