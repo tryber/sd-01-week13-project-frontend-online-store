@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./cartButton.css";
-import CartImage from "../icons/cart.jpg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './cartButton.css';
+import CartImage from '../icons/cart.jpg';
 
 class CartButton extends React.Component {
   constructor(props) {
@@ -17,14 +18,15 @@ class CartButton extends React.Component {
     if (prevProps !== this.props.onChange) {
       return this.getCurrentQuantity();
     }
+    return '';
   }
 
-  getCurrentQuantity() {
+  static getCurrentQuantity() {
     const itemsQuantities = Object.keys(localStorage)
-      .filter(key => key.includes("quantity"))
+      .filter((key) => key.includes('quantity'))
       .reduce(
         (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
-        0
+        0,
       );
     return itemsQuantities;
   }
@@ -34,11 +36,15 @@ class CartButton extends React.Component {
       <div>
         <Link className="button-container" to="/carrinho-de-compras">
           <img className="cartImage" src={CartImage} alt="shoppinng cart" />
-          <div className="number-of-products">{this.getCurrentQuantity()}</div>
+          <div className="number-of-products">{CartButton.getCurrentQuantity()}</div>
         </Link>
       </div>
     );
   }
 }
+
+CartButton.propTypes = {
+  onChange: PropTypes.string.isRequired,
+};
 
 export default CartButton;

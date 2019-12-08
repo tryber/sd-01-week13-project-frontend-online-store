@@ -35,6 +35,6 @@ AddToCartButton.propTypes = {
   result: PropTypes.shape({
     id: PropTypes.string.isRequired,
   }).isRequired,
-  handleClick: PropTypes.func,
+  handleClick: PropTypes.func.isRequired,
   selectStyle: PropTypes.func.isRequired,
 };

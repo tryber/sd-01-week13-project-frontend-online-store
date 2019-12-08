@@ -69,8 +69,15 @@ class Product extends React.Component {
       <div>
         {Product.showProductDetails(newResult)}
         <div className="buttons-add-product">
-        <ProductPageButton product={newResult} updatePrices={(event) => this.updateComments(event)} />
-        <QuantityChanger product={newResult} productId={id} updatePrices={(event) => this.updateComments(event)}/>
+          <ProductPageButton
+            product={newResult}
+            updatePrices={(event) => this.updateComments(event)}
+          />
+          <QuantityChanger
+            product={newResult}
+            productId={id}
+            updatePrices={(event) => this.updateComments(event)}
+          />
         </div>
         <CreateAvaliation
           onChange={(event) => this.updateComments(event)}

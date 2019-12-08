@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./QuantityChanger.css";
-import MinusIcon from "../icons/minus_icon.png";
-import PlusIcon from "../icons/plus_icon.png";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './QuantityChanger.css';
+import MinusIcon from '../icons/minus_icon.png';
+import PlusIcon from '../icons/plus_icon.png';
 
 class QuantityChanger extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class QuantityChanger extends Component {
     const { productId } = this.props;
     const actualQuantity = parseInt(
       localStorage.getItem(`${productId}_quantity`),
-      10
+      10,
     );
     if (!actualQuantity) {
       return 0;
@@ -28,11 +28,11 @@ class QuantityChanger extends Component {
     const { productId, updatePrices } = this.props;
     const actualQuantity = parseInt(
       localStorage.getItem(`${productId}_quantity`),
-      10
+      10,
     );
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
-      return alert(
+       alert(
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.'
       );
     }
@@ -45,17 +45,17 @@ class QuantityChanger extends Component {
     const { productId, product, updatePrices } = this.props;
     const actualQuantity = parseInt(
       localStorage.getItem(`${productId}_quantity`),
-      10
+      10,
     );
-    if(localStorage.getItem(`${productId}_quantity`)) {
+    if (localStorage.getItem(`${productId}_quantity`)) {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
-        return alert("Quantidade máxima do produto em estoque atingida.");
+        alert('Quantidade máxima do produto em estoque atingida.');
       }
       localStorage.removeItem(`${productId}_quantity`);
       localStorage.setItem(`${productId}_quantity`, newQuantity);
     } else {
-      return alert('Primeiro você precisa adicionar o produto no botão ao lado!');
+      alert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
     return updatePrices(event);
   }
@@ -64,7 +64,7 @@ class QuantityChanger extends Component {
     return (
       <div className="container">
         <div>
-          <button type="button" onClick={e => this.removeProduct(e)}>
+          <button type="button" onClick={(e) => this.removeProduct(e)}>
             <img
               className="minus-button max-img-size"
               src={MinusIcon}
@@ -79,7 +79,7 @@ class QuantityChanger extends Component {
           readOnly
         />
         <div>
-          <button type="button" onClick={e => this.addProduct(e)}>
+          <button type="button" onClick={(e) => this.addProduct(e)}>
             <img
               className="plus-button max-img-size"
               src={PlusIcon}
@@ -98,6 +98,6 @@ QuantityChanger.propTypes = {
   productId: PropTypes.string.isRequired,
   updatePrices: PropTypes.func.isRequired,
   product: PropTypes.shape({
-    available_quantity: PropTypes.number.isRequired
-  }).isRequired
+    available_quantity: PropTypes.number.isRequired,
+  }).isRequired,
 };
