@@ -5,6 +5,16 @@ import './cartButton.css';
 import CartImage from '../icons/cart.jpg';
 
 class CartButton extends React.Component {
+  static getCurrentQuantity() {
+    const itemsQuantities = Object.keys(localStorage)
+      .filter((key) => key.includes('quantity'))
+      .reduce(
+        (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
+        0,
+      );
+    return itemsQuantities;
+  }
+
   componentDidMount() {
     CartButton.getCurrentQuantity();
   }
@@ -14,16 +24,6 @@ class CartButton extends React.Component {
       return CartButton.getCurrentQuantity();
     }
     return '';
-  }
-
-  static getCurrentQuantity() {
-    const itemsQuantities = Object.keys(localStorage)
-      .filter((key) => key.includes('quantity'))
-      .reduce(
-        (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
-        0,
-      );
-    return itemsQuantities;
   }
 
   render() {

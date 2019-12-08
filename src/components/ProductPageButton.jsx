@@ -6,7 +6,7 @@ class ProductPageButton extends React.Component {
   addProduct(event) {
     const { product, updatePrices } = this.props;
     if (localStorage.getItem(`${product.id}_quantity`)) {
-      alert('Produto já adicionado! Selecione a quantidade ao lado.');
+      console.log('Produto já adicionado! Selecione a quantidade ao lado.');
     }
     localStorage.setItem(`${product.id}_quantity`, 1);
     return updatePrices(event);
