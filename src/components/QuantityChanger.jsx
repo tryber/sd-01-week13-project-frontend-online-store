@@ -32,9 +32,8 @@ class QuantityChanger extends Component {
     );
     const newQuantity = actualQuantity - 1;
     if (!localStorage.getItem(`${productId}_quantity`)) {
-      console.log('Não há items para serem removidos.')
-      
-    } else if (newQuantity <= 0 ){
+      console.log('Não há items para serem removidos.');
+    } else if (newQuantity <= 0 ) {
       console.log(
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
