@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import './EachProduct.css';
 import AddToCartButton from './AddToCartButton';
 
 
@@ -62,31 +61,21 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <div className="addToCart-button">
-          <AddToCartButton
-            handleClick={updateCartState}
-            result={result}
-            selectStyle={this.selectStyle}
-          />
-        </div>
+        <AddToCartButton
+          handleClick={updateCartState}
+          result={result}
+          selectStyle={this.selectStyle}
+        />
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
-        <div>
-          <button
-            type="button"
-            onClick={() => this.savingProductDetails(result)}
-          >
-            Ver Detalhes
-          </button>
-        </div>
+        <SeeDetailsButton savingProductDetails={this.savingProductDetails} result={result} />
       </div>
     );
   }
 
   render() {
     const { result } = this.props;
-
     const { redirect, id } = this.state;
     if (redirect) return <Redirect to={`/products/${id}`} />;
     return <div>{this.showProduct(result)}</div>;
@@ -95,8 +84,31 @@ class EachProduct extends React.Component {
 
 export default EachProduct;
 
-EachProduct.propTypes = {
+function SeeDetailsButton(props) {
+  const { savingProductDetails, result } = props;
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => savingProductDetails(result)}
+      >
+        Ver Detalhes
+      </button>
+    </div>
+  );
+}
 
+SeeDetailsButton.propTypes = {
+  savingProductDetails: PropTypes.func.isRequired,
+  result: PropTypes.shape({
+    price: PropTypes.number,
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
+};
+
+EachProduct.propTypes = {
   result: PropTypes.shape({
     price: PropTypes.number,
     title: PropTypes.string,

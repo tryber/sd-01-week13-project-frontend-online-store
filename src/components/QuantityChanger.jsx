@@ -7,52 +7,50 @@ import PlusIcon from '../icons/plus_icon.png';
 class QuantityChanger extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      productQuantity: 0,
-    };
-    this.addOrRemoveProduct = this.addOrRemoveProduct.bind(this);
+    this.addProduct = this.addProduct.bind(this);
+    this.removeProduct = this.removeProduct.bind(this);
+    this.refreshPrice = this.refreshPrice.bind(this);
   }
 
-  componentDidMount() {
+  refreshPrice() {
     const { productId } = this.props;
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
-    return this.setState({ productQuantity: actualQuantity });
+    return actualQuantity;
   }
 
-  addOrRemoveProduct(operator) {
+  removeProduct() {
+    const { productId, updatePrices } = this.props;
+    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
+    const newQuantity = actualQuantity - 1;
+    if (newQuantity <= 0) {
+      return console.log('Para remover o produto, clique no "X"');
+    }
+    localStorage.setItem(`${productId}_quantity`, newQuantity);
+    return updatePrices();
+  }
+
+  addProduct() {
     const { productId, product, updatePrices } = this.props;
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
-    if (operator === 'minus') {
-      const newQuantity = actualQuantity - 1;
-      if (newQuantity <= 0) {
-        return console.log('Para remover o produto, clique no "X"');
-      }
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
-      return this.setState({ productQuantity: newQuantity }, () => updatePrices());
+    const newQuantity = actualQuantity + 1;
+    if (newQuantity >= product.available_quantity) {
+      return console.log('Quantidade máxima do produto em estoque atingida.');
     }
-    if (operator === 'plus') {
-      const newQuantity = actualQuantity + 1;
-      if (newQuantity >= product.available_quantity) {
-        return console.log('Quantidade máxima do produto em estoque atingida.');
-      }
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
-      return this.setState({ productQuantity: newQuantity }, () => updatePrices());
-    }
-    return undefined;
+    localStorage.setItem(`${productId}_quantity`, newQuantity);
+    return updatePrices();
   }
 
   render() {
-    const { productQuantity } = this.state;
     return (
       <div className="container">
         <div>
-          <button type="button" onClick={() => this.addOrRemoveProduct('minus')}>
+          <button type="button" onClick={() => this.removeProduct()}>
             <img className="minus-button max-img-size" src={MinusIcon} alt="Minus icon" />
           </button>
         </div>
-        <input type="text" className="quantity-value" value={productQuantity} readOnly />
+        <input type="text" className="quantity-value" value={this.refreshPrice()} readOnly />
         <div>
-          <button type="button" onClick={() => this.addOrRemoveProduct('plus')}>
+          <button type="button" onClick={() => this.addProduct()}>
             <img className="plus-button max-img-size" src={PlusIcon} alt="Plus icon" />
           </button>
         </div>

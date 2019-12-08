@@ -29,7 +29,12 @@ export default class ShoppingProduct extends Component {
           <button className="remove-button" type="button" onClick={this.removeItem}>X</button>
           <img className="thumbnail" src={thumbnail} alt={title} />
           <span className="title">{title}</span>
-          <QuantityChanger className="quantity-component" updatePrices={() => updatePrices()} productId={id} product={data} />
+          <QuantityChanger
+            className="quantity-component"
+            updatePrices={() => updatePrices()}
+            productId={id}
+            product={data}
+          />
           <span className="price">{`R$ ${price.toFixed(2)}`}</span>
         </div>
       </div>
