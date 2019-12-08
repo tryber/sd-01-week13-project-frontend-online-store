@@ -5,6 +5,10 @@ import MinusIcon from '../icons/minus_icon.png';
 import PlusIcon from '../icons/plus_icon.png';
 
 class QuantityChanger extends Component {
+  static customAlert(text) {
+    alert(text);
+  }
+  
   constructor(props) {
     super(props);
     this.addProduct = this.addProduct.bind(this);
@@ -32,9 +36,8 @@ class QuantityChanger extends Component {
     );
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
-      customAlert(
-        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
-      );
+      this.customAlert('Para remover o produto, basta clicar no "X" localizado no carrinho de compras.');
+      return 0;
     }
     localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
@@ -50,12 +53,12 @@ class QuantityChanger extends Component {
     if (localStorage.getItem(`${productId}_quantity`)) {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
-        customAlert('Quantidade máxima do produto em estoque atingida.');
+        this.customAlert('Quantidade máxima do produto em estoque atingida.');
       }
       localStorage.removeItem(`${productId}_quantity`);
       localStorage.setItem(`${productId}_quantity`, newQuantity);
     } else {
-      customAlert('Primeiro você precisa adicionar o produto no botão ao lado!');
+      this.customAlert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
     return updatePrices(event);
   }
