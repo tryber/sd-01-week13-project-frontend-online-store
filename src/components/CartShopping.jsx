@@ -36,7 +36,6 @@ class CartShopping extends Component {
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(localStorage.getItem(`${itemId}_quantity`), 10);
         const item = JSON.parse(localStorage.getItem(itemId));
-        console.log(item);
         const itemPrice = item.price;
         const thisItemTotalPrice = itemQuantity * itemPrice;
         return acc + thisItemTotalPrice;

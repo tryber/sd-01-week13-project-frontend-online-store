@@ -1,14 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './cartShopping.css';
-import CartImage from '../icons/cart.jpg';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./cartButton.css";
+import CartImage from "../icons/cart.jpg";
 
 class CartButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      quantity: 0,
-    };
     this.getCurrentQuantity = this.getCurrentQuantity.bind(this);
   }
 
@@ -16,21 +13,28 @@ class CartButton extends React.Component {
     this.getCurrentQuantity();
   }
 
-  getCurrentQuantity() {
-    const itemsQuantities = Object.keys(localStorage)
-      .filter((key) => key.includes('quantity'))
-      .reduce((acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10), 0);
-    this.setState({ quantity: itemsQuantities });
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props.onChange) {
+      return this.getCurrentQuantity();
+    }
   }
 
+  getCurrentQuantity() {
+    const itemsQuantities = Object.keys(localStorage)
+      .filter(key => key.includes("quantity"))
+      .reduce(
+        (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
+        0
+      );
+    return itemsQuantities;
+  }
 
   render() {
-    const { quantity } = this.state;
     return (
       <div>
-        <Link to="/carrinho-de-compras">
+        <Link className="button-container" to="/carrinho-de-compras">
           <img className="cartImage" src={CartImage} alt="shoppinng cart" />
-          {quantity}
+          <div className="number-of-products">{this.getCurrentQuantity()}</div>
         </Link>
       </div>
     );

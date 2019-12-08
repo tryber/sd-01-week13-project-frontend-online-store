@@ -15,11 +15,15 @@ class QuantityChanger extends Component {
   refreshPrice() {
     const { productId } = this.props;
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
+    if(!actualQuantity) {
+      return 0;
+    }
     return actualQuantity;
   }
 
-  removeProduct() {
+  removeProduct(event) {
     const { productId, updatePrices } = this.props;
+
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
@@ -27,10 +31,10 @@ class QuantityChanger extends Component {
     }
     localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
-    return updatePrices();
+    return updatePrices(event);
   }
 
-  addProduct() {
+  addProduct(event) {
     const { productId, product, updatePrices } = this.props;
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
     const newQuantity = actualQuantity + 1;
@@ -39,20 +43,20 @@ class QuantityChanger extends Component {
     }
     localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
-    return updatePrices();
+    return updatePrices(event);
   }
 
   render() {
     return (
       <div className="container">
         <div>
-          <button type="button" onClick={() => this.removeProduct()}>
+          <button type="button" onClick={(e) => this.removeProduct(e)}>
             <img className="minus-button max-img-size" src={MinusIcon} alt="Minus icon" />
           </button>
         </div>
         <input type="text" className="quantity-value" value={this.refreshPrice()} readOnly />
         <div>
-          <button type="button" onClick={() => this.addProduct()}>
+          <button type="button" onClick={(e) => this.addProduct(e)}>
             <img className="plus-button max-img-size" src={PlusIcon} alt="Plus icon" />
           </button>
         </div>
