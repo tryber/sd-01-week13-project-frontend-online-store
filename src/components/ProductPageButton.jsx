@@ -1,4 +1,5 @@
 import React from "react";
+import './productPageButton.css';
 
 class ProductPageButton extends React.Component {
   addProduct(event) {
@@ -13,7 +14,7 @@ class ProductPageButton extends React.Component {
 
   render() {
     return (
-      <button onClick={e => this.addProduct(e)}>Adicionar ao carrinho</button>
+      <button className="button-add" onClick={e => this.addProduct(e)}>Adicionar ao carrinho</button>
     );
   }
 }

@@ -68,7 +68,7 @@ class Product extends React.Component {
     return (
       <div>
         {Product.showProductDetails(newResult)}
-        <div>
+        <div className="buttons-add-product">
         <ProductPageButton product={newResult} updatePrices={(event) => this.updateComments(event)} />
         <QuantityChanger product={newResult} productId={id} updatePrices={(event) => this.updateComments(event)}/>
         </div>

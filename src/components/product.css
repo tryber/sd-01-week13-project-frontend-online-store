@@ -1,3 +1,11 @@
+.buttons-add-product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 25em;
+  margin: 0 auto;
+}
+
 .product-container {
   display: flex;
   flex-direction: row;
