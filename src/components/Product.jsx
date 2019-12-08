@@ -20,17 +20,6 @@ class Product extends React.Component {
     return price.toString().replace('.', ',');
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldUpdate: '',
-    };
-  }
-
-  updateComments(event) {
-    this.setState({ shouldUpdate: event.target.value });
-  }
-
   static showProductDetails(newResult) {
     const { title, price, thumbnail, attributes } = newResult;
     return (
@@ -56,6 +45,17 @@ class Product extends React.Component {
         </div>
       </div>
     );
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldUpdate: '',
+    };
+  }
+
+  updateComments(event) {
+    this.setState({ shouldUpdate: event.target.value });
   }
 
   render() {
