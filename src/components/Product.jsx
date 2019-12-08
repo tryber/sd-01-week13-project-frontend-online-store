@@ -6,7 +6,7 @@ import Avaliation from './Avaliation';
 import './product.css';
 import QuantityChanger from './QuantityChanger';
 import CartButton from './CartButton';
-import AddToCartButton from './AddToCartButton';
+import ProductPageButton from './ProductPageButton';
 
 class Product extends React.Component {
   static showHeader() {
@@ -69,7 +69,7 @@ class Product extends React.Component {
       <div>
         {Product.showProductDetails(newResult)}
         <div>
-        <AddToCartButton result={newResult} handleClick={(event) => this.updateComments(event)} />
+        <ProductPageButton product={newResult} updatePrices={(event) => this.updateComments(event)} />
         <QuantityChanger product={newResult} productId={id} updatePrices={(event) => this.updateComments(event)}/>
         </div>
         <CreateAvaliation

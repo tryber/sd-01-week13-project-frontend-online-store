@@ -6,7 +6,7 @@ export default class AddToCartButton extends React.Component {
     const {
       selectStyle, result, result: { id }, handleClick,
     } = this.props;
-    // selectStyle();
+    selectStyle();
     if (!Object.keys(localStorage).includes(id)) {
       localStorage.setItem(id, JSON.stringify(result));
       localStorage.setItem(`${id}_quantity`, 1);

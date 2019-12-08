@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './QuantityChanger.css';
-import MinusIcon from '../icons/minus_icon.png';
-import PlusIcon from '../icons/plus_icon.png';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./QuantityChanger.css";
+import MinusIcon from "../icons/minus_icon.png";
+import PlusIcon from "../icons/plus_icon.png";
 
 class QuantityChanger extends Component {
   constructor(props) {
@@ -14,8 +14,11 @@ class QuantityChanger extends Component {
 
   refreshPrice() {
     const { productId } = this.props;
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
-    if(!actualQuantity) {
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10
+    );
+    if (!actualQuantity) {
       return 0;
     }
     return actualQuantity;
@@ -23,11 +26,15 @@ class QuantityChanger extends Component {
 
   removeProduct(event) {
     const { productId, updatePrices } = this.props;
-
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10
+    );
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
-      return console.log('Para remover o produto, clique no "X"');
+      return alert(
+        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.'
+      );
     }
     localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
@@ -36,13 +43,20 @@ class QuantityChanger extends Component {
 
   addProduct(event) {
     const { productId, product, updatePrices } = this.props;
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
-    const newQuantity = actualQuantity + 1;
-    if (newQuantity >= product.available_quantity) {
-      return console.log('Quantidade máxima do produto em estoque atingida.');
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10
+    );
+    if(localStorage.getItem(`${productId}_quantity`)) {
+      const newQuantity = actualQuantity + 1;
+      if (newQuantity >= product.available_quantity) {
+        return alert("Quantidade máxima do produto em estoque atingida.");
+      }
+      localStorage.removeItem(`${productId}_quantity`);
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
+    } else {
+      return alert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
-    localStorage.removeItem(`${productId}_quantity`);
-    localStorage.setItem(`${productId}_quantity`, newQuantity);
     return updatePrices(event);
   }
 
@@ -50,14 +64,27 @@ class QuantityChanger extends Component {
     return (
       <div className="container">
         <div>
-          <button type="button" onClick={(e) => this.removeProduct(e)}>
-            <img className="minus-button max-img-size" src={MinusIcon} alt="Minus icon" />
+          <button type="button" onClick={e => this.removeProduct(e)}>
+            <img
+              className="minus-button max-img-size"
+              src={MinusIcon}
+              alt="Minus icon"
+            />
           </button>
         </div>
-        <input type="text" className="quantity-value" value={this.refreshPrice()} readOnly />
+        <input
+          type="text"
+          className="quantity-value"
+          value={this.refreshPrice()}
+          readOnly
+        />
         <div>
-          <button type="button" onClick={(e) => this.addProduct(e)}>
-            <img className="plus-button max-img-size" src={PlusIcon} alt="Plus icon" />
+          <button type="button" onClick={e => this.addProduct(e)}>
+            <img
+              className="plus-button max-img-size"
+              src={PlusIcon}
+              alt="Plus icon"
+            />
           </button>
         </div>
       </div>
@@ -71,6 +98,6 @@ QuantityChanger.propTypes = {
   productId: PropTypes.string.isRequired,
   updatePrices: PropTypes.func.isRequired,
   product: PropTypes.shape({
-    available_quantity: PropTypes.number.isRequired,
-  }).isRequired,
+    available_quantity: PropTypes.number.isRequired
+  }).isRequired
 };
