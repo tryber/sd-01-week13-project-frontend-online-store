@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Box from "@material-ui/core/Box";
-import Rating from "@material-ui/lab/Rating";
-import "./avaliation.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
+import './avaliation.css';
 
 class Avaliation extends React.Component {
   static showComments(comment) {
@@ -43,9 +43,9 @@ class Avaliation extends React.Component {
     if (localStorage.comments) {
       const commentsFromLocalStorage = localStorage.comments;
       const formatedComment = JSON.parse(commentsFromLocalStorage);
-      const comments = formatedComment.filter(key => key.id === id);
+      const comments = formatedComment.filter((key) => key.id === id);
       return (
-        <div>{comments.map(comment => Avaliation.showComments(comment))}</div>
+        <div>{comments.map((comment) => Avaliation.showComments(comment))}</div>
       );
     }
     return <div>Nenhum comentário feito!</div>;
@@ -63,7 +63,7 @@ class Avaliation extends React.Component {
 
 Avaliation.propTypes = {
   id: PropTypes.string.isRequired,
-  update: PropTypes.string.isRequired
+  update: PropTypes.string.isRequired,
 };
 
 export default Avaliation;

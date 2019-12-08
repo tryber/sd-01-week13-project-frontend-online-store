@@ -16,6 +16,10 @@ class Product extends React.Component {
     );
   }
 
+  static formatePrice(price) {
+    return price.toString().replace('.', ',');
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,32 +31,44 @@ class Product extends React.Component {
     this.setState({ shouldUpdate: event.target.value });
   }
 
-  render() {
-    const newResult = JSON.parse(localStorage.result);
-    const { title, price, thumbnail, attributes, id } = newResult;
+  showProductDetails(newResult) {
+    const { title, price, thumbnail, attributes } = newResult;
     return (
       <div>
         {Product.showHeader()}
-        <div>
-          <p>{`Produto ${title} - R$${price}`}</p>
-        </div>
-        <div>
-          <img src={thumbnail} alt="product" />
-          <div>
+        <div className="product-container">
+          <div className="product-name-price">
+            <p>{`Produto ${title} - R$${Product.formatePrice(price)}`}</p>
+            <img className="product-image" src={thumbnail} alt="product" />
+          </div>
+          <div className="specifications">
             <p>
               <strong>Especificações Técnicas</strong>
             </p>
             <ul>
               {attributes.map((specification) => (
                 <li key={specification.name}>
-                  {specification.name} : {specification.value_name}
+                  {`${specification.name}: ${specification.value_name}`}
                 </li>
               ))}
             </ul>
           </div>
-          <CreateAvaliation onChange={(event) => this.updateComments(event)} id={id} />
-          <Avaliation id={id} update={this.state.shouldUpdate} />
         </div>
+      </div>
+    );
+  }
+
+  render() {
+    const newResult = JSON.parse(localStorage.result);
+    const { id } = newResult;
+    return (
+      <div>
+        {this.showProductDetails(newResult)}
+        <CreateAvaliation
+          onChange={event => this.updateComments(event)}
+          id={id}
+        />
+        <Avaliation id={id} update={this.state.shouldUpdate} />
       </div>
     );
   }
