@@ -11,7 +11,7 @@ class CartButton extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props.onChange) {
-      return this.getCurrentQuantity();
+      return CartButton.getCurrentQuantity();
     }
     return '';
   }
