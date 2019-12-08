@@ -24,18 +24,13 @@ class ProductsList extends React.Component {
   fetchURL(url) {
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-
     const myInit = {
       headers: myHeaders,
     };
 
     fetch(url, myInit)
       .then((data) => data.json())
-      .then((newData) =>
-        this.setState({
-          results: newData.results,
-        }),
-      );
+      .then((newData) => this.setState({ results: newData.results }));
   }
 
   requestAPI(category, searchBarText) {
@@ -65,24 +60,27 @@ class ProductsList extends React.Component {
     const { searched, updateCartState } = this.props;
     if (results.length > 0) {
       return (
-
-        <div className="card-container">
-          {results
-            .map((result) => (
-              <EachProduct
-                key={result.id}
-                result={result}
-                updateCartState={updateCartState}
-              />
-            ))}
+        <div className="show-all-info">
+          <div className="button-ordered-by">
+            <ButtonOrderedBy result={results} onChange={(e) => this.ordenedResult(e)} />
+          </div>
+          <div className="card-container">
+            {results
+              .map((result) => (
+                <EachProduct
+                  key={result.id}
+                  result={result}
+                  updateCartState={updateCartState}
+                />
+              ))}
+          </div>
         </div>
       );
     }
     if (results.length === 0 && searched) {
-
       return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
     }
-    return 'Você ainda não buscou nada!';
+    return <p>Você ainda não buscou nada!</p>;
   }
 }
 export default ProductsList;

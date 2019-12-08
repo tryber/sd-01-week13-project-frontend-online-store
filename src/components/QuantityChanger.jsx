@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './QuantityChanger.css';
 import MinusIcon from '../icons/minus_icon.png';
 import PlusIcon from '../icons/plus_icon.png';
@@ -19,21 +20,23 @@ class QuantityChanger extends Component {
   }
 
   addOrRemoveProduct(operator) {
-    const { productId, product } = this.props;
+    const { productId, product, updatePrices } = this.props;
     const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
     if (operator === 'minus') {
       const newQuantity = actualQuantity - 1;
       if (newQuantity <= 0) {
         return console.log('Para remover o produto, clique no "X"');
       }
-      return this.setState({ productQuantity: newQuantity }, () => localStorage.setItem(`${productId}_quantity`, newQuantity));
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
+      return this.setState({ productQuantity: newQuantity }, () => updatePrices());
     }
     if (operator === 'plus') {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
         return console.log('Quantidade máxima do produto em estoque atingida.');
       }
-      return this.setState({ productQuantity: newQuantity }, () => localStorage.setItem(`${productId}_quantity`, newQuantity));
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
+      return this.setState({ productQuantity: newQuantity }, () => updatePrices());
     }
     return undefined;
   }
@@ -59,3 +62,11 @@ class QuantityChanger extends Component {
 }
 
 export default QuantityChanger;
+
+QuantityChanger.propTypes = {
+  productId: PropTypes.string.isRequired,
+  updatePrices: PropTypes.func.isRequired,
+  product: PropTypes.shape({
+    available_quantity: PropTypes.number.isRequired,
+  }).isRequired,
+};

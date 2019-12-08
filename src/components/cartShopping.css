@@ -37,3 +37,8 @@
   text-decoration: solid;
   font-weight: bold;
 }
+
+.proceedToCheckout {
+  border: solid 1px black;
+  padding: 8px 14px;
+}

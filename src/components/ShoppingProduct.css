@@ -4,9 +4,31 @@
   flex-wrap: nowrap;
   margin-left: 10px;
   align-items: center;
-  width: 75%;
+  width: 80%;
 }
 
-.product-item span {
-  margin: 0 5px;
+.product-item .remove-button {
+  min-width: 15%;
+  max-width: 15%;
+}
+
+.product-item .thumbnail {
+  min-width: 15%;
+  max-width: 15%;
+}
+
+
+.product-item .title {
+  min-width: 25%;
+  max-width: 25%;
+}
+
+.product-item .price {
+  min-width: 15%;
+  max-width: 15%;
+}
+
+.product-item .quantity-component {
+  min-width: 50%;
+  max-width: 50%;
 }

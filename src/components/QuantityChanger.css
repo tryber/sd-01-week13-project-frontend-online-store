@@ -35,8 +35,3 @@ button, input[type="submit"], input[type="reset"] {
 .minus-button {
   max-height: 20px;
 }
-
-.temp-div {
-  display: fixed;
-  z-index: 5;
-}

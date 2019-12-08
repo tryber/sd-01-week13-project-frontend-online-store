@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import './EachProduct.css';
 import AddToCartButton from './AddToCartButton';
 
 
@@ -46,12 +47,10 @@ class EachProduct extends React.Component {
   }
 
   showProduct(result) {
-
     const {
       id, title, price, thumbnail, shipping,
     } = result;
     const { updateCartState } = this.props;
-    
     return (
       <div className="card" key={id}>
         <div className="card-title">
@@ -63,12 +62,13 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-
-        <AddToCartButton
-          handleClick={updateCartState}
-          result={result}
-          selectStyle={this.selectStyle}
-        />
+        <div className="addToCart-button">
+          <AddToCartButton
+            handleClick={updateCartState}
+            result={result}
+            selectStyle={this.selectStyle}
+          />
+        </div>
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>

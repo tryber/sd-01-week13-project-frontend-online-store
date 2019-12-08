@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ButtonOrderedBy extends React.Component {
-
   sortResultLessValue() {
     const { result, onChange } = this.props;
     const ordenedResult = result.slice(0);
@@ -42,6 +41,6 @@ class ButtonOrderedBy extends React.Component {
 export default ButtonOrderedBy;
 
 ButtonOrderedBy.propTypes = {
-  result: PropTypes.arrayOf.isRequired,
+  result: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChange: PropTypes.func.isRequired,
 };
