@@ -33,7 +33,7 @@ class QuantityChanger extends Component {
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
       console.log(
-        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.'
+        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
     }
     localStorage.removeItem(`${productId}_quantity`);
