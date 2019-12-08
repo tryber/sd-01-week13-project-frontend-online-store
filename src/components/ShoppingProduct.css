@@ -1,34 +1,33 @@
 .product-item {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  margin-left: 10px;
   align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-left: 10px;
   width: 80%;
-}
+ }
 
-.product-item .remove-button {
-  min-width: 15%;
+ .product-item .remove-button {
   max-width: 15%;
-}
-
-.product-item .thumbnail {
   min-width: 15%;
+ }
+
+ .product-item .thumbnail {
   max-width: 15%;
-}
+  min-width: 15%;
+ }
 
-
-.product-item .title {
-  min-width: 25%;
+ .product-item .title {
   max-width: 25%;
-}
+  min-width: 25%;
+ }
 
-.product-item .price {
-  min-width: 15%;
+ .product-item .price {
   max-width: 15%;
-}
+  min-width: 15%;
+ }
 
-.product-item .quantity-component {
-  min-width: 50%;
+ .product-item .quantity-component {
   max-width: 50%;
-}
+  min-width: 50%;
+ }

@@ -100,12 +100,7 @@ function SeeDetailsButton(props) {
 
 SeeDetailsButton.propTypes = {
   savingProductDetails: PropTypes.func.isRequired,
-  result: PropTypes.shape({
-    price: PropTypes.number,
-    title: PropTypes.string,
-    thumbnail: PropTypes.string,
-    id: PropTypes.string,
-  }).isRequired,
+  result: PropTypes.shape.isRequired,
 };
 
 EachProduct.propTypes = {
