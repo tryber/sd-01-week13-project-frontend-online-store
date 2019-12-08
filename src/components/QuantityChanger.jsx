@@ -32,8 +32,8 @@ class QuantityChanger extends Component {
     );
     const newQuantity = actualQuantity - 1;
     if (newQuantity <= 0) {
-       alert(
-        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.'
+      customAlert(
+        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
     }
     localStorage.removeItem(`${productId}_quantity`);
@@ -50,12 +50,12 @@ class QuantityChanger extends Component {
     if (localStorage.getItem(`${productId}_quantity`)) {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
-        alert('Quantidade máxima do produto em estoque atingida.');
+        customAlert('Quantidade máxima do produto em estoque atingida.');
       }
       localStorage.removeItem(`${productId}_quantity`);
       localStorage.setItem(`${productId}_quantity`, newQuantity);
     } else {
-      alert('Primeiro você precisa adicionar o produto no botão ao lado!');
+      customAlert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
     return updatePrices(event);
   }

@@ -5,11 +5,6 @@ import './cartButton.css';
 import CartImage from '../icons/cart.jpg';
 
 class CartButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getCurrentQuantity = this.getCurrentQuantity.bind(this);
-  }
-
   componentDidMount() {
     this.getCurrentQuantity();
   }
