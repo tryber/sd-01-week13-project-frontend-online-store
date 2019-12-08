@@ -2,9 +2,9 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
- }
+}
 
- button {
+button {
   background: none;
   border: none;
   color: inherit;
@@ -12,9 +12,9 @@
   font: inherit;
   outline: inherit;
   padding: 0;
- }
+}
 
- .quantity-value {
+.quantity-value {
   align-items: center;
   border: 1px solid black;
   border-radius: 50%;
@@ -25,12 +25,12 @@
   padding: 3px;
   text-align: center;
   width: 30px;
- }
+}
 
- .plus-button {
+.plus-button {
   max-height: 50px;
- }
+}
 
- .minus-button {
+.minus-button {
   max-height: 20px;
- }
+}
