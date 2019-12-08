@@ -11,19 +11,20 @@
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  height: 250px;
+  height: 300px;
   justify-content: space-between;
   margin: 10px 0;
-  width: 220px;
+  width: 260px;
 }
 
 .card-title {
   background: rgba(224, 224, 224, 0.781);
   border-radius: 15px 15px 0 0;
   font-size: 12px;
-  max-width: 220px;
+  max-width: 240px;
   min-height: 10px;
   padding: 10px;
+  width: 100%;
 }
 
 .card-thumbnail {

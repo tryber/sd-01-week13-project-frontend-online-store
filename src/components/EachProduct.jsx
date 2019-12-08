@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import AddToCartButton from './AddToCartButton';
+
 
 class EachProduct extends React.Component {
   static validatingShippingFree(shipping) {
@@ -18,6 +20,23 @@ class EachProduct extends React.Component {
       id: '',
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
+
+    this.selectStyle = this.selectStyle.bind(this);
+    this.style = this.style.bind(this);
+  }
+
+  selectStyle() {
+    this.setState((state) => ({ style: !state.style }));
+  }
+
+  style() {
+    const { style } = this.state;
+    if (style) {
+      const border = { border: '2px solid red' };
+      return border;
+    }
+    const border = { border: '1px solid black' };
+    return border;
   }
 
   savingProductDetails(result) {
@@ -27,7 +46,10 @@ class EachProduct extends React.Component {
   }
 
   showProduct(result) {
-    const { id, title, price, thumbnail, shipping } = result;
+    const {
+      id, title, price, thumbnail, shipping,
+    } = result;
+    const { updateCartState } = this.props;
     return (
       <div className="card" key={id}>
         <div className="card-title">
@@ -39,41 +61,54 @@ class EachProduct extends React.Component {
         <div className="card-product-price">
           <p>{`R$${parseFloat(price).toFixed(2)}`}</p>
         </div>
-        <button type="button" onClick={() => this.props.onClick(result)}>
-          Adicionar ao carrinho
-        </button>
+        <AddToCartButton
+          handleClick={updateCartState}
+          result={result}
+          selectStyle={this.selectStyle}
+        />
         <div>
           <p>{EachProduct.validatingShippingFree(shipping)}</p>
         </div>
-        <div>
-          <button
-            type="button"
-            onClick={() => this.savingProductDetails(result)}
-          >
-            Ver Detalhes
-          </button>
-        </div>
+        <SeeDetailsButton savingProductDetails={this.savingProductDetails} result={result} />
       </div>
     );
   }
 
   render() {
     const { result } = this.props;
-    if (this.state.redirect) return <Redirect to={`/products/${this.state.id}`} />;
+    const { redirect, id } = this.state;
+    if (redirect) return <Redirect to={`/products/${id}`} />;
     return <div>{this.showProduct(result)}</div>;
   }
 }
 
 export default EachProduct;
 
+function SeeDetailsButton(props) {
+  const { savingProductDetails, result } = props;
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => savingProductDetails(result)}
+      >
+        Ver Detalhes
+      </button>
+    </div>
+  );
+}
+
+SeeDetailsButton.propTypes = {
+  savingProductDetails: PropTypes.func.isRequired,
+  result: PropTypes.shape.isRequired,
+};
+
 EachProduct.propTypes = {
-  result: PropTypes.arrayOf(
-    PropTypes.shape({
-      price: PropTypes.number,
-      title: PropTypes.string,
-      thumbnail: PropTypes.string,
-      id: PropTypes.string,
-    }),
-  ).isRequired,
-  onClick: PropTypes.func.isRequired,
+  result: PropTypes.shape({
+    price: PropTypes.number,
+    title: PropTypes.string,
+    thumbnail: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
+  updateCartState: PropTypes.func.isRequired,
 };

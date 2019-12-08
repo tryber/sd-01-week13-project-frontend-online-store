@@ -28,7 +28,8 @@ class Avaliation extends React.Component {
   }
 
   shouldComponentUpdate(prevProps) {
-    if (prevProps !== this.props.update) {
+    const { update } = this.props;
+    if (prevProps !== update) {
       return true;
     }
     return false;
