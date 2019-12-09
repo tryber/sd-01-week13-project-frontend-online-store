@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import billet from '../icons/boleto.png';
-import credit from '../icons/cardCredit.png';
-import './finishingShopping.css';
-import Back from '../icons/back.svg';
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
+import billet from "../icons/boleto.png";
+import credit from "../icons/cardCredit.png";
+import "./finishingShopping.css";
+import Back from "../icons/back.svg";
+import FormForFinishingShopping from "./FormForFinishingShopping";
 
 class FinishingShopping extends React.Component {
   static showHeader() {
@@ -17,11 +18,11 @@ class FinishingShopping extends React.Component {
   }
 
   static showProcuts(products) {
-    return products.map((product) => {
+    return products.map(product => {
       const actualProduct = JSON.parse(localStorage.getItem(product));
       const { id, title, price, thumbnail } = actualProduct;
       const quantity = localStorage.getItem(
-        Object.keys(localStorage).find((key) => key.includes(`${id}_quantity`)),
+        Object.keys(localStorage).find(key => key.includes(`${id}_quantity`))
       );
       return (
         <div key={id}>
@@ -38,11 +39,11 @@ class FinishingShopping extends React.Component {
 
   static calculateTotalPrice() {
     const totalPrice = Object.keys(localStorage)
-      .filter((key) => key.includes('MLB') && !key.includes('quantity'))
+      .filter(key => key.includes("MLB") && !key.includes("quantity"))
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
-          10,
+          10
         );
         const item = JSON.parse(localStorage.getItem(itemId));
         const itemPrice = item.price;
@@ -54,12 +55,12 @@ class FinishingShopping extends React.Component {
 
   static findProducts() {
     const products = Object.keys(localStorage).filter(
-      (key) => key.includes('MLB') && !key.includes('quantity'),
+      key => key.includes("MLB") && !key.includes("quantity")
     );
     if (products.length !== 0) {
       return FinishingShopping.showProcuts(products);
     }
-    return 'Nenhum produto encontrado.';
+    return "Nenhum produto encontrado.";
   }
 
   static gerateCreditMethodPayment() {
@@ -105,15 +106,15 @@ class FinishingShopping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      cpf: '',
-      email: '',
-      cep: '',
-      cellphone: '',
-      adress: '',
-      number: '',
-      city: '',
-      complete: '',
+      name: "",
+      cpf: "",
+      email: "",
+      cep: "",
+      cellphone: "",
+      adress: "",
+      number: "",
+      city: "",
+      complete: "",
       nameValidation: true,
       cpfValidation: true,
       emailValidation: true,
@@ -123,45 +124,17 @@ class FinishingShopping extends React.Component {
       numberValidation: true,
       cityValidation: true,
       shouldUpdate: true,
-      shouldRedirect: false,
+      shouldRedirect: false
     };
     this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
     this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
     this.finishingBuy = this.finishingBuy.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
   changeHandler(event) {
     const { target } = event;
     this.setState({ [target.id]: target.value });
-  }
-
-  formPurchase() {
-    return (
-      <form name="formPurchase">
-        {this.createInput('name', 'Nome Completo')}
-        {this.createInput('cpf', 'CPF')}
-        {this.createInput('email', 'Email')}
-        {this.createInput('cellphone', 'Telefone')}
-        {this.createInput('cep', 'CEP')}
-        {this.createInput('adress', 'Endereço')}
-        {this.createInput('complete', 'Complemento')}
-        {this.createInput('number', 'Número')}
-        {this.createInput('city', 'CIdade')}
-      </form>
-    );
-  }
-
-  createInput(id, placeholder) {
-    return (
-      <input
-        type="text"
-        className={`this.state.${id}Validation` ? 'valid' : 'invalid'}
-        onChange={(e) => this.changeHandler(e)}
-        id={id}
-        required
-        placeholder={placeholder}
-      />
-    );
   }
 
   validateDataFirstPart() {
@@ -185,7 +158,7 @@ class FinishingShopping extends React.Component {
     if (!/[0-9]{5}-[\d]{3}/g.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
-    if (this.state.adress === ' ') {
+    if (this.state.adress === " ") {
       this.setState({ adressValidation: false, shouldUpdate: false });
     }
     if (!/^[0-9.]+$/.test(this.state.number)) {
@@ -204,10 +177,10 @@ class FinishingShopping extends React.Component {
         localStorage.clear();
         this.setState({ shouldRedirect: true });
       } else {
-        this.setState({ shouldUpdate: true});
-        return alert('Dados Incompletos!');
+        this.setState({ shouldUpdate: true });
+        return alert("Dados Incompletos! Verifique os campos em vermelho.");
       }
-      return '';
+      return "";
     }, 1000);
   }
 
@@ -223,7 +196,11 @@ class FinishingShopping extends React.Component {
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
-          {this.formPurchase()}
+          <FormForFinishingShopping
+            changeHandler={this.changeHandler}
+            shouldUpdate={this.shouldUpdate}
+            state={this.state}
+          />
         </fieldset>
         <fieldset>
           <legend>Método de pagamento:</legend>
