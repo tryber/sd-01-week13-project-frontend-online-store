@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="search-box">
-        <input type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
+        <input className="input-style" type="text" onKeyPress={(e) => this.handleKeyPress(e)} />
       </div>
     );
   }
