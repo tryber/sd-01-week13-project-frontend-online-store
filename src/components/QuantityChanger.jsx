@@ -38,10 +38,14 @@ class QuantityChanger extends Component {
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
     } else {
-      localStorage.removeItem(`${productId}_quantity`);
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
+      this.setLocalStorage(productId, newQuantity);
     }
     return updatePrices(event);
+  }
+
+  setLocalStorage(productId, newQuantity) {
+    localStorage.removeItem(`${productId}_quantity`);
+    localStorage.setItem(`${productId}_quantity`, newQuantity);
   }
 
   addProduct(event) {
@@ -55,8 +59,7 @@ class QuantityChanger extends Component {
       if (newQuantity >= product.available_quantity) {
         alert('Quantidade máxima do produto em estoque atingida.');
       } else {
-        localStorage.removeItem(`${productId}_quantity`);
-        localStorage.setItem(`${productId}_quantity`, newQuantity);
+        this.setLocalStorage(productId, newQuantity);
       }
     } else {
       alert('Primeiro você precisa adicionar o produto no botão ao lado!');
