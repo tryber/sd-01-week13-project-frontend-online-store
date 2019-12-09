@@ -18,6 +18,7 @@ class EachProduct extends React.Component {
     this.state = {
       redirect: false,
       id: '',
+      style: false,
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
 
@@ -50,8 +51,9 @@ class EachProduct extends React.Component {
       id, title, price, thumbnail, shipping,
     } = result;
     const { updateCartState } = this.props;
+    const border = this.style();
     return (
-      <div className="card" key={id}>
+      <div className="card" key={id} style={border}>
         <div className="card-title">
           <span>{title}</span>
         </div>
