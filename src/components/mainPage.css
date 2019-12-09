@@ -44,7 +44,7 @@
 }
 
 @media screen and ( max-width : 1200px ) {
-  
+
   .online-store-header {
     height: 150px;
   }
@@ -55,7 +55,7 @@
 }
 
 @media screen and ( max-width : 800px ) {
-  
+
   .online-store-header {
     height: 100px;
   }
@@ -71,7 +71,7 @@
 }
 
 @media screen and ( max-width : 450px ) {
-  
+
   .online-store-header {
     height: 80px;
   }
@@ -79,7 +79,7 @@
   .search-box { 
     width: 95%;
   }
-  
+
   .input-style {
     font-size: 26px;
   }
