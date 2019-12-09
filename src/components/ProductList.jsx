@@ -78,9 +78,13 @@ class ProductsList extends React.Component {
       );
     }
     if (results.length === 0 && searched) {
-      return <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>;
+      return (
+        <div className="msg">
+          <p>Não foram encontradas nenhuma ocorrência para essa busca.</p>
+        </div>
+      );
     }
-    return <p>Você ainda não buscou nada!</p>;
+    return <div className="msg"><p>Você ainda não buscou nada!</p></div>;
   }
 }
 export default ProductsList;

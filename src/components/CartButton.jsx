@@ -28,10 +28,10 @@ class CartButton extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link className="button-container" to="/carrinho-de-compras">
+      <div className="cartButton-Box">
+        <Link className="cartButton-Link" to="/carrinho-de-compras">
           <img className="cartImage" src={CartImage} alt="shoppinng cart" />
-          <div className="number-of-products">{CartButton.getCurrentQuantity()}</div>
+          <p><span>{CartButton.getCurrentQuantity()}</span></p>
         </Link>
       </div>
     );
