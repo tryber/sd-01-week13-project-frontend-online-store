@@ -87,6 +87,20 @@ class FinishingShopping extends React.Component {
     );
   }
 
+  static purchaseType() {
+    return (
+      <div className="pay-method-container">
+        <div>
+          <p>Boleto</p>
+          <div className="billet-pay-method">
+            <input type="radio" name="pay" checked />
+            <img className="billet" src={billet} alt="billet" />
+          </div>
+        </div>
+        {FinishingShopping.gerateCreditMethodPayment()}
+      </div>
+    );
+  }
 
   constructor(props) {
     super(props);
@@ -150,21 +164,6 @@ class FinishingShopping extends React.Component {
     );
   }
 
-  purchaseType() {
-    return (
-      <div className="pay-method-container">
-        <div>
-          <p>Boleto</p>
-          <div className="billet-pay-method">
-            <input type="radio" name="pay" checked />
-            <img className="billet" src={billet} alt="billet" />
-          </div>
-        </div>
-        {FinishingShopping.gerateCreditMethodPayment()}
-      </div>
-    );
-  }
-
   validateDataFirstPart() {
     if (!/[a-zA-Z\u00C0-\u00FF ]+/i.test(this.state.name)) {
       this.setState({ nameValidation: false, shouldUpdate: false });
@@ -207,6 +206,7 @@ class FinishingShopping extends React.Component {
       } else {
         return 'Dados Incompletos!';
       }
+      return '';
     }, 1000);
   }
 
@@ -222,7 +222,7 @@ class FinishingShopping extends React.Component {
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
-          {this.formPurchase()}
+          {FinishingShopping.formPurchase()}
         </fieldset>
         <fieldset>
           <legend>Método de pagamento:</legend>
