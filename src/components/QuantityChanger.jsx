@@ -54,9 +54,10 @@ class QuantityChanger extends Component {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
         alert('Quantidade máxima do produto em estoque atingida.');
+      } else {
+        localStorage.removeItem(`${productId}_quantity`);
+        localStorage.setItem(`${productId}_quantity`, newQuantity);
       }
-      localStorage.removeItem(`${productId}_quantity`);
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
     } else {
       alert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
