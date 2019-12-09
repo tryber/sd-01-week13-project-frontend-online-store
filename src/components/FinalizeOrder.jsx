@@ -18,6 +18,8 @@ class FinalizeOrder extends React.Component {
     this.formPurchaseNumber = this.formPurchaseNumber.bind(this);
     this.addData = this.addData.bind(this);
     this.validation = this.validation.bind(this);
+    this.validation2 = this.validation2.bind(this);
+    this.validation3 = this.validation3.bind(this);
     this.addDataNumber = this.addDataNumber.bind(this);
     // this.validateEmail = this.validateEmail.bind(this);
   }
@@ -39,6 +41,7 @@ class FinalizeOrder extends React.Component {
   // }
 
   validation() {
+    let alert = myCustomLib.customAlert;
     if (this.state.name !== String(this.state.name) || this.state.name === '') {
       alert('Campo nome é obrigatório');
     } else if (this.state.CPF !== Number(this.state.CPF)) {
@@ -47,17 +50,25 @@ class FinalizeOrder extends React.Component {
       alert('Formato de email inválido');
     } else if (this.state.phoneNumber !== Number(this.state.phoneNumber)) {
       alert('Adicione números no campo telefone');
-    } else if (this.state.CEP !== Number(this.state.CEP)) {
-      alert('Adicione números no campo CEP');
-    } else if (this.state.adress !== String(this.state.adress) || this.state.city === '') {
-      alert('Adicione letras no campo endereço');
-    } else if (this.state.number !== Number(this.state.number)) {
-      alert('Adicione o número da residência');
-    } else if (this.state.city !== String(this.state.city) || this.state.city === '') {
-      alert('Adicione o nome de uma cidade');
-    } else {
-      return '';
     }
+  }
+
+  validation2() {
+    let alert = myCustomLib.customAlert;
+    if (this.state.CEP !== Number(this.state.CEP)) {
+    alert('Adicione números no campo CEP');
+    } else if (this.state.adress !== String(this.state.adress) || this.state.city === '') {
+    alert('Adicione letras no campo endereço');
+    } else if (this.state.number !== Number(this.state.number)) {
+    alert('Adicione o número da residência');
+    } else if (this.state.city !== String(this.state.city) || this.state.city === '') {
+    alert('Adicione o nome de uma cidade');
+    }
+  }
+
+  validation3() {
+    this.validation()
+    this.validation2()
   }
 
   formPurchase(value, element, placeholder) {
@@ -91,14 +102,14 @@ class FinalizeOrder extends React.Component {
         {this.formPurchaseNumber(
           this.state.phoneNumber,
           'phoneNumber',
-          'Telefone'
+          'Telefone',
         )}
         {this.formPurchase(this.state.complement, 'complement', 'Complemento')}
         {this.formPurchaseNumber(this.state.CEP, 'CEP', 'CEP')}
         {this.formPurchase(this.state.adress, 'adress', 'Endereço')}
         {this.formPurchaseNumber(this.state.number, 'number', 'Número')}
         {this.formPurchase(this.state.city, 'city', 'Cidade')}
-        <button type="button" onClick={this.validation}>
+        <button type="button" onClick={this.validation3}>
           Submit
         </button>
       </form>
