@@ -16,7 +16,7 @@
   width: 80%;
 }
 
-.search-box  {
+.search-box {
   align-items: center;
   display: flex;
   height: 150px;
@@ -31,10 +31,10 @@
 }
 
 .input-style {
-  background-color: #EFFAB4;
-  border-radius:10px;
+  background-color: #effab4;
+  border-radius: 10px;
   box-shadow: 1px 1px 2px;
-  font-family: 'Kreon', serif;
+  font-family: serif;
   font-size: 40px;
   font-weight: 600;
   height: 40%;
@@ -48,6 +48,7 @@
   .online-store-header {
     height: 150px;
   }
+
   .input-style {
     font-size: 35px;
   }
