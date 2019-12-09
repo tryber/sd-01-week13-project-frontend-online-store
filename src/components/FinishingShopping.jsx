@@ -1,9 +1,9 @@
-import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import billet from "../icons/boleto.png";
-import credit from "../icons/cardCredit.png";
-import "./finishingShopping.css";
-import Back from "../icons/back.svg";
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import billet from '../icons/boleto.png';
+import credit from '../icons/cardCredit.png';
+import './finishingShopping.css';
+import Back from '../icons/back.svg';
 
 class FinishingShopping extends React.Component {
   static showHeader() {
@@ -18,15 +18,15 @@ class FinishingShopping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      cpf: "",
-      email: "",
-      cep: "",
-      cellphone: "",
-      adress: "",
-      number: "",
-      city: "",
-      complete: "",
+      name: '',
+      cpf: '',
+      email: '',
+      cep: '',
+      cellphone: '',
+      adress: '',
+      number: '',
+      city: '',
+      complete: '',
       nameValidation: true,
       cpfValidation: true,
       emailValidation: true,
@@ -63,7 +63,7 @@ class FinishingShopping extends React.Component {
 
   calculateTotalPrice() {
     const totalPrice = Object.keys(localStorage)
-      .filter(key => key.includes("MLB") && !key.includes("quantity"))
+      .filter(key => key.includes('MLB') && !key.includes('quantity'))
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
@@ -79,12 +79,12 @@ class FinishingShopping extends React.Component {
 
   findProducts() {
     const products = Object.keys(localStorage).filter(
-      key => key.includes("MLB") && !key.includes("quantity")
+      key => key.includes('MLB') && !key.includes('quantity')
     );
     if (products.length !== 0) {
       return this.showProcuts(products);
     }
-    return "Nenhum produto encontrado.";
+    return 'Nenhum produto encontrado.';
   }
 
   changeHandler(event) {
@@ -95,15 +95,15 @@ class FinishingShopping extends React.Component {
   formPurchase() {
     return (
       <form name="formPurchase">
-        {this.createInput("name", "Nome Completo")}
-        {this.createInput("cpf", "CPF")}
-        {this.createInput("email", "Email")}
-        {this.createInput("cellphone", "Telefone")}
-        {this.createInput("cep", "CEP")}
-        {this.createInput("adress", "Endereço")}
-        {this.createInput("complete", "Complemento")}
-        {this.createInput("number", "Número")}
-        {this.createInput("city", "CIdade")}
+        {this.createInput('name', 'Nome Completo')}
+        {this.createInput('cpf', 'CPF')}
+        {this.createInput('email', 'Email')}
+        {this.createInput('cellphone', 'Telefone')}
+        {this.createInput('cep', 'CEP')}
+        {this.createInput('adress', 'Endereço')}
+        {this.createInput('complete', 'Complemento')}
+        {this.createInput('number', 'Número')}
+        {this.createInput('city', 'CIdade')}
       </form>
     );
   }
@@ -112,8 +112,8 @@ class FinishingShopping extends React.Component {
     return (
       <input
         type="text"
-        className={`this.state.${id}Validation` ? "valid" : "invalid"}
-        onChange={e => this.changeHandler(e)}
+        className={`this.state.${id}Validation` ? 'valid' : 'invalid'}
+        onChange={(e) => this.changeHandler(e)}
         id={id}
         required
         placeholder={placeholder}
