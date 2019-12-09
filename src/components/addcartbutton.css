@@ -1,9 +1,9 @@
 .addButton {
-  background-color: #ECD078;
+  background-color: #ecd078;
   border-radius: 10px;
   padding: 5px;
 }
 
 .addButton:hover {
-  background-color: #C02942;
+  background-color: #c02942;
 }

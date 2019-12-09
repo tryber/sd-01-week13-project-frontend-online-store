@@ -91,7 +91,7 @@ function SeeDetailsButton(props) {
   return (
     <div>
       <button
-      className="details-button"
+        className="details-button"
         type="button"
         onClick={() => savingProductDetails(result)}
       >
