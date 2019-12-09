@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './mainPage.css'
+import './mainPage.css';
 
 class SearchBar extends React.Component {
   handleKeyPress(event) {
