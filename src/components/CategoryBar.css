@@ -23,7 +23,6 @@
   .category-options-box {
     align-items: flex-start;
     display: flex;
-    flex-direction: row;
     flex-flow: wrap;
     width: 100%;
   }
