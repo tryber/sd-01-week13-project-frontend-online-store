@@ -1,9 +1,13 @@
 .category-box {
+  background-color: black;
   border: 0.5px solid black;
+  color: white;
 }
 
 .category-options-box {
   align-items: flex-start;
+  background-color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
