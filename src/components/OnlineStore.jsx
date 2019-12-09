@@ -41,17 +41,21 @@ class OnlineStore extends Component {
     } = this.state;
     return (
       <div className="principal">
-        <CategoryBar onChange={this.onCategoryBarChange} />
+        <div className="category">
+          <CategoryBar onChange={this.onCategoryBarChange} />
+        </div>
         <div className="cart-and-input">
           <CartButton onChange={cartList} />
           <SearchBar onChange={this.onSearchBarChange} />
         </div>
-        <ProductsList
-          updateCartState={this.updateCartState}
-          category={category}
-          searchBarText={searchBarText}
-          searched={searched}
-        />
+        <div className="products-list">
+          <ProductsList
+            updateCartState={this.updateCartState}
+            category={category}
+            searchBarText={searchBarText}
+            searched={searched}
+          />
+        </div>
       </div>
     );
   }
