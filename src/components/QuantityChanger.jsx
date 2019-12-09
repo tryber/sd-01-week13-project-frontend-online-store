@@ -12,18 +12,6 @@ class QuantityChanger extends Component {
     this.refreshPrice = this.refreshPrice.bind(this);
   }
 
-  refreshPrice() {
-    const { productId } = this.props;
-    const actualQuantity = parseInt(
-      localStorage.getItem(`${productId}_quantity`),
-      10,
-    );
-    if (!actualQuantity) {
-      return 0;
-    }
-    return actualQuantity;
-  }
-
   removeProduct(event) {
     const { productId, updatePrices } = this.props;
     const actualQuantity = parseInt(
@@ -38,14 +26,26 @@ class QuantityChanger extends Component {
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
     } else {
-      this.setLocalStorage(productId, newQuantity);
+      QuantityChanger.setLocalStorage(productId, newQuantity);
     }
     return updatePrices(event);
   }
 
-  setLocalStorage(productId, newQuantity) {
+  static setLocalStorage(productId, newQuantity) {
     localStorage.removeItem(`${productId}_quantity`);
     localStorage.setItem(`${productId}_quantity`, newQuantity);
+  }
+
+  refreshPrice() {
+    const { productId } = this.props;
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10,
+    );
+    if (!actualQuantity) {
+      return 0;
+    }
+    return actualQuantity;
   }
 
   addProduct(event) {
@@ -59,7 +59,7 @@ class QuantityChanger extends Component {
       if (newQuantity >= product.available_quantity) {
         alert('Quantidade máxima do produto em estoque atingida.');
       } else {
-        this.setLocalStorage(productId, newQuantity);
+        QuantityChanger.setLocalStorage(productId, newQuantity);
       }
     } else {
       alert('Primeiro você precisa adicionar o produto no botão ao lado!');
