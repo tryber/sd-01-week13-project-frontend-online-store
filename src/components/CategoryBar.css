@@ -14,10 +14,12 @@
   padding: 2%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and ( max-width : 800px ) {
+
   .category-box {
     width: 100%;
   }
+
   .category-options-box {
     align-items: flex-start;
     display: flex;
@@ -25,21 +27,5 @@
     flex-wrap: wrap;
     width: 100%;
   }
+
 }
-
-
-
-/* .category-box {
-  background-color: black;
-  border: 0.5px solid black;
-  color: white;
-  height: 100%;
-  outline: 1px solid red;
-  padding: 10px;
-}
-
-
-
-label {
-  margin-top: 3%;
-} */
