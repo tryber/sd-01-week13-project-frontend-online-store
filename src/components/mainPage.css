@@ -1,0 +1,10 @@
+.cart-and-input {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 1%;
+  justify-content: space-between;
+}
+
+.search-box {
+  width: 100%;
+}

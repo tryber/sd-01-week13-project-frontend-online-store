@@ -4,6 +4,7 @@ import CartButton from './CartButton';
 import SearchBar from './SearchBar';
 import ProductsList from './ProductList';
 import './cartShopping.css';
+import './mainPage.css'
 
 class OnlineStore extends Component {
   constructor(props) {
@@ -39,10 +40,12 @@ class OnlineStore extends Component {
       category, searchBarText, searched, cartList,
     } = this.state;
     return (
-      <div>
+      <div className="principal">
         <CategoryBar onChange={this.onCategoryBarChange} />
-        <CartButton onChange={cartList} />
-        <SearchBar onChange={this.onSearchBarChange} />
+        <div className="cart-and-input">
+          <CartButton onChange={cartList} />
+          <SearchBar onChange={this.onSearchBarChange} />
+        </div>
         <ProductsList
           updateCartState={this.updateCartState}
           category={category}
