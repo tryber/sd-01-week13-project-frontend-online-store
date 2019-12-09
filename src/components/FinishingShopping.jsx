@@ -168,7 +168,7 @@ class FinishingShopping extends React.Component {
     if (!/[a-zA-Z\u00C0-\u00FF ]+/i.test(this.state.name)) {
       this.setState({ nameValidation: false, shouldUpdate: false });
     }
-    if (!/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/.test(this.state.CPF)) {
+    if (!/[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/g.test(this.state.cpf)) {
       this.setState({ cpfValidation: false, shouldUpdate: false });
     }
     if (!/^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(this.state.email)) {
@@ -182,7 +182,7 @@ class FinishingShopping extends React.Component {
   }
 
   validateDataSecondPart() {
-    if (!/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/.test(this.state.cep)) {
+    if (!/[0-9]{5}-[\d]{3}/g.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
     if (this.state.adress === ' ') {
@@ -204,7 +204,8 @@ class FinishingShopping extends React.Component {
         localStorage.clear();
         this.setState({ shouldRedirect: true });
       } else {
-        return 'Dados Incompletos!';
+        this.setState({ shouldUpdate: true});
+        return alert('Dados Incompletos!');
       }
       return '';
     }, 1000);
