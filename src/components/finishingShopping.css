@@ -1,0 +1,57 @@
+.billet {
+  width: 6em;
+}
+
+.billet-pay-method {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.credit-pay-method {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.btn {
+  border: 2px solid grey;
+  height: 4em;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  text-align: center;
+  width: 10em;
+}
+
+.creditCard {
+  width: 6em;
+}
+
+.invalid {
+  color: red;
+  width: 49%;
+}
+
+.pay-method-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.product-item {
+  height: 6em;
+}
+
+.thumbnail {
+  height: 6em;
+  width: 2em;
+}
+
+.valid {
+  color: black;
+  height: 3em;
+  width: 33%;
+}
