@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import billet from "../icons/boleto.png";
-import credit from "../icons/cardCredit.png";
-import "./finishingShopping.css";
-import Back from "../icons/back.svg";
-import FormForFinishingShopping from "./FormForFinishingShopping";
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import billet from '../icons/boleto.png';
+import credit from '../icons/cardCredit.png';
+import './finishingShopping.css';
+import Back from '../icons/back.svg';
+import FormForFinishingShopping from './FormForFinishingShopping';
 
 class FinishingShopping extends React.Component {
   static showHeader() {
@@ -18,11 +18,11 @@ class FinishingShopping extends React.Component {
   }
 
   static showProcuts(products) {
-    return products.map(product => {
+    return products.map((product) => {
       const actualProduct = JSON.parse(localStorage.getItem(product));
       const { id, title, price, thumbnail } = actualProduct;
       const quantity = localStorage.getItem(
-        Object.keys(localStorage).find(key => key.includes(`${id}_quantity`))
+        Object.keys(localStorage).find((key) => key.includes(`${id}_quantity`))
       );
       return (
         <div key={id}>
@@ -39,7 +39,7 @@ class FinishingShopping extends React.Component {
 
   static calculateTotalPrice() {
     const totalPrice = Object.keys(localStorage)
-      .filter(key => key.includes("MLB") && !key.includes("quantity"))
+      .filter((key) => key.includes("MLB") && !key.includes("quantity"))
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
@@ -55,12 +55,12 @@ class FinishingShopping extends React.Component {
 
   static findProducts() {
     const products = Object.keys(localStorage).filter(
-      key => key.includes("MLB") && !key.includes("quantity")
+      key => key.includes('MLB') && !key.includes('quantity')
     );
     if (products.length !== 0) {
       return FinishingShopping.showProcuts(products);
     }
-    return "Nenhum produto encontrado.";
+    return 'Nenhum produto encontrado.';
   }
 
   static gerateCreditMethodPayment() {
@@ -106,15 +106,15 @@ class FinishingShopping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      cpf: "",
-      email: "",
-      cep: "",
-      cellphone: "",
-      adress: "",
-      number: "",
-      city: "",
-      complete: "",
+      name: '',
+      cpf: '',
+      email: '',
+      cep: '',
+      cellphone: '',
+      adress: '',
+      number: '',
+      city: '',
+      complete: '',
       nameValidation: true,
       cpfValidation: true,
       emailValidation: true,
@@ -124,7 +124,7 @@ class FinishingShopping extends React.Component {
       numberValidation: true,
       cityValidation: true,
       shouldUpdate: true,
-      shouldRedirect: false
+      shouldRedirect: false,
     };
     this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
     this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
@@ -178,7 +178,7 @@ class FinishingShopping extends React.Component {
         this.setState({ shouldRedirect: true });
       } else {
         this.setState({ shouldUpdate: true });
-        return alert("Dados Incompletos! Verifique os campos em vermelho.");
+        return alert('Dados Incompletos! Verifique os campos em vermelho.');
       }
       return "";
     }, 1000);
