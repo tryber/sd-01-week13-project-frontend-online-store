@@ -12,7 +12,7 @@ class FinalizeOrder extends React.Component {
       complement: '',
       adress: '',
       number: '',
-      city: ''
+      city: '',
     };
     this.formPurchase = this.formPurchase.bind(this);
     this.formPurchaseNumber = this.formPurchaseNumber.bind(this);
@@ -40,21 +40,21 @@ class FinalizeOrder extends React.Component {
 
   validation() {
     if (this.state.name !== String(this.state.name) || this.state.name === '') {
-      return alert("Campo nome é obrigatório");
+      alert('Campo nome é obrigatório');
     } else if (this.state.CPF !== Number(this.state.CPF)) {
-      return alert("Adicione números no campo CPF");
+      alert('Adicione números no campo CPF');
     } else if (this.state.email === '') {
-      return alert("Formato de email inválido");
+      alert('Formato de email inválido');
     } else if (this.state.phoneNumber !== Number(this.state.phoneNumber)) {
-      return alert("Adicione números no campo telefone");
+      alert('Adicione números no campo telefone');
     } else if (this.state.CEP !== Number(this.state.CEP)) {
-      return alert("Adicione números no campo CEP");
+      alert('Adicione números no campo CEP');
     } else if (this.state.adress !== String(this.state.adress) || this.state.city === '') {
-      return alert("Adicione letras no campo endereço");
+      alert('Adicione letras no campo endereço');
     } else if (this.state.number !== Number(this.state.number)) {
-      return alert("Adicione o número da residência");
+      alert('Adicione o número da residência');
     } else if (this.state.city !== String(this.state.city) || this.state.city === '') {
-      return alert("Adicione o nome de uma cidade");
+      alert('Adicione o nome de uma cidade');
     } else {
       return '';
     }
@@ -65,7 +65,7 @@ class FinalizeOrder extends React.Component {
       <input
         type="text"
         value={value}
-        onChange={event => this.addData(event, element)}
+        onChange={(event) => this.addData(event, element)}
         placeholder={placeholder}
       />
     );
@@ -76,7 +76,7 @@ class FinalizeOrder extends React.Component {
       <input
         type="number"
         value={value}
-        onChange={event => this.addDataNumber(event, element)}
+        onChange={(event) => this.addDataNumber(event, element)}
         placeholder={placeholder}
       />
     );
@@ -85,19 +85,19 @@ class FinalizeOrder extends React.Component {
   render() {
     return (
       <form>
-        {this.formPurchase(this.state.name, "name", "Nome completo")}
-        {this.formPurchaseNumber(this.state.CPF, "CPF", "CPF")}
-        {this.formPurchase(this.state.email, "email", "Email")}
+        {this.formPurchase(this.state.name, 'name', 'Nome completo')}
+        {this.formPurchaseNumber(this.state.CPF, 'CPF', 'CPF')}
+        {this.formPurchase(this.state.email, 'email', 'Email')}
         {this.formPurchaseNumber(
           this.state.phoneNumber,
-          "phoneNumber",
-          "Telefone"
+          'phoneNumber',
+          'Telefone'
         )}
-        {this.formPurchase(this.state.complement, "complement", "Complemento")}
-        {this.formPurchaseNumber(this.state.CEP, "CEP", "CEP")}
-        {this.formPurchase(this.state.adress, "adress", "Endereço")}
-        {this.formPurchaseNumber(this.state.number, "number", "Número")}
-        {this.formPurchase(this.state.city, "city", "Cidade")}
+        {this.formPurchase(this.state.complement, 'complement', 'Complemento')}
+        {this.formPurchaseNumber(this.state.CEP, 'CEP', 'CEP')}
+        {this.formPurchase(this.state.adress, 'adress', 'Endereço')}
+        {this.formPurchaseNumber(this.state.number, 'number', 'Número')}
+        {this.formPurchase(this.state.city, 'city', 'Cidade')}
         <button type="button" onClick={this.validation}>
           Submit
         </button>
