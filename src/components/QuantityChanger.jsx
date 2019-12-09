@@ -5,23 +5,16 @@ import MinusIcon from '../icons/minus_icon.png';
 import PlusIcon from '../icons/plus_icon.png';
 
 class QuantityChanger extends Component {
+  static setLocalStorage(productId, newQuantity) {
+    localStorage.removeItem(`${productId}_quantity`);
+    localStorage.setItem(`${productId}_quantity`, newQuantity);
+  }
+
   constructor(props) {
     super(props);
     this.addProduct = this.addProduct.bind(this);
     this.removeProduct = this.removeProduct.bind(this);
     this.refreshPrice = this.refreshPrice.bind(this);
-  }
-
-  refreshPrice() {
-    const { productId } = this.props;
-    const actualQuantity = parseInt(
-      localStorage.getItem(`${productId}_quantity`),
-      10,
-    );
-    if (!actualQuantity) {
-      return 0;
-    }
-    return actualQuantity;
   }
 
   removeProduct(event) {
@@ -38,10 +31,21 @@ class QuantityChanger extends Component {
         'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
       );
     } else {
-      localStorage.removeItem(`${productId}_quantity`);
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
+      QuantityChanger.setLocalStorage(productId, newQuantity);
     }
     return updatePrices(event);
+  }
+
+  refreshPrice() {
+    const { productId } = this.props;
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10,
+    );
+    if (!actualQuantity) {
+      return 0;
+    }
+    return actualQuantity;
   }
 
   addProduct(event) {
@@ -54,9 +58,9 @@ class QuantityChanger extends Component {
       const newQuantity = actualQuantity + 1;
       if (newQuantity >= product.available_quantity) {
         alert('Quantidade máxima do produto em estoque atingida.');
+      } else {
+        QuantityChanger.setLocalStorage(productId, newQuantity);
       }
-      localStorage.removeItem(`${productId}_quantity`);
-      localStorage.setItem(`${productId}_quantity`, newQuantity);
     } else {
       alert('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
