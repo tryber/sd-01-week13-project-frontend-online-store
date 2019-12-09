@@ -43,7 +43,7 @@ class FinishingShopping extends React.Component {
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
-          10
+          10,
         );
         const item = JSON.parse(localStorage.getItem(itemId));
         const itemPrice = item.price;
