@@ -20,15 +20,15 @@
   width: 100px;
 }
 
-.cartButton-Link>p {
+.cartButton-Link > p {
   align-items: center;
   display: flex;
   height: 100%;
   justify-content: center;
-  width: 20%; 
+  width: 20%;
 }
 
-.cartButton-Link>p>span {
+.cartButton-Link > p > span {
   background-color: #fff159;
   border-radius: 10px;
   font-family: serif;
@@ -75,7 +75,7 @@
     display: none;
   }
   .cartButton-Link > p {
-    width: 100%; 
+    width: 100%;
   }
 }
 
