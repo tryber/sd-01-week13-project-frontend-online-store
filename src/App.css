@@ -20,3 +20,13 @@
 .App-link {
   color: #09d3ac;
 }
+
+.details-button {
+  background-color: #ecd078;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.details-button:hover {
+  background-color: #c02942;
+}
