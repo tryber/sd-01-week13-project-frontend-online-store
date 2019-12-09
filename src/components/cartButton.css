@@ -38,7 +38,6 @@
 }
 
 @media screen and ( max-width : 1200px ) {
-  
   .cartImage {
     display: block;
     height: 80px;
@@ -52,7 +51,6 @@
 }
 
 @media screen and ( max-width : 800px ) {
-  
   .cartImage {
     display: block;
     height: 60px;
@@ -66,11 +64,10 @@
 }
 
 @media screen and ( max-width : 450px ) {
-  
   .cartImage {
     display: none;
   }
-  
+
   .cartButton-Link > p {
     width: 100%;
   }
