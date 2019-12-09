@@ -1,16 +1,19 @@
 .cart-and-input {
-  display: flex;
-  width: 100%;
-  position: fixed;
-  flex-wrap: nowrap;
   align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
-  outline: 1px solid red;
+  padding: 1%;
+  position: fixed;
+  width: 100%;
 }
 
 .category {
-  float: left;
   position: fixed;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 
 input[type=text] {
@@ -18,8 +21,8 @@ input[type=text] {
 }
 
 .products-list {
-  padding-top: 2%;
   display: flex;
   justify-content: center;
+  padding-top: 4%;
 }
 
