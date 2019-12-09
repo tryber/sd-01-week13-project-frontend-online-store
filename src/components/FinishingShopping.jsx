@@ -222,11 +222,11 @@ class FinishingShopping extends React.Component {
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
-          {FinishingShopping.formPurchase()}
+          {this.formPurchase()}
         </fieldset>
         <fieldset>
           <legend>Método de pagamento:</legend>
-          {this.purchaseType()}
+          {FinishingShopping.purchaseType()}
         </fieldset>
         <button className="btn" onClick={this.finishingBuy}>
           Comprar
