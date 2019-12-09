@@ -29,12 +29,13 @@
 }
 
 .cartButton-Link > p > span {
-  background-color: #fff159;
-  border-radius: 10px;
+  background-color: #D95B43;
+  border-radius: 30px;
+  color: black;
   font-family: serif;
   font-size: 50px;
   font-weight: 700;
-  padding: 3%;
+  padding: 5%;
 }
 
 @media screen and ( max-width : 1200px ) {

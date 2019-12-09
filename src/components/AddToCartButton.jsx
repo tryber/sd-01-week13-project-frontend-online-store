@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './addcartbutton.css';
 
 export default class AddToCartButton extends React.Component {
   addProductToLocalStorage(event) {
@@ -22,6 +23,7 @@ export default class AddToCartButton extends React.Component {
   render() {
     return (
       <button
+        className="addButton"
         type="button"
         onClick={(e) => this.addProductToLocalStorage(e)}
       >

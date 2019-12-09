@@ -33,10 +33,10 @@ class EachProduct extends React.Component {
   style() {
     const { style } = this.state;
     if (style) {
-      const border = { border: '2px solid red' };
+      const border = { border: '3px solid #C02942' };
       return border;
     }
-    const border = { border: '1px solid black' };
+    const border = { border: '2px solid #53777A' };
     return border;
   }
 
@@ -91,6 +91,7 @@ function SeeDetailsButton(props) {
   return (
     <div>
       <button
+      className="details-button"
         type="button"
         onClick={() => savingProductDetails(result)}
       >
