@@ -38,7 +38,8 @@ class FinishingShopping extends React.Component {
       shouldUpdate: true,
       shouldRedirect: false
     };
-    this.validateData = this.validateData.bind(this);
+    this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
+    this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
     this.finishingBuy = this.finishingBuy.bind(this);
   }
   showProcuts(products) {
@@ -161,7 +162,7 @@ class FinishingShopping extends React.Component {
     );
   }
 
-  validateData() {
+  validateDataFirstPart() {
     if (!/[a-zA-Z\u00C0-\u00FF ]+/i.test(this.state.name)) {
       this.setState({ nameValidation: false, shouldUpdate: false });
     }
@@ -174,6 +175,11 @@ class FinishingShopping extends React.Component {
     if (!/^[0-9.]+$/.test(this.state.cellphone)) {
       this.setState({ cellphoneValidation: false, shouldUpdate: false });
     }
+    this.validateDataSecondPart();
+    return true;
+  }
+
+  validateDataSecondPart() {
     if (!/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
@@ -190,7 +196,7 @@ class FinishingShopping extends React.Component {
   }
 
   finishingBuy() {
-    this.validateData();
+    this.validateDataFirstPart();
     setTimeout(() => {
       if (this.state.shouldUpdate) {
         localStorage.clear();

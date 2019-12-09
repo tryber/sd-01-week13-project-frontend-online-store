@@ -12,12 +12,12 @@
 }
 
 .btn {
-    border: 2px solid grey;
-    height: 4em;
-    margin-bottom: 2em;
-    margin-left: 2em;
-    text-align: center;
-    width: 10em;
+  border: 2px solid grey;
+  height: 4em;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  text-align: center;
+  width: 10em;
 }
 
 .creditCard {
@@ -33,8 +33,8 @@
 }
 
 .thumbnail {
-  width: 2em;
   height: 6em;
+  width: 2em;
 }
 
 .valid {
