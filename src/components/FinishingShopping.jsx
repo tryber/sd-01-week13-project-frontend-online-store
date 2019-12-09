@@ -39,7 +39,7 @@ class FinishingShopping extends React.Component {
 
   static calculateTotalPrice() {
     const totalPrice = Object.keys(localStorage)
-      .filter((key) => key.includes("MLB") && !key.includes("quantity"))
+      .filter((key) => key.includes('MLB') && !key.includes("quantity"))
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
