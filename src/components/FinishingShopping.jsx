@@ -22,7 +22,7 @@ class FinishingShopping extends React.Component {
       const actualProduct = JSON.parse(localStorage.getItem(product));
       const { id, title, price, thumbnail } = actualProduct;
       const quantity = localStorage.getItem(
-        Object.keys(localStorage).find((key) => key.includes(`${id}_quantity`))
+        Object.keys(localStorage).find((key) => key.includes(`${id}_quantity`)),
       );
       return (
         <div key={id}>
