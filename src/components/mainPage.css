@@ -9,11 +9,10 @@
 }
 
 .category {
-  position: fixed;
   height: 100%;
-  z-index: 1;
-  top: 0;
   left: 0;
+  position: fixed;
+  top: 0;
 }
 
 input[type=text] {

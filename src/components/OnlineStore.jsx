@@ -4,7 +4,7 @@ import CartButton from './CartButton';
 import SearchBar from './SearchBar';
 import ProductsList from './ProductList';
 import './cartShopping.css';
-import './mainPage.css'
+import './mainPage.css';
 
 class OnlineStore extends Component {
   constructor(props) {
