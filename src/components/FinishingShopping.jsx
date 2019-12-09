@@ -15,6 +15,43 @@ class FinishingShopping extends React.Component {
       </header>
     );
   }
+
+  static showProcuts(products) {
+    return products.map((product) => {
+      const actualProduct = JSON.parse(localStorage.getItem(product));
+      const { id, title, price, thumbnail } = actualProduct;
+      const quantity = localStorage.getItem(
+        Object.keys(localStorage).find((key) => key.includes(`${id}_quantity`)),
+      );
+      return (
+        <div key={id}>
+          <div className="product-item" key={id}>
+            <img className="thumbnail" src={thumbnail} alt={title} />
+            <span>{title}</span>
+            <span>{`R$ ${price.toFixed(2)}`}</span>
+            <span>{quantity}</span>
+          </div>
+        </div>
+      );
+    });
+  }
+
+  static calculateTotalPrice() {
+    const totalPrice = Object.keys(localStorage)
+      .filter(key => key.includes('MLB') && !key.includes('quantity'))
+      .reduce((acc, itemId) => {
+        const itemQuantity = parseInt(
+          localStorage.getItem(`${itemId}_quantity`),
+          10,
+        );
+        const item = JSON.parse(localStorage.getItem(itemId));
+        const itemPrice = item.price;
+        const thisItemTotalPrice = itemQuantity * itemPrice;
+        return acc + thisItemTotalPrice;
+      }, 0);
+    return totalPrice;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -36,54 +73,21 @@ class FinishingShopping extends React.Component {
       numberValidation: true,
       cityValidation: true,
       shouldUpdate: true,
-      shouldRedirect: false
+      shouldRedirect: false,
     };
     this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
     this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
     this.finishingBuy = this.finishingBuy.bind(this);
   }
-  showProcuts(products) {
-    return products.map(product => {
-      const actualProduct = JSON.parse(localStorage.getItem(product));
-      const { id, title, price, thumbnail } = actualProduct;
-      const quantity = localStorage.getItem(
-        Object.keys(localStorage).find(key => key.includes(`${id}_quantity`))
-      );
-      return (
-        <div key={id}>
-          <div className="product-item" key={id}>
-            <img className="thumbnail" src={thumbnail} alt={title} />
-            <span>{title}</span>
-            <span>{`R$ ${price.toFixed(2)}`}</span>
-            <span>{quantity}</span>
-          </div>
-        </div>
-      );
-    });
-  }
 
-  calculateTotalPrice() {
-    const totalPrice = Object.keys(localStorage)
-      .filter(key => key.includes('MLB') && !key.includes('quantity'))
-      .reduce((acc, itemId) => {
-        const itemQuantity = parseInt(
-          localStorage.getItem(`${itemId}_quantity`),
-          10
-        );
-        const item = JSON.parse(localStorage.getItem(itemId));
-        const itemPrice = item.price;
-        const thisItemTotalPrice = itemQuantity * itemPrice;
-        return acc + thisItemTotalPrice;
-      }, 0);
-    return totalPrice;
-  }
+
 
   findProducts() {
     const products = Object.keys(localStorage).filter(
       key => key.includes('MLB') && !key.includes('quantity')
     );
     if (products.length !== 0) {
-      return this.showProcuts(products);
+      return FinishingShopping.showProcuts(products);
     }
     return 'Nenhum produto encontrado.';
   }
@@ -215,7 +219,7 @@ class FinishingShopping extends React.Component {
         <fieldset className="products-review">
           <legend>Revise seus produtos</legend>
           {this.findProducts()}
-          {`Preço total: R$${this.calculateTotalPrice()}`}
+          {`Preço total: R$${FinishingShopping.calculateTotalPrice()}`}
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
