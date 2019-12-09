@@ -1,8 +1,8 @@
-.message {
+.msg {
   display: flex;
+  font-size: 40px;
   justify-content: center;
   width: 60%;
-  font-size: 40px;
 }
 
 .show-all-info {
@@ -45,7 +45,7 @@
   max-height: 150px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width : 800px) {
   .message {
     font-size: 30px;
     width: 100%;
