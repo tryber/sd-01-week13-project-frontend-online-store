@@ -5,6 +5,11 @@ import MinusIcon from '../icons/minus_icon.png';
 import PlusIcon from '../icons/plus_icon.png';
 
 class QuantityChanger extends Component {
+  static setLocalStorage(productId, newQuantity) {
+    localStorage.removeItem(`${productId}_quantity`);
+    localStorage.setItem(`${productId}_quantity`, newQuantity);
+  }
+
   constructor(props) {
     super(props);
     this.addProduct = this.addProduct.bind(this);
@@ -29,11 +34,6 @@ class QuantityChanger extends Component {
       QuantityChanger.setLocalStorage(productId, newQuantity);
     }
     return updatePrices(event);
-  }
-
-  static setLocalStorage(productId, newQuantity) {
-    localStorage.removeItem(`${productId}_quantity`);
-    localStorage.setItem(`${productId}_quantity`, newQuantity);
   }
 
   refreshPrice() {
