@@ -16,3 +16,7 @@
   justify-content: space-around;
   padding: 10px;
 }
+
+label {
+  margin-top: 3%;
+}
