@@ -89,9 +89,11 @@ class CartShopping extends Component {
           {` R$ ${totalPrice}`}
         </p>
         <div>
-          <button className="proceedToCheckout space" type="button">
-            Finalizar compra
-          </button>
+          <Link to="/finalizar-compra">
+            <button className="proceedToCheckout space" type="button">
+              Finalizar compra
+            </button>
+          </Link>
         </div>
       </div>
     );
