@@ -2,8 +2,8 @@
   width: 6em;
 }
 
-.billet-pay-method,
-.credit-pay-method,
+.billet-pay-method, 
+.credit-pay-method, 
 .pay-method-container {
   align-items: center;
   display: flex;

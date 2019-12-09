@@ -62,6 +62,32 @@ class FinishingShopping extends React.Component {
     return 'Nenhum produto encontrado.';
   }
 
+  static gerateCreditMethodPayment() {
+    return (
+      <div>
+        <p>Cartão de Cŕedito</p>
+        <div className="credit-pay-method">
+          <div className="credit-pay-method">
+            <input type="radio" name="pay" />
+            <p>Visa</p>
+            <img className="creditCard" src={credit} alt="billet" />
+          </div>
+          <div className="credit-pay-method">
+            <input type="radio" name="pay" />
+            <p>MasterCard</p>
+            <img className="creditCard" src={credit} alt="billet" />
+          </div>
+          <div className="credit-pay-method">
+            <input type="radio" name="pay" />
+            <p>Elo</p>
+            <img className="creditCard" src={credit} alt="billet" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -120,7 +146,7 @@ class FinishingShopping extends React.Component {
         id={id}
         required
         placeholder={placeholder}
-      ></input>
+      />
     );
   }
 
@@ -134,32 +160,7 @@ class FinishingShopping extends React.Component {
             <img className="billet" src={billet} alt="billet" />
           </div>
         </div>
-        {this.gerateCreditMethodPayment()}
-      </div>
-    );
-  }
-
-  gerateCreditMethodPayment() {
-    return (
-      <div>
-        <p>Cartão de Cŕedito</p>
-        <div className="credit-pay-method">
-          <div className="credit-pay-method">
-            <input type="radio" name="pay" />
-            <p>Visa</p>
-            <img className="creditCard" src={credit} alt="billet" />
-          </div>
-          <div className="credit-pay-method">
-            <input type="radio" name="pay" />
-            <p>MasterCard</p>
-            <img className="creditCard" src={credit} alt="billet" />
-          </div>
-          <div className="credit-pay-method">
-            <input type="radio" name="pay" />
-            <p>Elo</p>
-            <img className="creditCard" src={credit} alt="billet" />
-          </div>
-        </div>
+        {FinishingShopping.gerateCreditMethodPayment()}
       </div>
     );
   }
@@ -185,7 +186,7 @@ class FinishingShopping extends React.Component {
     if (!/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
-    if (this.state.adress === " ") {
+    if (this.state.adress === ' ') {
       this.setState({ adressValidation: false, shouldUpdate: false });
     }
     if (!/^[0-9.]+$/.test(this.state.number)) {
@@ -204,7 +205,7 @@ class FinishingShopping extends React.Component {
         localStorage.clear();
         this.setState({ shouldRedirect: true });
       } else {
-        return alert("Dados Incompletos!");
+        return 'Dados Incompletos!';
       }
     }, 1000);
   }
