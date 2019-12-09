@@ -1,10 +1,22 @@
 .category-box {
+  background-color: black;
   border: 0.5px solid black;
+  color: white;
+  height: 100%;
+  outline: 1px solid red;
+  padding: 10px;
 }
 
 .category-options-box {
   align-items: flex-start;
+  background-color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 10px;
+}
+
+label {
+  margin-top: 3%;
 }
