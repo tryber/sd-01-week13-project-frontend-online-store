@@ -45,7 +45,7 @@
   max-height: 150px;
 }
 
-@media screen and (max-width : 800px) {
+@media screen and ( max-width : 800px ) {
   .message {
     font-size: 30px;
     width: 100%;

@@ -48,33 +48,33 @@
   width: 20%;
 } */
 
-@media screen and (max-width : 1200px) {
+@media screen and ( max-width : 1200px ) {
   .cartImage {
     display: block;
     height: 80px;
     width: 80px;
   }
-  .cartButton-Link>p>span {
+  .cartButton-Link > p > span {
     font-size: 40px;
   }
 }
 
-@media screen and (max-width : 800px) {
+@media screen and ( max-width : 800px ) {
   .cartImage {
     display: block;
     height: 60px;
     width: 60px;
   }
-  .cartButton-Link>p>span {
+  .cartButton-Link > p > span {
     font-size: 35px;
   }
 }
 
-@media screen and (max-width : 450px) {
+@media screen and ( max-width : 450px ) {
   .cartImage {
     display: none;
   }
-  .cartButton-Link>p {
+  .cartButton-Link > p {
     width: 100%; 
   }
 }
