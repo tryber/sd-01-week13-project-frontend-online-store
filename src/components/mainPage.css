@@ -15,9 +15,6 @@
   top: 0;
 }
 
-input[type=text] {
-  width: 1000px;
-}
 
 .products-list {
   display: flex;
@@ -25,3 +22,6 @@ input[type=text] {
   padding-top: 4%;
 }
 
+.search-box input {
+  width: 1000px;
+}
