@@ -26,8 +26,8 @@
 
 .online-store-box {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .input-style {
@@ -58,6 +58,9 @@
   }
   .input-style {
     font-size: 30px;
+  }
+  .online-store-box {
+    flex-direction: column;
   }
 }
 

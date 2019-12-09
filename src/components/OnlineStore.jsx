@@ -45,7 +45,7 @@ class OnlineStore extends Component {
           <SearchBar onChange={this.onSearchBarChange} />
           <CartButton onChange={cartList} />
         </header>
-        <article className="online-store-box">
+        <div className="online-store-box">
           <CategoryBar onChange={this.onCategoryBarChange} />
           <ProductsList
             updateCartState={this.updateCartState}
@@ -53,7 +53,7 @@ class OnlineStore extends Component {
             searchBarText={searchBarText}
             searched={searched}
           />
-        </article>
+        </div>
       </div>
     );
   }
