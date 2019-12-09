@@ -38,7 +38,7 @@ class FinishingShopping extends React.Component {
 
   static calculateTotalPrice() {
     const totalPrice = Object.keys(localStorage)
-      .filter(key => key.includes('MLB') && !key.includes('quantity'))
+      .filter((key) => key.includes('MLB') && !key.includes('quantity'))
       .reduce((acc, itemId) => {
         const itemQuantity = parseInt(
           localStorage.getItem(`${itemId}_quantity`),
@@ -50,6 +50,16 @@ class FinishingShopping extends React.Component {
         return acc + thisItemTotalPrice;
       }, 0);
     return totalPrice;
+  }
+
+  static findProducts() {
+    const products = Object.keys(localStorage).filter(
+      (key) => key.includes('MLB') && !key.includes('quantity'),
+    );
+    if (products.length !== 0) {
+      return FinishingShopping.showProcuts(products);
+    }
+    return 'Nenhum produto encontrado.';
   }
 
   constructor(props) {
@@ -78,18 +88,6 @@ class FinishingShopping extends React.Component {
     this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
     this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
     this.finishingBuy = this.finishingBuy.bind(this);
-  }
-
-
-
-  findProducts() {
-    const products = Object.keys(localStorage).filter(
-      key => key.includes('MLB') && !key.includes('quantity')
-    );
-    if (products.length !== 0) {
-      return FinishingShopping.showProcuts(products);
-    }
-    return 'Nenhum produto encontrado.';
   }
 
   changeHandler(event) {
@@ -218,7 +216,7 @@ class FinishingShopping extends React.Component {
         {FinishingShopping.showHeader()}
         <fieldset className="products-review">
           <legend>Revise seus produtos</legend>
-          {this.findProducts()}
+          {FinishingShopping.findProducts()}
           {`Preço total: R$${FinishingShopping.calculateTotalPrice()}`}
         </fieldset>
         <fieldset>
