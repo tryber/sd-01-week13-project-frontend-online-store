@@ -41,7 +41,7 @@ class FinalizeOrder extends React.Component {
   // }
 
   validation() {
-    let alert = myCustomLib.customAlert;
+    const alert = customAlert;
     if (this.state.name !== String(this.state.name) || this.state.name === '') {
       alert('Campo nome é obrigatório');
     } else if (this.state.CPF !== Number(this.state.CPF)) {
@@ -54,21 +54,21 @@ class FinalizeOrder extends React.Component {
   }
 
   validation2() {
-    let alert = myCustomLib.customAlert;
+    const alert = customAlert;
     if (this.state.CEP !== Number(this.state.CEP)) {
-    alert('Adicione números no campo CEP');
+      alert('Adicione números no campo CEP');
     } else if (this.state.adress !== String(this.state.adress) || this.state.city === '') {
-    alert('Adicione letras no campo endereço');
+      alert('Adicione letras no campo endereço');
     } else if (this.state.number !== Number(this.state.number)) {
-    alert('Adicione o número da residência');
+      alert('Adicione o número da residência');
     } else if (this.state.city !== String(this.state.city) || this.state.city === '') {
-    alert('Adicione o nome de uma cidade');
+      alert('Adicione o nome de uma cidade');
     }
   }
 
   validation3() {
-    this.validation()
-    this.validation2()
+    this.validation();
+    this.validation2();
   }
 
   formPurchase(value, element, placeholder) {
