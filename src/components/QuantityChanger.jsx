@@ -14,46 +14,80 @@ class QuantityChanger extends Component {
 
   refreshPrice() {
     const { productId } = this.props;
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10,
+    );
+    if (!actualQuantity) {
+      return 0;
+    }
     return actualQuantity;
   }
 
-  removeProduct() {
+  removeProduct(event) {
     const { productId, updatePrices } = this.props;
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10,
+    );
     const newQuantity = actualQuantity - 1;
-    if (newQuantity <= 0) {
-      return console.log('Para remover o produto, clique no "X"');
+    if (!localStorage.getItem(`${productId}_quantity`)) {
+      console.log('Não há items para serem removidos.');
+    } else if (newQuantity <= 0) {
+      console.log(
+        'Para remover o produto, basta clicar no "X" localizado no carrinho de compras.',
+      );
+    } else {
+      localStorage.removeItem(`${productId}_quantity`);
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
     }
-    localStorage.removeItem(`${productId}_quantity`);
-    localStorage.setItem(`${productId}_quantity`, newQuantity);
-    return updatePrices();
+    return updatePrices(event);
   }
 
-  addProduct() {
+  addProduct(event) {
     const { productId, product, updatePrices } = this.props;
-    const actualQuantity = parseInt(localStorage.getItem(`${productId}_quantity`), 10);
-    const newQuantity = actualQuantity + 1;
-    if (newQuantity >= product.available_quantity) {
-      return console.log('Quantidade máxima do produto em estoque atingida.');
+    const actualQuantity = parseInt(
+      localStorage.getItem(`${productId}_quantity`),
+      10,
+    );
+    if (localStorage.getItem(`${productId}_quantity`)) {
+      const newQuantity = actualQuantity + 1;
+      if (newQuantity >= product.available_quantity) {
+        console.log('Quantidade máxima do produto em estoque atingida.');
+      }
+      localStorage.removeItem(`${productId}_quantity`);
+      localStorage.setItem(`${productId}_quantity`, newQuantity);
+    } else {
+      console.log('Primeiro você precisa adicionar o produto no botão ao lado!');
     }
-    localStorage.removeItem(`${productId}_quantity`);
-    localStorage.setItem(`${productId}_quantity`, newQuantity);
-    return updatePrices();
+    return updatePrices(event);
   }
 
   render() {
     return (
       <div className="container">
         <div>
-          <button type="button" onClick={() => this.removeProduct()}>
-            <img className="minus-button max-img-size" src={MinusIcon} alt="Minus icon" />
+          <button type="button" onClick={(e) => this.removeProduct(e)}>
+            <img
+              className="minus-button max-img-size"
+              src={MinusIcon}
+              alt="Minus icon"
+            />
           </button>
         </div>
-        <input type="text" className="quantity-value" value={this.refreshPrice()} readOnly />
+        <input
+          type="text"
+          className="quantity-value"
+          value={this.refreshPrice()}
+          readOnly
+        />
         <div>
-          <button type="button" onClick={() => this.addProduct()}>
-            <img className="plus-button max-img-size" src={PlusIcon} alt="Plus icon" />
+          <button type="button" onClick={(e) => this.addProduct(e)}>
+            <img
+              className="plus-button max-img-size"
+              src={PlusIcon}
+              alt="Plus icon"
+            />
           </button>
         </div>
       </div>

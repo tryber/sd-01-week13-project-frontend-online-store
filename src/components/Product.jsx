@@ -4,6 +4,9 @@ import Back from '../icons/back.svg';
 import CreateAvaliation from './CreateAvaliation';
 import Avaliation from './Avaliation';
 import './product.css';
+import QuantityChanger from './QuantityChanger';
+import CartButton from './CartButton';
+import ProductPageButton from './ProductPageButton';
 
 class Product extends React.Component {
   static showHeader() {
@@ -12,6 +15,7 @@ class Product extends React.Component {
         <Link to="/">
           <img className="backPageImage space" src={Back} alt="back" />
         </Link>
+        <CartButton onChange={(event) => this.updateComments(event)} />
       </header>
     );
   }
@@ -64,6 +68,17 @@ class Product extends React.Component {
     return (
       <div>
         {Product.showProductDetails(newResult)}
+        <div className="buttons-add-product">
+          <ProductPageButton
+            product={newResult}
+            updatePrices={(event) => this.updateComments(event)}
+          />
+          <QuantityChanger
+            product={newResult}
+            productId={id}
+            updatePrices={(event) => this.updateComments(event)}
+          />
+        </div>
         <CreateAvaliation
           onChange={(event) => this.updateComments(event)}
           id={id}
