@@ -44,9 +44,11 @@
     height: 80px;
     width: 80px;
   }
+
   .cartButton-Link > p > span {
     font-size: 40px;
   }
+
 }
 
 @media screen and ( max-width : 800px ) {
@@ -56,9 +58,11 @@
     height: 60px;
     width: 60px;
   }
+
   .cartButton-Link > p > span {
     font-size: 35px;
   }
+
 }
 
 @media screen and ( max-width : 450px ) {
@@ -66,7 +70,9 @@
   .cartImage {
     display: none;
   }
+  
   .cartButton-Link > p {
     width: 100%;
   }
+
 }

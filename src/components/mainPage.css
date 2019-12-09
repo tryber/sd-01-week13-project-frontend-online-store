@@ -51,6 +51,7 @@
   .input-style {
     font-size: 35px;
   }
+
 }
 
 @media screen and ( max-width : 800px ) {
@@ -58,12 +59,15 @@
   .online-store-header {
     height: 100px;
   }
+
   .input-style {
     font-size: 30px;
   }
+
   .online-store-box {
     flex-direction: column;
   }
+
 }
 
 @media screen and ( max-width : 450px ) {
@@ -71,10 +75,13 @@
   .online-store-header {
     height: 80px;
   }
+
   .search-box { 
     width: 95%;
   }
+  
   .input-style {
     font-size: 26px;
   }
+
 }
