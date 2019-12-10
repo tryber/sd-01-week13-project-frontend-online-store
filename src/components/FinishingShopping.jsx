@@ -180,7 +180,7 @@ class FinishingShopping extends React.Component {
         this.setState({ shouldUpdate: true });
         return alert('Dados Incompletos! Verifique os campos em vermelho.');
       }
-      return "";
+      return '';
     }, 1000);
   }
 
