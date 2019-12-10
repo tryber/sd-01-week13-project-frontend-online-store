@@ -2,6 +2,12 @@ import React from 'react';
 import './finishingShopping.css';
 
 class FormForFinishingShopping extends React.Component {
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      return this.formPurchase();
+    }
+  }
 
   createInput(id, placeholder) {
     const { changeHandler, state } = this.props;
@@ -15,12 +21,6 @@ class FormForFinishingShopping extends React.Component {
         placeholder={placeholder}
       />
     );
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      return this.formPurchase();
-    }
   }
 
   formPurchase() {
