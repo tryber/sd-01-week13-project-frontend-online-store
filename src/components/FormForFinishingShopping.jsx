@@ -56,5 +56,5 @@ FormForFinishingShopping.propTypes = {
   changeHandler: PropTypes.func.isRequired,
   state: PropTypes.shape({
     id: PropTypes.string.isRequired,
-  }),
-}
+  }).isRequired,
+};
