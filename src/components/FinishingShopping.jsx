@@ -4,6 +4,7 @@ import billet from '../icons/boleto.png';
 import credit from '../icons/cardCredit.png';
 import './finishingShopping.css';
 import Back from '../icons/back.svg';
+import FormForFinishingShopping from './FormForFinishingShopping';
 
 class FinishingShopping extends React.Component {
   static showHeader() {
@@ -128,6 +129,7 @@ class FinishingShopping extends React.Component {
     this.validateDataFirstPart = this.validateDataFirstPart.bind(this);
     this.validateDataSecondPart = this.validateDataSecondPart.bind(this);
     this.finishingBuy = this.finishingBuy.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
   changeHandler(event) {
@@ -135,40 +137,11 @@ class FinishingShopping extends React.Component {
     this.setState({ [target.id]: target.value });
   }
 
-  formPurchase() {
-    return (
-      <form name="formPurchase">
-        {this.createInput('name', 'Nome Completo')}
-        {this.createInput('cpf', 'CPF')}
-        {this.createInput('email', 'Email')}
-        {this.createInput('cellphone', 'Telefone')}
-        {this.createInput('cep', 'CEP')}
-        {this.createInput('adress', 'Endereço')}
-        {this.createInput('complete', 'Complemento')}
-        {this.createInput('number', 'Número')}
-        {this.createInput('city', 'CIdade')}
-      </form>
-    );
-  }
-
-  createInput(id, placeholder) {
-    return (
-      <input
-        type="text"
-        className={`this.state.${id}Validation` ? 'valid' : 'invalid'}
-        onChange={(e) => this.changeHandler(e)}
-        id={id}
-        required
-        placeholder={placeholder}
-      />
-    );
-  }
-
   validateDataFirstPart() {
     if (!/[a-zA-Z\u00C0-\u00FF ]+/i.test(this.state.name)) {
       this.setState({ nameValidation: false, shouldUpdate: false });
     }
-    if (!/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/.test(this.state.CPF)) {
+    if (!/[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/g.test(this.state.cpf)) {
       this.setState({ cpfValidation: false, shouldUpdate: false });
     }
     if (!/^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(this.state.email)) {
@@ -182,7 +155,7 @@ class FinishingShopping extends React.Component {
   }
 
   validateDataSecondPart() {
-    if (!/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/.test(this.state.cep)) {
+    if (!/[0-9]{5}-[\d]{3}/g.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
     if (this.state.adress === ' ') {
@@ -204,7 +177,8 @@ class FinishingShopping extends React.Component {
         localStorage.clear();
         this.setState({ shouldRedirect: true });
       } else {
-        return 'Dados Incompletos!';
+        this.setState({ shouldUpdate: true });
+        return alert('Dados Incompletos! Verifique os campos em vermelho.');
       }
       return '';
     }, 1000);
@@ -222,7 +196,11 @@ class FinishingShopping extends React.Component {
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
-          {this.formPurchase()}
+          <FormForFinishingShopping
+            changeHandler={this.changeHandler}
+            shouldUpdate={this.shouldUpdate}
+            state={this.state}
+          />
         </fieldset>
         <fieldset>
           <legend>Método de pagamento:</legend>
