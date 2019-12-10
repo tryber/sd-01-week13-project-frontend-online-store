@@ -50,7 +50,6 @@ class EachProduct extends React.Component {
     const {
       id, title, price, thumbnail, shipping,
     } = result;
-    console.log(result)
     const { updateCartState } = this.props;
     const border = this.style();
     return (
