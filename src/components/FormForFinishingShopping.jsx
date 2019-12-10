@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './finishingShopping.css';
 
 class FormForFinishingShopping extends React.Component {
-  
+
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       return this.formPurchase();
     }
+    return '';
   }
 
   createInput(id, placeholder) {
@@ -49,3 +51,10 @@ class FormForFinishingShopping extends React.Component {
 }
 
 export default FormForFinishingShopping;
+
+FormForFinishingShopping.propTypes = {
+  changeHandler: PropTypes.func.isRequired,
+  state: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }),
+}
