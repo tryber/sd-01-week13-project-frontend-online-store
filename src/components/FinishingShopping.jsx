@@ -158,7 +158,7 @@ class FinishingShopping extends React.Component {
     if (!/[0-9]{5}-[\d]{3}/g.test(this.state.cep)) {
       this.setState({ cepValidation: false, shouldUpdate: false });
     }
-    if (this.state.adress === " ") {
+    if (this.state.adress === ' ') {
       this.setState({ adressValidation: false, shouldUpdate: false });
     }
     if (!/^[0-9.]+$/.test(this.state.number)) {
