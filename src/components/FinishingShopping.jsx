@@ -55,7 +55,7 @@ class FinishingShopping extends React.Component {
 
   static findProducts() {
     const products = Object.keys(localStorage).filter(
-      (key) => key.includes('MLB') && !key.includes('quantity')
+      (key) => key.includes('MLB') && !key.includes('quantity'),
     );
     if (products.length !== 0) {
       return FinishingShopping.showProcuts(products);
