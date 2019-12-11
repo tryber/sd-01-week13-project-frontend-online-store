@@ -23,8 +23,18 @@ class Product extends React.Component {
     return price.toString().replace('.', ',');
   }
 
+  static validateFreeShipping(shipping) {
+    let freeShipping = '';
+    if (shipping.free_shipping) {
+      freeShipping = 'Frete Grátis!';
+    } else {
+      freeShipping = 'Frete Pago!';
+    }
+    return freeShipping;
+  }
+
   static showProductDetails(newResult) {
-    const { title, price, thumbnail, attributes } = newResult;
+    const { title, price, thumbnail, attributes, shipping } = newResult;
     return (
       <div>
         {Product.showHeader()}
@@ -43,6 +53,7 @@ class Product extends React.Component {
                   {`${specification.name}: ${specification.value_name}`}
                 </li>
               ))}
+              <li>{this.validateFreeShipping(shipping)}</li>
             </ul>
           </div>
         </div>
