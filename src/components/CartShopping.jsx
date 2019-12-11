@@ -5,6 +5,7 @@ import './cartShopping.css';
 import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
+import Quantity from './Quantity';
 
 class CartShopping extends Component {
   constructor(props) {
@@ -16,16 +17,6 @@ class CartShopping extends Component {
     this.showProducts = this.showProducts.bind(this);
     this.refreshProducts = this.refreshProducts.bind(this);
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
-  }
-
-  static getCurrentQuantity() {
-    const itemsQuantities = Object.keys(localStorage)
-      .filter((key) => key.includes('quantity'))
-      .reduce(
-        (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
-        0,
-      );
-    return itemsQuantities;
   }
 
   componentDidMount() {
@@ -91,7 +82,7 @@ class CartShopping extends Component {
             <p>
               <strong>Carrinho de Compras</strong>
             </p>
-            <p><span>{CartShopping.getCurrentQuantity()}</span></p>
+            <Quantity />
           </div>
         </header>
         <div className="emptyBoxContainer space">{this.showProducts()}</div>
