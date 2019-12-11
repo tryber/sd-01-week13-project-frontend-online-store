@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
 
@@ -26,8 +26,15 @@ class EachProduct extends React.Component {
     this.style = this.style.bind(this);
   }
 
+  componentDidMount() {
+    const {id} = this.props.result;
+    if (Object.keys(localStorage).includes(id)) {
+      this.setState({ style: true });
+    }
+  }
+
   selectStyle() {
-    this.setState((state) => ({ style: !state.style }));
+    this.setState({ style: true });
   }
 
   style() {
@@ -51,7 +58,7 @@ class EachProduct extends React.Component {
       id, title, price, thumbnail, shipping,
     } = result;
     const { updateCartState } = this.props;
-    const border = this.style();
+    const border = this.style(id);
     return (
       <div className="card" key={id} style={border}>
         <div className="card-title">
