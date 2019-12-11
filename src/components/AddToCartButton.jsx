@@ -17,6 +17,7 @@ export default class AddToCartButton extends React.Component {
       productQuantity += 1;
       localStorage.removeItem(`${id}_quantity`);
       localStorage.setItem(`${id}_quantity`, productQuantity);
+      handleClick(event);
     }
   }
 
