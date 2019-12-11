@@ -19,7 +19,7 @@ class ProductPageButton extends React.Component {
   }
 
   changeQuantity(newQuantity) {
-    this.setState({ productQuantity: newQuantity});
+    this.setState({ productQuantity: newQuantity });
   }
 
   render() {
@@ -28,7 +28,10 @@ class ProductPageButton extends React.Component {
         <button className="button-add" onClick={(e) => this.addProduct(e)}>
           Adicionar ao carrinho
         </button>
-        <ChangeQuantityProductPage product={this.props.product} onClick={(e) => this.changeQuantity(e)}/>
+        <ChangeQuantityProductPage
+          product={this.props.product}
+          onClick={(e) => this.changeQuantity(e)}
+        />
       </div>
     );
   }
