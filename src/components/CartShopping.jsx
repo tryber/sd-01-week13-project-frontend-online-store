@@ -18,6 +18,16 @@ class CartShopping extends Component {
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
   }
 
+  static getCurrentQuantity() {
+    const itemsQuantities = Object.keys(localStorage)
+      .filter((key) => key.includes('quantity'))
+      .reduce(
+        (acc, quantity) => acc + parseInt(localStorage.getItem(quantity), 10),
+        0,
+      );
+    return itemsQuantities;
+  }
+
   componentDidMount() {
     this.refreshProducts();
     this.calculateTotalPrice();
@@ -81,6 +91,7 @@ class CartShopping extends Component {
             <p>
               <strong>Carrinho de Compras</strong>
             </p>
+            <p><span>{CartShopping.getCurrentQuantity()}</span></p>
           </div>
         </header>
         <div className="emptyBoxContainer space">{this.showProducts()}</div>
