@@ -45,9 +45,9 @@ class OnlineStore extends Component {
         <header className="online-store-header">
           <SearchBar onChange={this.onSearchBarChange} />
           <CartButton onChange={cartList} />
-          <ShowCartInitialPage />
         </header>
         <div className="online-store-box">
+          <ShowCartInitialPage />
           <CategoryBar onChange={this.onCategoryBarChange} />
           <ProductsList
             updateCartState={this.updateCartState}
