@@ -1,24 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ChangeQuantityProductPage from './ChangeQuantityProductPage';
 import './productPageButton.css';
 
 class ProductPageButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productQuantity: 0,
+    };
+  }
+
   addProduct(event) {
     const { product, updatePrices } = this.props;
-    if (localStorage.getItem(`${product.id}_quantity`)) {
-      alert('Produto já adicionado! Selecione a quantidade ao lado.');
-    } else {
-      localStorage.setItem(`${product.id}_quantity`, 1);
-      localStorage.setItem(product.id, JSON.stringify(product));
-    }
+    localStorage.setItem(`${product.id}_quantity`, this.state.productQuantity);
+    localStorage.setItem(product.id, JSON.stringify(product));
     return updatePrices(event);
+  }
+
+  changeQuantity(newQuantity) {
+    this.setState({ productQuantity: newQuantity});
   }
 
   render() {
     return (
-      <button className="button-add" onClick={(e) => this.addProduct(e)}>
-        Adicionar ao carrinho
-      </button>
+      <div className="button-container">
+        <button className="button-add" onClick={(e) => this.addProduct(e)}>
+          Adicionar ao carrinho
+        </button>
+        <ChangeQuantityProductPage product={this.props.product} onClick={(e) => this.changeQuantity(e)}/>
+      </div>
     );
   }
 }
