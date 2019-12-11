@@ -12,6 +12,10 @@ class ChangeQuantityProductPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.startQuantity();
+  }
+
   addProduct() {
     this.changeQuantityOfProducts(1);
   }
@@ -33,15 +37,12 @@ class ChangeQuantityProductPage extends React.Component {
       onClick(nextQuantity);
     }
   }
-  componentDidMount() {
-    this.startQuantity();
-  }
 
   startQuantity() {
     const { product } = this.props;
     const actualQuantity = parseInt(
       localStorage.getItem(`${product.id}_quantity`),
-      10
+      10,
     );
     if (!actualQuantity) {
       return 0;
@@ -84,6 +85,6 @@ class ChangeQuantityProductPage extends React.Component {
 export default ChangeQuantityProductPage;
 
 ChangeQuantityProductPage.propTypes = {
-    onCLick: PropTypes.func.isRequired,
-    product: PropTypes.arrayOf.isRequired,
+  onClick: PropTypes.func.isRequired,
+  product: PropTypes.arrayOf.isRequired,
 };
