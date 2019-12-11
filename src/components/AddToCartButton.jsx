@@ -5,7 +5,7 @@ import './addcartbutton.css';
 export default class AddToCartButton extends React.Component {
   addProductToLocalStorage(event) {
     const {
-      selectStyle, result, result: { id, available_quantity }, handleClick,
+      selectStyle, result, result: { id }, handleClick,
     } = this.props;
     selectStyle();
     if (!Object.keys(localStorage).includes(id)) {
@@ -15,7 +15,7 @@ export default class AddToCartButton extends React.Component {
     } else {
       let productQuantity = parseInt(localStorage.getItem(`${id}_quantity`), 10);
       productQuantity += 1;
-      if(productQuantity < available_quantity) {
+      if (productQuantity < result.available_quantity) {
         localStorage.removeItem(`${id}_quantity`);
         localStorage.setItem(`${id}_quantity`, productQuantity);
         handleClick(event);
