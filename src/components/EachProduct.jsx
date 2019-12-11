@@ -18,16 +18,24 @@ class EachProduct extends React.Component {
     this.state = {
       redirect: false,
       id: '',
-      style: false,
+      style: this.definyStyle(),
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
-
+    this.definyStyle = this.definyStyle.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
     this.style = this.style.bind(this);
   }
 
+  definyStyle() {
+    const { id } = this.props.result;
+    if (Object.keys(localStorage).includes(id)) {
+      return true;
+    }
+    return false;
+  }
+
   selectStyle() {
-    this.setState((state) => ({ style: !state.style }));
+    this.setState({ style: true });
   }
 
   style() {
@@ -51,7 +59,7 @@ class EachProduct extends React.Component {
       id, title, price, thumbnail, shipping,
     } = result;
     const { updateCartState } = this.props;
-    const border = this.style();
+    const border = this.style(id);
     return (
       <div className="card" key={id} style={border}>
         <div className="card-title">
