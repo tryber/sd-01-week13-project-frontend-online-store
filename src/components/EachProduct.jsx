@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
 
@@ -18,19 +18,20 @@ class EachProduct extends React.Component {
     this.state = {
       redirect: false,
       id: '',
-      style: false,
+      style: this.definyStyle(),
     };
     this.savingProductDetails = this.savingProductDetails.bind(this);
-
+    this.definyStyle = this.definyStyle.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
     this.style = this.style.bind(this);
   }
 
-  componentDidMount() {
-    const {id} = this.props.result;
+  definyStyle() {
+    const { id } = this.props.result;
     if (Object.keys(localStorage).includes(id)) {
-      this.setState({ style: true });
+      return true;
     }
+    return false;
   }
 
   selectStyle() {
