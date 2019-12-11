@@ -4,7 +4,6 @@ import Back from '../icons/back.svg';
 import CreateAvaliation from './CreateAvaliation';
 import Avaliation from './Avaliation';
 import './product.css';
-import QuantityChanger from './QuantityChanger';
 import CartButton from './CartButton';
 import ProductPageButton from './ProductPageButton';
 
@@ -71,11 +70,6 @@ class Product extends React.Component {
         <div className="buttons-add-product">
           <ProductPageButton
             product={newResult}
-            updatePrices={(event) => this.updateComments(event)}
-          />
-          <QuantityChanger
-            product={newResult}
-            productId={id}
             updatePrices={(event) => this.updateComments(event)}
           />
         </div>
