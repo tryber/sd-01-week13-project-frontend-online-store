@@ -5,6 +5,7 @@ import './cartShopping.css';
 import BackImage from '../icons/back.svg';
 import CartImage from '../icons/cart.jpg';
 import EmptyBox from '../icons/emptyBox.png';
+import Quantity from './Quantity';
 
 class CartShopping extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class CartShopping extends Component {
             <p>
               <strong>Carrinho de Compras</strong>
             </p>
+            <Quantity />
           </div>
         </header>
         <div className="emptyBoxContainer space">{this.showProducts()}</div>
