@@ -15,9 +15,13 @@ export default class AddToCartButton extends React.Component {
     } else {
       let productQuantity = parseInt(localStorage.getItem(`${id}_quantity`), 10);
       productQuantity += 1;
-      localStorage.removeItem(`${id}_quantity`);
-      localStorage.setItem(`${id}_quantity`, productQuantity);
-      handleClick(event);
+      if (productQuantity < result.available_quantity) {
+        localStorage.removeItem(`${id}_quantity`);
+        localStorage.setItem(`${id}_quantity`, productQuantity);
+        handleClick(event);
+      } else {
+        alert('Quantidade de produtos excedida!');
+      }
     }
   }
 
