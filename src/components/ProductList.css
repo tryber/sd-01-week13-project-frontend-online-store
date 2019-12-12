@@ -7,8 +7,10 @@
 
 .show-all-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: 75vh;
   justify-content: center;
+  overflow: scroll;
   width: 80%;
 }
 
@@ -53,6 +55,8 @@
   }
 
   .show-all-info {
+    height: 100%;
+    overflow: hidden;
     width: 100%;
   }
 
