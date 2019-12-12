@@ -6,12 +6,12 @@
 }
 
 .show-all-info {
-  overflow: scroll;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 80%;
+  overflow: scroll;
   height: 75vh;
+  width: 80%;
 }
 
 .card-container {
