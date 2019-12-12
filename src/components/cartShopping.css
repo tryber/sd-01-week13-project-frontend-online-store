@@ -42,3 +42,15 @@
   border: solid 1px black;
   padding: 8px 14px;
 }
+
+@media screen and ( max-width : 800px ) {
+
+  .product-item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .total-value {
+    margin-top: 50px;
+  }
+}

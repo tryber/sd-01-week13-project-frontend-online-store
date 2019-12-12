@@ -54,7 +54,7 @@ class Avaliation extends React.Component {
 
   render() {
     return (
-      <fieldset>
+      <fieldset className="comments">
         <legend>Comentários</legend>
         {this.findComments()}
       </fieldset>

@@ -49,3 +49,37 @@ fieldset {
   color: blue;
   width: 22em;
 }
+
+@media screen and ( max-width : 800px ) {
+
+  .avaliation-text-area {
+    margin-top: 30px;
+  }
+
+  .comments {
+    height: 300px;
+  }
+
+  .inputs-avaliation {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  .invalid {
+    margin-bottom: 30px;
+  }
+
+  .valid {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and ( max-width : 500px ) {
+
+  .cartImage {
+    display: flex;
+    margin-left: 50px;
+  }
+}
