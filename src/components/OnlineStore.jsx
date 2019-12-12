@@ -3,6 +3,7 @@ import CategoryBar from './CategoryBar';
 import CartButton from './CartButton';
 import SearchBar from './SearchBar';
 import ProductsList from './ProductList';
+import ShowCartInitialPage from './ShowCartInitialPage';
 import './cartShopping.css';
 import './mainPage.css';
 
@@ -46,6 +47,7 @@ class OnlineStore extends Component {
           <CartButton onChange={cartList} />
         </header>
         <div className="online-store-box">
+          <ShowCartInitialPage />
           <CategoryBar onChange={this.onCategoryBarChange} />
           <ProductsList
             updateCartState={this.updateCartState}

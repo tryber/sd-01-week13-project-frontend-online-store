@@ -1,0 +1,7 @@
+.cart-initial-page {
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 10%;
+}
