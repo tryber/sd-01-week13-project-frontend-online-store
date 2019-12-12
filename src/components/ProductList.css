@@ -8,8 +8,8 @@
 .show-all-info {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   height: 75vh;
+  justify-content: center;
   overflow: scroll;
   width: 80%;
 }
