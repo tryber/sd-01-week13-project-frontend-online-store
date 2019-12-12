@@ -18,7 +18,7 @@
   width: 10em;
 }
 
-.credit-pay-method, .pay-method {
+.credit-pay-method , .pay-method {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -58,13 +58,12 @@
 }
 
 @media screen and ( max-width : 800px ) {
-  
 
   .form-purchase {
     display: flex;
     flex-direction: column;
   }
-  
+
   .invalid {
     color: red;
     height: 3em;
@@ -77,14 +76,14 @@
     margin: 0.5em;
     flex-direction: column;
   }
-  
+
   .pay-method-container {
     align-items: center;
     display: flex;
     flex-direction: column;
     margin: 0.5em;
   }
-  
+
   .price-total {
     margin-top: 50px;
   }

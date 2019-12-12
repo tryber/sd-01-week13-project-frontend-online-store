@@ -43,7 +43,8 @@
   padding: 8px 14px;
 }
 
-@media screen and ( max-width: 800px ) {
+@media screen and ( max-width : 800px ) {
+
   .product-item {
     display: flex;
     flex-wrap: wrap;
