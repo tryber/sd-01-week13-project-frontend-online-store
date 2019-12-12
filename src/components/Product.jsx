@@ -4,7 +4,6 @@ import Back from '../icons/back.svg';
 import CreateAvaliation from './CreateAvaliation';
 import Avaliation from './Avaliation';
 import './product.css';
-import QuantityChanger from './QuantityChanger';
 import CartButton from './CartButton';
 import ProductPageButton from './ProductPageButton';
 
@@ -24,8 +23,18 @@ class Product extends React.Component {
     return price.toString().replace('.', ',');
   }
 
+  static validateFreeShipping(shipping) {
+    let freeShipping = '';
+    if (shipping.free_shipping) {
+      freeShipping = 'Frete Grátis!';
+    } else {
+      freeShipping = 'Frete Pago!';
+    }
+    return freeShipping;
+  }
+
   static showProductDetails(newResult) {
-    const { title, price, thumbnail, attributes } = newResult;
+    const { title, price, thumbnail, attributes, shipping } = newResult;
     return (
       <div>
         {Product.showHeader()}
@@ -44,6 +53,7 @@ class Product extends React.Component {
                   {`${specification.name}: ${specification.value_name}`}
                 </li>
               ))}
+              <li>{this.validateFreeShipping(shipping)}</li>
             </ul>
           </div>
         </div>
@@ -71,11 +81,6 @@ class Product extends React.Component {
         <div className="buttons-add-product">
           <ProductPageButton
             product={newResult}
-            updatePrices={(event) => this.updateComments(event)}
-          />
-          <QuantityChanger
-            product={newResult}
-            productId={id}
             updatePrices={(event) => this.updateComments(event)}
           />
         </div>
