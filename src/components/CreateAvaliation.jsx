@@ -96,7 +96,7 @@ class CreateAvaliation extends Component {
   createFormForComments() {
     return (
       <div>
-        <fieldset>
+        <fieldset className="comments">
           <legend className="avaliations-text">Deixe seu comentário!</legend>
           <form
             className="avaliations-container"

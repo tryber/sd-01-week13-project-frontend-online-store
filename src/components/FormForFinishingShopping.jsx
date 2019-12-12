@@ -27,7 +27,7 @@ class FormForFinishingShopping extends React.Component {
 
   formPurchase() {
     return (
-      <form name="formPurchase">
+      <form name="formPurchase" className="form-purchase">
         {this.createInput('name', 'Nome Completo')}
         {this.createInput('cpf', 'CPF')}
         {this.createInput('email', 'Email')}

@@ -67,8 +67,8 @@ class FinishingShopping extends React.Component {
     return (
       <div>
         <p>Cartão de Cŕedito</p>
-        <div className="credit-pay-method">
-          <div className="credit-pay-method">
+        <div className="pay-method">
+          <div className="credit-pay-method" >
             <input type="radio" name="pay" />
             <p>Visa</p>
             <img className="creditCard" src={credit} alt="billet" />
@@ -192,7 +192,9 @@ class FinishingShopping extends React.Component {
         <fieldset className="products-review">
           <legend>Revise seus produtos</legend>
           {FinishingShopping.findProducts()}
-          {`Preço total: R$${FinishingShopping.calculateTotalPrice()}`}
+          <div className="price-total">
+            {`Preço total: R$${FinishingShopping.calculateTotalPrice()}`}
+          </div>
         </fieldset>
         <fieldset>
           <legend>Dados do comprador</legend>
