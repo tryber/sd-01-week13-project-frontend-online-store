@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.category-options:hover { 
+.category-options:hover {
   background-color: #c02942;
   border-radius: 10px;
 }
@@ -27,8 +27,8 @@
 .category-box {
   align-items: flex-start;
   display: flex;
-  font-size: 30px;
   flex-direction: column;
+  font-size: 30px;
   width: 30%;
 }
 
@@ -50,10 +50,10 @@
   }
 
   .category-options-box {
-    height: 200px;
     align-items: flex-start;
     display: flex;
     flex-flow: wrap;
+    height: 200px;
     width: 100%;
   }
 
