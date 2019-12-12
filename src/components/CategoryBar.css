@@ -1,3 +1,29 @@
+.category-options {
+  display: block;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 2%;
+  position: relative;
+}
+
+.category-options:hover { 
+  background-color: #c02942;
+  border-radius: 10px;
+}
+
+.category-options > input:checked + div {
+  background-color: #53777A;
+  padding: 1%;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.category-options input {
+  cursor: pointer;
+  opacity: 0; 
+  position: absolute
+}
+
 .category-box {
   align-items: flex-start;
   display: flex;
@@ -5,13 +31,19 @@
   width: 30%;
 }
 
+.category-box {
+  font-size: 30px;
+}
+
 .category-options-box {
+  height: 300px;
   align-items: flex-start;
-  background-color: black;
-  color: white;
+  border: 1px solid black;
+  color: black;
   display: flex;
   flex-direction: column;
-  padding: 2%;
+  overflow-y: scroll;
+  padding: 5%;
 }
 
 @media screen and ( max-width : 800px ) {
@@ -21,6 +53,7 @@
   }
 
   .category-options-box {
+    height: 200px;
     align-items: flex-start;
     display: flex;
     flex-flow: wrap;

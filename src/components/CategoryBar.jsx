@@ -31,11 +31,12 @@ class CategoryBar extends Component {
         <input
           name="option"
           type="radio"
+          id={id}
           key={id}
           value={id}
           onChange={this.handleChange}
         />
-        {value}
+        <div>{value}</div>
       </label>
     );
   }
@@ -44,7 +45,7 @@ class CategoryBar extends Component {
     const { data } = this.state;
     return (
       <div className="category-box">
-        <h3>Categorias:</h3>
+        <h3>Categorias</h3>
         <div className="category-options-box">
           {data.map((dat) => this.renderCategory(dat.id, dat.name))}
         </div>
